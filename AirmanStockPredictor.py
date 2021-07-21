@@ -1,8 +1,13 @@
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
+import numpy as np
+import sklearn
+
+
 
 stockprices = []
+trendarray = []
 
 
 def get_stock_prices(stockname):
@@ -18,16 +23,25 @@ def get_stock_prices(stockname):
         row = i.find_all('td')
         stockprices.append(row[0].text.strip())
 
-
+def file_len(fname):
+    with open(fname) as f:
+        for i, l in enumerate(f):
+            pass
+    return i + 1
 
 # part of the program where it takes in the file input which contains all the specified stocks, and iterates through the process of getting stock prices for each one + calculating regression & predicting next day stock values
 stocknames = open("differentstocks.txt", "r")
+trenddata = open("multiTimelineAPPL.text");
+file_len(trenddata)
+for i in range(trenddata):
+    trendarray.append(row[0])
+
+regressiondata = pd.DataFram(columns = 'stockprices', 'trendarray')
 while stocknames:
     uniquestock = stocknames.readline()
     get_stock_prices(uniquestock)
     
     
-
 
 
 

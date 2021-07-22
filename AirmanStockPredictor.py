@@ -2,34 +2,42 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 import numpy as np
-import sklearn
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn import metrics  
 import pytrends 
 from pytrends.request import TrendReq
+
 pytrend = TrendReq()
 
 
 stockprices = []
-unique_stockname =[]
+unique_stocknames =[]
 trendarray = []
 googletrendskeywords = []
 
 def get_google_trends_data():
-    for i in unique_stockname:
+    for i in unique_stocknames:
         googletrendskeywords.append(i)
-        keyword_codes=[pytrend.suggestions(keyword=i)[0] for i in googletrendskeywords]
-        df_codes =pd.DataFrame(keyword_codes)
-        exact_keywords = df_codes['mid'].to_list()
-        country = ["US"]
-        category = 107
-        search_type=""
-        Individual_EXACT_KEYWORD = list(zip(*[iter(exact_keywords)]*1))
-        Individual_EXACT_KEYWORD = [list(x) for x in Individual_EXACT_KEYWORD]
-        dicti = {}
-        for i in country:
-            for keyword in Individual_EXACT_KEYWORD:
-            pytrend.build_payload(kw_list=keyword, timeframe = 'today 1-y', geo = country, cat=category, gprop=search_type) 
-            dicti[i] = pytrend.interest_over_time()
-        df_trends = pd.concat(dicti, axis=1)
+    keyword_codes=[pytrend.suggestions(keyword=i)[0] for i in googletrendskeywords]
+    df_codes =pd.DataFrame(keyword_codes)
+    exact_keywords = df_codes['mid'].to_list()
+    country = ["US"]
+    category = 107
+    search_type=""
+    Individual_EXACT_KEYWORD = list(zip(*[iter(exact_keywords)]*1))
+    Individual_EXACT_KEYWORD = [list(x) for x in Individual_EXACT_KEYWORD]
+    dicti = {}
+    for i in country:
+        for keyword in Individual_EXACT_KEYWORD:
+        pytrend.build_payload(kw_list=keyword, timeframe = 'today 1-y', geo = country, cat=category, gprop=search_type) 
+        dicti[i] = pytrend.interest_over_time()
+    df_trends = pd.concat(dicti, axis=1)
+    df_trends.columns = df_trends.columns.droplevel(0) #drop outside header
+    df_trends = df_trends.drop('isPartial', axis = 1) #drop "isPartial"
+    df_trends.reset_index(level=0,inplace=True) #reset_index
+    df_trends.columns = unique_stocknames
+    
 
 
 
@@ -57,14 +65,21 @@ def file_len(fname):
 stocknames = open("differentstocks.txt", "r")
 for line in stocknames:
     line = line.strip('\n')
-    unique_stockname.append(line)
+    unique_stocknames.append(line)
 trenddata = open("multiTimelineAPPL.txt", "r");
 count = file_len(trenddata)
 for i in range(count):
     line = trenddata.readline()
     trendarray.append(line) #needs to be doublechecked to ensure that this is actually selecting the proper values from the 
-regressiondata = pd.DataFrame(columns = 'stockprices', 'trendarray')
 
+regressiondata = pd.DataFrame(columns =['stockprices', df_trends['FB']])
+x,y = regressiondata(return_x_y = True) 
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = .70)
+stockpredictor = RandomForestClassifier(n_estimators = 100)
+stockpredictor.fit(x_train,y_train)
+y_pred = regressiondata.predict(x_test)
+print("ACCURACY OF THE MODEL: ", metrics.accuracy_score(y_test, y_pred))
+print(stockpredictor(stockprices))
 
 while stocknames:
     uniquestock = stocknames.readline()

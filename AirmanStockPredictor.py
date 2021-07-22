@@ -3,11 +3,35 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import numpy as np
 import sklearn
-
+import pytrends 
+from pytrends.request import TrendReq
+pytrend = TrendReq()
 
 
 stockprices = []
+unique_stockname =[]
 trendarray = []
+googletrendskeywords = []
+
+def get_google_trends_data():
+    for i in unique_stockname:
+        googletrendskeywords.append(i)
+        keyword_codes=[pytrend.suggestions(keyword=i)[0] for i in googletrendskeywords]
+        df_codes =pd.DataFrame(keyword_codes)
+        exact_keywords = df_codes['mid'].to_list()
+        country = ["US"]
+        category = 107
+        search_type=""
+        Individual_EXACT_KEYWORD = list(zip(*[iter(exact_keywords)]*1))
+        Individual_EXACT_KEYWORD = [list(x) for x in Individual_EXACT_KEYWORD]
+        dicti = {}
+        for i in country:
+            for keyword in Individual_EXACT_KEYWORD:
+            pytrend.build_payload(kw_list=keyword, timeframe = 'today 1-y', geo = country, cat=category, gprop=search_type) 
+            dicti[i] = pytrend.interest_over_time()
+        df_trends = pd.concat(dicti, axis=1)
+
+
 
 
 def get_stock_prices(stockname):
@@ -31,12 +55,17 @@ def file_len(fname):
 
 # part of the program where it takes in the file input which contains all the specified stocks, and iterates through the process of getting stock prices for each one + calculating regression & predicting next day stock values
 stocknames = open("differentstocks.txt", "r")
-trenddata = open("multiTimelineAPPL.text");
-file_len(trenddata)
-for i in range(trenddata):
-    trendarray.append(row[0])
+for line in stocknames:
+    line = line.strip('\n')
+    unique_stockname.append(line)
+trenddata = open("multiTimelineAPPL.txt", "r");
+count = file_len(trenddata)
+for i in range(count):
+    line = trenddata.readline()
+    trendarray.append(line) #needs to be doublechecked to ensure that this is actually selecting the proper values from the 
+regressiondata = pd.DataFrame(columns = 'stockprices', 'trendarray')
 
-regressiondata = pd.DataFram(columns = 'stockprices', 'trendarray')
+
 while stocknames:
     uniquestock = stocknames.readline()
     get_stock_prices(uniquestock)

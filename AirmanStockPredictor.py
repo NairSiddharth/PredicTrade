@@ -30,14 +30,15 @@ def get_google_trends_data():
     dicti = {}
     for i in country:
         for keyword in Individual_EXACT_KEYWORD:
-        pytrend.build_payload(kw_list=keyword, timeframe = 'today 1-y', geo = country, cat=category, gprop=search_type) 
+        pytrends.build_payload(kw_list=keyword, timeframe = 'today 1-y', geo = country, cat=category, gprop=search_type) 
         dicti[i] = pytrend.interest_over_time()
     df_trends = pd.concat(dicti, axis=1)
     df_trends.columns = df_trends.columns.droplevel(0) #drop outside header
     df_trends = df_trends.drop('isPartial', axis = 1) #drop "isPartial"
     df_trends.reset_index(level=0,inplace=True) #reset_index
     df_trends.columns = unique_stocknames
-    
+# instead of google trends data, maybe use companes liquid cash flow as a regression variable because it could indicate the health of the company 
+# * possibly could have weak correlation to stock price as liquid cash flow does not beenfit stock holders unless actively used, which it typically is not. 
 
 
 
@@ -72,7 +73,8 @@ for i in range(count):
     line = trenddata.readline()
     trendarray.append(line) #needs to be doublechecked to ensure that this is actually selecting the proper values from the 
 
-regressiondata = pd.DataFrame(columns =['stockprices', df_trends['FB']])
+for i in range(unique_stocknames): 
+regressiondata = pd.DataFrame(columns =['stockprices', df_trends[unique_stocknames[i]]])
 x,y = regressiondata(return_x_y = True) 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = .70)
 stockpredictor = RandomForestClassifier(n_estimators = 100)

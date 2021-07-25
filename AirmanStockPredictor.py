@@ -3,19 +3,24 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
+#from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestRegressor
 from sklearn import metrics  
 import pytrends 
 from pytrends.request import TrendReq
 pytrend = TrendReq()
 
 
-stockprices = []
+stockprices = {}
 unique_stocknames_tickers = []
 unique_stocknames_names = []
-cleaned_ptfr_alltime =[]
+cleaned_ptfr_alltime ={}
 trendarray = []
 googletrendskeywords = []
+df_trends = pd.DataFrame()
+ptfcf_dataframe=  pd.DataFrame
+stockprices_dataframe = pd.DataFrame()
+
 
 def get_google_trends_data():
     for i in unique_stocknames_tickers:
@@ -54,7 +59,9 @@ def price_to_fcf_ratio(stockname_actual,stockname_ticker):
     for i in price_to_fcf_ratios_alltime:
         row = i.find_all('td')
         cleaned_ptfr_alltime.append(row[0].text.strip())
-    ptfcf_dataframe = pd.concat(cleaned_ptfr_alltime)
+    ptfcf_dataframe = pd.concat(cleaned_ptfr_alltime, axis=1)
+    ptfcf_dataframe.columns = ptfcf_dataframe.columns.droplevel(0) #drop outside header
+    ptfcf_dataframe.reset_index(level=0,inplace=True)
     ptfcf_dataframe.columns = unique_stocknames_names
 
 def get_stock_prices(stockname_ticker):
@@ -68,8 +75,10 @@ def get_stock_prices(stockname_ticker):
     #might need ts0 and change row[0] to row[5]
     for i in endofdaystockprices:
         row = i.find_all('td')
-        stockprices.append(row[0].text.strip())
-    stockprices_dataframe = pd.concat(stockprices)
+        stockprices[i] = row[0]
+    stockprices_dataframe = pd.concat(stockprices, axis=1)
+    stockprices_dataframe.columns = stockprices_dataframe.columns.droplevel(0)
+    stockprices_dataframe.reset_index(level=0,inplace=True)
     stockprices_dataframe.columns = unique_stocknames_names
 
 
@@ -104,11 +113,11 @@ def clean_trenddata():
 def regression(i):
     data = np.array([stockprices_dataframe[unique_stocknames_names[i]], df_trends[unique_stocknames_names[i]], ptfcf_dataframe[unique_stocknames_names[i]]])
     regressiondata = pd.DataFrame(data, columns =['stockprices', df_trends[unique_stocknames_names[i], 'price to free cash flow ratio']])
-    x,y = regressiondata(return_x_y = True) 
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = .70)
-    stockpredictor = RandomForestClassifier(n_estimators = 100)
-    stockpredictor.fit(x_train,y_train)
-    y_pred = regressiondata.predict(x_test)
+    x,y,z = regressiondata(return_x_y_z = True) 
+    x_train, x_test, y_train, y_test, z_train, z_test = train_test_split(x, y, z,  test_size = .70)
+    stockpredictor = RandomForestRegressor(n_estimators = 100) #changed from classifier to predictor, unsure what change will do currently > seemed to be consensus choice for this tyep of program in reputable programming websites
+    stockpredictor.fit(x_train, y_train, z_train)
+    y_pred = regressiondata.predict(x_test, z_test)
     print("ACCURACY OF THE MODEL: ", metrics.accuracy_score(y_test, y_pred))
     print(unique_stocknames_names[i] + ":c" + stockpredictor(stockprices) + "\n")
 
@@ -126,7 +135,7 @@ if __name__ == "__main__":
 
     
     
-    
+#%%
 
 
 

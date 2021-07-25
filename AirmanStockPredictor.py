@@ -90,6 +90,9 @@ def main():
         print("ACCURACY OF THE MODEL: ", metrics.accuracy_score(y_test, y_pred))
         print(unique_stocknames[i] + ":c" + stockpredictor(stockprices) + "\n")
 
+if __name__ == "__main__":
+    main()
+
     
     
     

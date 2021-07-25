@@ -76,8 +76,9 @@ def clean_trenddata():
         line = trenddata.readline()
         trendarray.append(line) #needs to be doublechecked to ensure that this is actually selecting the proper values from the 
 
-def regression():
-    regressiondata = pd.DataFrame(columns =['stockprices', df_trends[unique_stocknames[i]]])
+def regression(i):
+    data = np.array([stockprices, df_trends[unique_stocknames[i]]])
+    regressiondata = pd.DataFrame(data, columns =['stockprices', df_trends[unique_stocknames[i]]])
     x,y = regressiondata(return_x_y = True) 
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = .70)
     stockpredictor = RandomForestClassifier(n_estimators = 100)
@@ -90,8 +91,9 @@ def main():
     clean_stocknames()
     get_google_trends_data()
     for i in range(unique_stocknames):
-        regression()
-        
+        get_stock_prices(unique_stocknames[i])
+        regression(i)
+
 if __name__ == "__main__":
     main()
 

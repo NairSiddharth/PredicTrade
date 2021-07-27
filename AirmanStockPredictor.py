@@ -8,9 +8,9 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn import metrics  
 import pytrends 
 from pytrends.request import TrendReq
+
+
 pytrend = TrendReq()
-
-
 stockprices = {}
 unique_stocknames_tickers = []
 unique_stocknames_names = []
@@ -36,8 +36,8 @@ def get_google_trends_data():
     dicti = {}
     for i in country:
         for keyword in Individual_EXACT_KEYWORD:
-        pytrend.build_payload(kw_list=keyword, timeframe = 'today 1-y', geo = country, cat=category, gprop=search_type) 
-        dicti[i] = pytrend.interest_over_time()
+            pytrend.build_payload(kw_list=keyword, timeframe = 'today 1-y', geo = country, cat=category, gprop=search_type) 
+            dicti[i] = pytrend.interest_over_time()
     df_trends = pd.concat(dicti, axis=1)
     df_trends.columns = df_trends.columns.droplevel(0) #drop outside header
     df_trends = df_trends.drop('isPartial', axis = 1) #drop "isPartial"
@@ -115,8 +115,9 @@ def regression(i):
     regressiondata = pd.DataFrame(data, columns =['stockprices', df_trends[unique_stocknames_names[i], 'price to free cash flow ratio']])
     x,y,z = regressiondata(return_x_y_z = True) 
     x_train, x_test, y_train, y_test, z_train, z_test = train_test_split(x, y, z,  test_size = .70)
-    stockpredictor = RandomForestRegressor(n_estimators = 100) #changed from classifier to predictor, unsure what change will do currently > seemed to be consensus choice for this tyep of program in reputable programming websites
-    stockpredictor.fit(x_train, y_train, z_train)
+    stockpredictor = RandomForestRegressor(n_estimators = 500) #changed from classifier to predictor, unsure what change will do currently > seemed to be consensus choice for this type of program in reputable programming websites
+    # after initial few testruns, try out gradient boosted trees to crosscheck different types of ml algorithms and their respective "Accuracy" scores for this data + prediction idea
+    stockpredictor.fit(x_train, np.loglp(y_train), np.loglp(z_train))
     y_pred = regressiondata.predict(x_test, z_test)
     print("ACCURACY OF THE MODEL: ", metrics.accuracy_score(y_test, y_pred))
     print(unique_stocknames_names[i] + ":c" + stockpredictor(stockprices) + "\n")
@@ -134,8 +135,7 @@ if __name__ == "__main__":
     main()
 
     
-    
-#%%
+
 
 
 

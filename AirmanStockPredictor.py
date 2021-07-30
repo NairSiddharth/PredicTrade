@@ -50,6 +50,7 @@ def get_google_trends_data():
 # FURTHER NOTE - have decided to incorporate an additional variable into the regression rather than just google trend data & price, this third variable will be price to free-cash-flow ratio
 # FURTHER FURTHER NOTE - in future, may decide to either change said variable or add an additional variable to/using the price/book ratio of a stock
 
+#scrapes price to free cash flow data from this handy website, makes the data usable using beautiful soup, then reads through it + appends all the necessary values to an array/list/dataframe
 def price_to_fcf_ratio(stockname_actual,stockname_ticker):
     URL = "https://www.macrotrends.net/stocks/charts/" + stockname_ticker + "/" + stockname_actual + "/price-fcf"
     page = requests.get(URL)
@@ -96,6 +97,7 @@ def clean_stocknames_tickers():
         line = line.strip('\n')
         unique_stocknames_tickers.append(line)
 
+#simple function that goes through the selected stock names and strips the newline character from them so that it can properly be used for the other functions
 def clean_stocknames_names():
     stocknames_actual = open("stocknames-actual.txt", "r")
     for line in stocknames_actual:
@@ -108,8 +110,9 @@ def clean_trenddata():
     count = file_len(trenddata)
     for i in range(count):
         line = trenddata.readline()
-        trendarray.append(line) #needs to be doublechecked to ensure that this is actually selecting the proper values from the 
+        trendarray.append(line)
 
+# bulk of the program lies in this function that utilizes the previously accumulated data, concatenates into a dataframe, and then trains a ml model using the random forest regressor to better predict a stock's future (tomorrow's) price. Using random forest allows for error to be minimized compared to other commonly used algorithms for this specific application (i.e. stocks).
 def regression(i):
     data = np.array([stockprices_dataframe[unique_stocknames_names[i]], df_trends[unique_stocknames_names[i]], ptfcf_dataframe[unique_stocknames_names[i]]])
     regressiondata = pd.DataFrame(data, columns =['stockprices', df_trends[unique_stocknames_names[i], 'price to free cash flow ratio']])
@@ -122,6 +125,7 @@ def regression(i):
     print("ACCURACY OF THE MODEL: ", metrics.accuracy_score(y_test, y_pred))
     print(unique_stocknames_names[i] + ":c" + stockpredictor(stockprices) + "\n")
 
+#main function to run all other functions in order
 def main():
     clean_stocknames_tickers()
     clean_stocknames_names()

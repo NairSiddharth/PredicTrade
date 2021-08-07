@@ -8,6 +8,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn import metrics  
 import pytrends 
 from pytrends.request import TrendReq
+from numba import jit
 
 
 pytrend = TrendReq()
@@ -84,6 +85,7 @@ def get_stock_prices(stockname_ticker):
 
 
 # might be unnecessary for same reasons as clean_trenddata
+@jit(nopython=True)
 def file_len(fname):
     with open(fname) as f:
         for i, l in enumerate(f):
@@ -91,6 +93,7 @@ def file_len(fname):
     return i + 1
 
 # part of the program where it takes in the file input which contains all the specified stocks, and iterates through the process of getting stock prices for each one + calculating regression & predicting next day stock values
+@jit(nopython=True)
 def clean_stocknames_tickers():
     stocknames_tickers = open("differentstocks-tickers.txt", "r")
     for line in stocknames_tickers:
@@ -98,6 +101,7 @@ def clean_stocknames_tickers():
         unique_stocknames_tickers.append(line)
 
 #simple function that goes through the selected stock names and strips the newline character from them so that it can properly be used for the other functions
+@jit(nopython=True)
 def clean_stocknames_names():
     stocknames_actual = open("stocknames-actual.txt", "r")
     for line in stocknames_actual:
@@ -105,6 +109,7 @@ def clean_stocknames_names():
         unique_stocknames_names.append(line)
 
 #may ultimately be unnecessary given that you can just grab a column from a dataframe given that it has a column title, dataframe needs to be tested further to see if has the necessary data to be considered extraneous
+@jit(nopython=True)
 def clean_trenddata():
     trenddata = open('GoogleTrendDataStocks.txt', "r");
     count = file_len(trenddata)

@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
 """
-Stock Predictor Application
+Stock Predictor Application - PredicTrade
 
-Refactored version of the original stock prediction system.
-Uses a modular architecture with proper configuration management,
-logging, and error handling.
+Modern modular architecture with multiple ensemble approaches for stock prediction.
+Supports:
+- Traditional ML models (RandomForest, XGBoost, AdaBoost, Linear Regression)
+- Deep Learning ensembles (LSTM, CNN, TCN, Dense Networks)
+- Hybrid ML/DL approaches
+- Specialized financial ensembles (Prophet, GARCH, etc.)
 
-Original comments preserved:
-- Using Google Trends data and financial ratios for prediction
-- Incorporates price-to-free-cash-flow ratio as additional variable
-- Future consideration for price/book ratio
-- Uses Random Forest Regressor for prediction
+Data sources:
+- Google Trends data for sentiment analysis
+- Stock price data from multiple APIs
+- Financial ratios (P/FCF, P/E, P/B)
+- Technical indicators
+
+Features proper configuration management, logging, and comprehensive evaluation.
 """
 
 import sys
@@ -28,7 +33,7 @@ from modules.config_manager import ConfigManager, ConfigurationError
 from modules.logger import StockPredictorLogger
 from modules.data_scraper import DataScraper, ScrapingError
 from modules.data_preprocessor import DataPreprocessor, PreprocessingError
-from modules.data_modeler import StockPredictor, ModelingError
+from modules.data_modeler import StockPredictor, EnsembleManager, ModelingError
 from modules.data_evaluation import ModelEvaluator, EvaluationError
 
 
@@ -60,6 +65,7 @@ class StockPredictorApp:
             self.data_scraper = DataScraper(self.config, self.logger)
             self.data_preprocessor = DataPreprocessor(self.config, self.logger)
             self.model_trainer = StockPredictor(self.config, self.logger)
+            self.ensemble_manager = EnsembleManager(self.logger.get_logger("ensemble"))
             self.model_evaluator = ModelEvaluator(self.config, self.logger)
 
             # Application state (replaces original global variables)
@@ -79,37 +85,6 @@ class StockPredictorApp:
             print(f"Failed to initialize application: {str(e)}")
             sys.exit(1)
 
-    def load_stock_symbols(self, tickers_file: str = "differentstocks-tickers.txt",
-                          names_file: str = "stocknames-actual.txt") -> bool:
-        """
-        Load stock symbols from files.
-
-        Replaces original: clean_stocknames_tickers() and clean_stocknames_names()
-        Original comment: "part of the program where it takes in the file input
-        which contains all the specified stocks"
-
-        Args:
-            tickers_file: Path to file containing stock tickers
-            names_file: Path to file containing company names
-
-        Returns:
-            True if successful, False otherwise
-        """
-        try:
-            self.stock_tickers, self.company_names = self.data_scraper.load_stock_symbols(
-                tickers_file, names_file
-            )
-
-            if not self.stock_tickers or not self.company_names:
-                self.logger.logger.error("Failed to load stock symbols")
-                return False
-
-            self.logger.logger.info(f"Loaded {len(self.stock_tickers)} stock symbols")
-            return True
-
-        except Exception as e:
-            self.logger.log_error(e, "load_stock_symbols")
-            return False
 
     def collect_data(self) -> bool:
         """
@@ -351,6 +326,103 @@ class StockPredictorApp:
             self.logger.log_error(e, "train_models")
             return False
 
+    def train_ensemble_models(self, use_ensembles: bool = True) -> bool:
+        """
+        Train ensemble models using the new ensemble approaches.
+
+        Args:
+            use_ensembles: Whether to use ensemble approaches
+
+        Returns:
+            True if successful, False otherwise
+        """
+        if not use_ensembles:
+            return True
+
+        self.logger.logger.info("Starting ensemble model training")
+
+        try:
+            ensemble_results = {}
+
+            for ticker, data in self.processed_data.items():
+                self.logger.logger.info(f"Training ensemble models for {ticker}")
+
+                # Prepare data for ML
+                X, y, feature_names = self.data_preprocessor.prepare_ml_data(
+                    data, target_column='close'
+                )
+
+                if X.size == 0 or y.size == 0:
+                    self.logger.logger.warning(f"No valid data for training {ticker}")
+                    continue
+
+                # Split data
+                X_train, X_test, y_train, y_test = self.data_preprocessor.split_data(X, y)
+
+                # Scale features
+                X_train_scaled, X_test_scaled = self.data_preprocessor.scale_features(
+                    X_train, X_test, 'standard'
+                )
+
+                # Train ensemble approaches from MODEL_PLAN.md
+                ensemble_approaches = ['traditional_ml', 'hybrid']
+
+                # Only train deep learning and financial ensembles if TensorFlow is available
+                try:
+                    import tensorflow as tf
+                    ensemble_approaches.extend(['deep_learning', 'financial'])
+                except ImportError:
+                    self.logger.logger.warning("TensorFlow not available, skipping deep learning ensembles")
+
+                for approach in ensemble_approaches:
+                    try:
+                        self.logger.logger.info(f"Training {approach} ensemble for {ticker}")
+
+                        # Create ensemble
+                        ensemble = self.ensemble_manager.create_ensemble(approach)
+
+                        # Train ensemble
+                        if approach == 'deep_learning':
+                            ensemble.train(X_train_scaled, y_train, epochs=30)
+                        else:
+                            ensemble.train(X_train_scaled, y_train)
+
+                        # Store ensemble
+                        self.models[f"{ticker}_{approach}_ensemble"] = ensemble
+
+                        self.logger.logger.info(f"Successfully trained {approach} ensemble for {ticker}")
+
+                    except Exception as e:
+                        self.logger.logger.warning(f"Failed to train {approach} ensemble for {ticker}: {str(e)}")
+                        continue
+
+            # Compare ensemble performance if we have data
+            if len(self.processed_data) > 0:
+                # Get first ticker for comparison
+                first_ticker = list(self.processed_data.keys())[0]
+                data = self.processed_data[first_ticker]
+
+                X, y, _ = self.data_preprocessor.prepare_ml_data(data, target_column='close')
+                if X.size > 0:
+                    _, X_test, _, y_test = self.data_preprocessor.split_data(X, y)
+                    X_test_scaled, _ = self.data_preprocessor.scale_features(X_test, X_test, 'standard')
+
+                    # Compare ensembles
+                    comparison_results = self.ensemble_manager.compare_ensembles(X_test_scaled, y_test)
+
+                    if comparison_results:
+                        self.logger.logger.info("Ensemble Comparison Results:")
+                        for name, metrics in comparison_results.items():
+                            if 'error' not in metrics:
+                                self.logger.logger.info(f"{name}: RMSE={metrics['rmse']:.4f}, MAE={metrics['mae']:.4f}")
+
+            self.logger.logger.info("Ensemble model training completed")
+            return True
+
+        except Exception as e:
+            self.logger.log_error(e, "train_ensemble_models")
+            return False
+
     def generate_reports(self) -> bool:
         """
         Generate evaluation reports and summaries.
@@ -395,9 +467,14 @@ class StockPredictorApp:
         self.logger.logger.info("Starting Stock Predictor Application")
 
         try:
-            # Load stock symbols (replaces clean_stocknames_tickers/names)
-            if not self.load_stock_symbols():
+            # Load stock symbols from JSON file (replaces clean_stocknames_tickers/names)
+            self.stock_tickers, self.company_names = self.data_scraper.load_stock_symbols("stocks.json")
+
+            if not self.stock_tickers or not self.company_names:
+                self.logger.logger.error("Failed to load stock symbols from stocks.json")
                 return False
+
+            self.logger.logger.info(f"Loaded {len(self.stock_tickers)} stock symbols from JSON")
 
             # Collect data (replaces get_google_trends_data, get_stock_prices, price_to_fcf_ratio)
             if not self.collect_data():
@@ -410,6 +487,11 @@ class StockPredictorApp:
             # Train models (replaces regression function)
             if not self.train_models():
                 return False
+
+            # Train ensemble models (new - from MODEL_PLAN.md)
+            use_ensembles = self.config.get("models.use_ensembles", True)
+            if not self.train_ensemble_models(use_ensembles):
+                self.logger.logger.warning("Ensemble training failed, continuing with basic models")
 
             # Generate reports (replaces simple print statements)
             if not self.generate_reports():

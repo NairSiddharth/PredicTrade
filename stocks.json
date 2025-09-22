@@ -1,0 +1,14 @@
+{
+"stocks":{
+    "PDI":"PIMCO Dynamic Income Fund",
+    "TRIN": "Trinity Capital Inc",
+    "GDXY": "YieldMax Gold Miners Option Income Strategy ETF",
+    "NVDA": "NVIDIA Corp",
+    "MSTY":"YieldMax MSTR Option Income Strategy ETF",
+    "YBTC":"Roundhill Bitcoin Covered Call Strategy ETF",
+    "WULF": "Terawulf Inc",
+    "CIFR": "Cipher Mining Inc",
+    "ULTY":"YieldMax Ultra Option Income Strategy ETF",
+    "BAC": "Bank of America Corp"
+    }
+}

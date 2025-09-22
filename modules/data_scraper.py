@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 import time
+import json
 from typing import List, Dict, Optional, Tuple
 from pytrends.request import TrendReq
 from .logger import StockPredictorLogger
@@ -69,6 +70,7 @@ class DataScraper:
         Returns:
             DataFrame with Google Trends data
         """
+
         self.logger.log_data_operation("Google Trends Fetch", f"Fetching data for {len(stock_tickers)} tickers")
 
         try:
@@ -253,30 +255,34 @@ class DataScraper:
             self.logger.log_error(e, f"get_price_to_fcf_ratio for {ticker}")
             return pd.DataFrame()
 
-    def load_stock_symbols(self, tickers_file: str, names_file: str) -> Tuple[List[str], List[str]]:
+    def load_stock_symbols(self, stocks_json_file: str) -> Tuple[List[str], List[str]]:
         """
-        Load stock tickers and company names from files.
+        Load stock tickers and company names from JSON file.
 
         Args:
-            tickers_file: Path to file containing stock tickers
-            names_file: Path to file containing company names
+            stocks_json_file: Path to JSON file containing stock data
 
         Returns:
             Tuple of (tickers, company_names) lists
         """
-        self.logger.log_data_operation("Load Stock Symbols", f"Loading from {tickers_file} and {names_file}")
+        self.logger.log_data_operation("Load Stock Symbols", f"Loading from {stocks_json_file}")
 
         tickers = []
         company_names = []
 
         try:
-            # Load tickers
-            with open(tickers_file, 'r') as f:
-                tickers = [line.strip() for line in f if line.strip()]
+            # Load JSON file
+            with open(stocks_json_file, 'r') as f:
+                stock_data = json.load(f)
 
-            # Load company names
-            with open(names_file, 'r') as f:
-                company_names = [line.strip() for line in f if line.strip()]
+            # Extract tickers and company names from the stocks dictionary
+            if 'stocks' in stock_data:
+                stocks_dict = stock_data['stocks']
+                tickers = list(stocks_dict.keys())
+                company_names = list(stocks_dict.values())
+            else:
+                self.logger.warning("No 'stocks' key found in JSON file")
+                return [], []
 
             self.logger.log_data_operation("Load Stock Symbols Success",
                                          f"Loaded {len(tickers)} tickers and {len(company_names)} names")
@@ -284,7 +290,10 @@ class DataScraper:
             return tickers, company_names
 
         except FileNotFoundError as e:
-            self.logger.log_error(e, "load_stock_symbols")
+            self.logger.log_error(e, f"load_stock_symbols - File not found: {stocks_json_file}")
+            return [], []
+        except json.JSONDecodeError as e:
+            self.logger.log_error(e, f"load_stock_symbols - Invalid JSON format in {stocks_json_file}")
             return [], []
         except Exception as e:
             self.logger.log_error(e, "load_stock_symbols")

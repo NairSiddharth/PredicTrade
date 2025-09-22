@@ -1,8 +1,15 @@
 import pandas as pd
 import numpy as np
-from typing import Dict, List, Tuple, Optional, Any
+from typing import Dict, List, Tuple, Optional, Any, Union
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.model_selection import train_test_split
+from sklearn.feature_selection import (
+    SelectKBest, SelectFromModel, SelectPercentile, VarianceThreshold,
+    f_regression, f_classif, mutual_info_regression, mutual_info_classif,
+    RFE, RFECV
+)
+from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+from sklearn.linear_model import LassoCV, ElasticNetCV
 import warnings
 from .logger import StockPredictorLogger
 from .config_manager import ConfigManager
@@ -22,6 +29,8 @@ class DataPreprocessor:
         self.config = config_manager
         self.logger = logger.get_logger("data_preprocessor")
         self.scalers = {}
+        self.feature_selectors = {}
+        self.feature_selection_results = {}
 
     def clean_and_validate_data(self, data: Dict[str, pd.DataFrame]) -> Dict[str, pd.DataFrame]:
         """
@@ -242,13 +251,17 @@ class DataPreprocessor:
             return stock_data
 
     def prepare_ml_data(self, combined_data: pd.DataFrame,
-                       target_column: str = 'close') -> Tuple[np.ndarray, np.ndarray, List[str]]:
+                       target_column: str = 'close',
+                       ensemble_type: str = 'traditional_ml',
+                       apply_feature_selection: bool = True) -> Tuple[np.ndarray, np.ndarray, List[str]]:
         """
         Prepare data for machine learning by selecting features and target.
 
         Args:
             combined_data: Combined DataFrame with all features
             target_column: Name of the target column
+            ensemble_type: Type of ensemble for feature selection
+            apply_feature_selection: Whether to apply feature selection
 
         Returns:
             Tuple of (features, target, feature_names)
@@ -274,6 +287,21 @@ class DataPreprocessor:
             # Handle infinite values
             X = np.nan_to_num(X, nan=0.0, posinf=np.finfo(np.float64).max, neginf=np.finfo(np.float64).min)
             y = np.nan_to_num(y, nan=0.0, posinf=np.finfo(np.float64).max, neginf=np.finfo(np.float64).min)
+
+            # Apply feature selection if enabled
+            if apply_feature_selection and X.shape[1] > 5:  # Only if we have enough features
+                try:
+                    X_selected, selected_feature_names, pipeline_info = self.apply_feature_selection_pipeline(
+                        X, y, feature_columns, ensemble_type
+                    )
+
+                    self.logger.log_data_operation("Feature Selection Applied",
+                                                 f"Reduced features from {X.shape[1]} to {X_selected.shape[1]}")
+
+                    return X_selected, y, selected_feature_names
+
+                except Exception as e:
+                    self.logger.warning(f"Feature selection failed: {str(e)}, using all features")
 
             self.logger.log_data_operation("ML Data Preparation Success",
                                          f"Features shape: {X.shape}, Target shape: {y.shape}")
@@ -360,6 +388,477 @@ class DataPreprocessor:
     def get_scaler(self, scaler_type: str = 'standard'):
         """Get stored scaler for inverse transforms."""
         return self.scalers.get(scaler_type)
+
+    def select_features(self, X: np.ndarray, y: np.ndarray,
+                       feature_names: List[str],
+                       method: str = 'auto',
+                       ensemble_type: str = 'traditional_ml',
+                       n_features: Optional[int] = None,
+                       **kwargs) -> Tuple[np.ndarray, List[int], Any, Dict[str, Any]]:
+        """
+        Perform feature selection based on ensemble type and method.
+
+        Args:
+            X: Feature matrix
+            y: Target variable
+            feature_names: Names of features
+            method: Selection method ('auto', 'tree_based', 'statistical', etc.)
+            ensemble_type: Type of ensemble this selection is for
+            n_features: Number of features to select
+            **kwargs: Additional parameters for specific methods
+
+        Returns:
+            Tuple of (X_selected, selected_indices, selector, selection_info)
+        """
+        self.logger.log_data_operation("Feature Selection",
+                                     f"Starting {method} feature selection for {ensemble_type}")
+
+        try:
+            # Get feature selection configuration
+            fs_config = self.config.get("feature_selection", {})
+            if not fs_config.get("enabled", True):
+                self.logger.info("Feature selection is disabled")
+                return X, list(range(X.shape[1])), None, {}
+
+            # Determine method automatically based on ensemble type
+            if method == 'auto':
+                method = self._get_auto_method(ensemble_type)
+
+            # Set default number of features if not specified
+            if n_features is None:
+                n_features = self._get_default_n_features(X.shape[1], ensemble_type)
+
+            # Apply feature selection method
+            selector, selection_info = self._apply_feature_selection_method(
+                X, y, method, n_features, **kwargs
+            )
+
+            # Transform features
+            X_selected = selector.transform(X)
+
+            # Get selected feature indices
+            selected_indices = self._get_selected_indices(selector, X.shape[1])
+
+            # Store selector for later use
+            selector_key = f"{ensemble_type}_{method}"
+            self.feature_selectors[selector_key] = selector
+
+            # Log results
+            selected_feature_names = [feature_names[i] for i in selected_indices]
+            selection_info.update({
+                'method': method,
+                'ensemble_type': ensemble_type,
+                'original_features': X.shape[1],
+                'selected_features': len(selected_indices),
+                'selected_feature_names': selected_feature_names,
+                'selected_indices': selected_indices
+            })
+
+            self.feature_selection_results[selector_key] = selection_info
+
+            self.logger.log_data_operation("Feature Selection Success",
+                                         f"Selected {len(selected_indices)}/{X.shape[1]} features using {method}")
+
+            return X_selected, selected_indices, selector, selection_info
+
+        except Exception as e:
+            self.logger.log_error(e, f"select_features - {method}")
+            return X, list(range(X.shape[1])), None, {}
+
+    def _get_auto_method(self, ensemble_type: str) -> str:
+        """Determine the best feature selection method for ensemble type."""
+        method_mapping = {
+            'traditional_ml': 'tree_based',
+            'deep_learning': 'variance_correlation',
+            'hybrid': 'tree_based',
+            'financial': 'domain_specific'
+        }
+        return method_mapping.get(ensemble_type, 'tree_based')
+
+    def _get_default_n_features(self, total_features: int, ensemble_type: str) -> int:
+        """Get default number of features based on ensemble type."""
+        ratio_mapping = {
+            'traditional_ml': 0.7,    # Keep most features for tree-based models
+            'deep_learning': 0.8,     # Keep more features for neural networks
+            'hybrid': 0.75,           # Balanced approach
+            'financial': 0.6          # More selective for financial models
+        }
+        ratio = ratio_mapping.get(ensemble_type, 0.7)
+        return max(5, int(total_features * ratio))  # Minimum 5 features
+
+    def _apply_feature_selection_method(self, X: np.ndarray, y: np.ndarray,
+                                      method: str, n_features: int,
+                                      **kwargs) -> Tuple[Any, Dict[str, Any]]:
+        """Apply specific feature selection method."""
+        selection_info = {'method_details': {}}
+
+        if method == 'tree_based':
+            # Use RandomForest feature importance
+            rf = RandomForestRegressor(n_estimators=100, random_state=42)
+            selector = SelectFromModel(rf, max_features=n_features)
+            selector.fit(X, y)
+            selection_info['method_details']['estimator'] = 'RandomForestRegressor'
+            selection_info['feature_importances'] = rf.feature_importances_.tolist()
+
+        elif method == 'statistical':
+            # Use statistical tests
+            score_func = kwargs.get('score_func', f_regression)
+            selector = SelectKBest(score_func=score_func, k=n_features)
+            selector.fit(X, y)
+            selection_info['method_details']['score_function'] = str(score_func)
+            selection_info['scores'] = selector.scores_.tolist()
+
+        elif method == 'mutual_info':
+            # Use mutual information
+            selector = SelectKBest(score_func=mutual_info_regression, k=n_features)
+            selector.fit(X, y)
+            selection_info['method_details']['score_function'] = 'mutual_info_regression'
+            selection_info['scores'] = selector.scores_.tolist()
+
+        elif method == 'lasso':
+            # Use L1 regularization
+            alpha = kwargs.get('alpha', None)
+            if alpha is None:
+                lasso = LassoCV(cv=5, random_state=42)
+                lasso.fit(X, y)
+                alpha = lasso.alpha_
+            else:
+                lasso = LassoCV(alphas=[alpha], cv=5, random_state=42)
+                lasso.fit(X, y)
+
+            selector = SelectFromModel(lasso, max_features=n_features)
+            selector.fit(X, y)
+            selection_info['method_details']['alpha'] = alpha
+            selection_info['coefficients'] = lasso.coef_.tolist()
+
+        elif method == 'variance_correlation':
+            # Remove low variance and highly correlated features
+            variance_threshold = kwargs.get('variance_threshold', 0.01)
+            correlation_threshold = kwargs.get('correlation_threshold', 0.95)
+
+            # Apply variance threshold first
+            var_selector = VarianceThreshold(threshold=variance_threshold)
+            X_var = var_selector.fit_transform(X)
+
+            # Calculate correlation matrix and remove highly correlated features
+            if X_var.shape[1] > 1:
+                corr_matrix = np.corrcoef(X_var.T)
+                corr_indices = self._remove_highly_correlated_features(
+                    corr_matrix, correlation_threshold
+                )
+
+                # Combine both selections
+                var_indices = np.where(var_selector.get_support())[0]
+                final_indices = var_indices[corr_indices]
+
+                # Limit to n_features
+                if len(final_indices) > n_features:
+                    # Use variance to select top features
+                    variances = np.var(X[:, final_indices], axis=0)
+                    top_var_indices = np.argsort(variances)[-n_features:]
+                    final_indices = final_indices[top_var_indices]
+            else:
+                final_indices = np.array([0])
+
+            # Create a custom selector
+            selector = CustomIndexSelector(final_indices, X.shape[1])
+            selection_info['method_details'].update({
+                'variance_threshold': variance_threshold,
+                'correlation_threshold': correlation_threshold,
+                'features_after_variance': X_var.shape[1],
+                'features_after_correlation': len(final_indices)
+            })
+
+        elif method == 'domain_specific':
+            # Financial domain-specific feature selection
+            selector = self._apply_financial_feature_selection(X, y, n_features, **kwargs)
+            selection_info['method_details']['approach'] = 'financial_domain_knowledge'
+
+        elif method == 'rfe':
+            # Recursive Feature Elimination
+            estimator = kwargs.get('estimator', RandomForestRegressor(n_estimators=50, random_state=42))
+            step = kwargs.get('step', 1)
+            selector = RFE(estimator=estimator, n_features_to_select=n_features, step=step)
+            selector.fit(X, y)
+            selection_info['method_details'].update({
+                'estimator': str(estimator),
+                'step': step
+            })
+            selection_info['ranking'] = selector.ranking_.tolist()
+
+        else:
+            raise ValueError(f"Unknown feature selection method: {method}")
+
+        return selector, selection_info
+
+    def _remove_highly_correlated_features(self, corr_matrix: np.ndarray,
+                                         threshold: float) -> np.ndarray:
+        """Remove highly correlated features."""
+        # Find pairs of highly correlated features
+        high_corr_pairs = np.where((np.abs(corr_matrix) > threshold) &
+                                  (corr_matrix != 1.0))
+
+        # Keep track of features to remove
+        features_to_remove = set()
+
+        for i, j in zip(high_corr_pairs[0], high_corr_pairs[1]):
+            if i not in features_to_remove and j not in features_to_remove:
+                # Remove the feature with higher index (arbitrary choice)
+                features_to_remove.add(max(i, j))
+
+        # Return indices of features to keep
+        all_features = set(range(corr_matrix.shape[0]))
+        features_to_keep = sorted(all_features - features_to_remove)
+
+        return np.array(features_to_keep)
+
+    def _apply_financial_feature_selection(self, X: np.ndarray, y: np.ndarray,
+                                         n_features: int, **kwargs) -> Any:
+        """Apply financial domain-specific feature selection."""
+        # This is a placeholder for financial domain logic
+        # In practice, you would prioritize features like:
+        # - Price indicators (SMA, EMA, RSI, MACD)
+        # - Volume indicators
+        # - Volatility measures
+        # - Financial ratios (P/E, P/B, P/FCF)
+
+        # For now, use a combination of tree-based and statistical selection
+        rf = RandomForestRegressor(n_estimators=100, random_state=42)
+        rf.fit(X, y)
+
+        # Get feature importances
+        importances = rf.feature_importances_
+
+        # Select top features based on importance
+        top_indices = np.argsort(importances)[-n_features:]
+
+        return CustomIndexSelector(top_indices, X.shape[1])
+
+    def _get_selected_indices(self, selector: Any, total_features: int) -> List[int]:
+        """Get indices of selected features from selector."""
+        if hasattr(selector, 'get_support'):
+            return list(np.where(selector.get_support())[0])
+        elif hasattr(selector, 'selected_indices'):
+            return list(selector.selected_indices)
+        else:
+            # Fallback: assume all features are selected
+            return list(range(total_features))
+
+    def compare_feature_selection_methods(self, X: np.ndarray, y: np.ndarray,
+                                        feature_names: List[str],
+                                        methods: List[str] = None,
+                                        ensemble_type: str = 'traditional_ml') -> Dict[str, Any]:
+        """
+        Compare different feature selection methods.
+
+        Args:
+            X: Feature matrix
+            y: Target variable
+            feature_names: Names of features
+            methods: List of methods to compare
+            ensemble_type: Type of ensemble
+
+        Returns:
+            Dictionary with comparison results
+        """
+        if methods is None:
+            methods = ['tree_based', 'statistical', 'mutual_info', 'lasso']
+
+        self.logger.log_data_operation("Feature Selection Comparison",
+                                     f"Comparing {len(methods)} methods")
+
+        comparison_results = {}
+
+        for method in methods:
+            try:
+                X_selected, indices, selector, info = self.select_features(
+                    X, y, feature_names, method=method, ensemble_type=ensemble_type
+                )
+
+                comparison_results[method] = {
+                    'n_features_selected': len(indices),
+                    'selected_features': [feature_names[i] for i in indices],
+                    'selection_info': info
+                }
+
+            except Exception as e:
+                self.logger.warning(f"Failed to apply {method}: {str(e)}")
+                comparison_results[method] = {'error': str(e)}
+
+        return comparison_results
+
+    def get_feature_importance_analysis(self, X: np.ndarray, y: np.ndarray,
+                                      feature_names: List[str]) -> Dict[str, Any]:
+        """
+        Perform detailed feature importance analysis.
+
+        Args:
+            X: Feature matrix
+            y: Target variable
+            feature_names: Names of features
+
+        Returns:
+            Dictionary with importance analysis
+        """
+        self.logger.log_data_operation("Feature Importance Analysis",
+                                     "Analyzing feature importance across methods")
+
+        analysis_results = {}
+
+        try:
+            # Random Forest importance
+            rf = RandomForestRegressor(n_estimators=100, random_state=42)
+            rf.fit(X, y)
+            rf_importance = rf.feature_importances_
+
+            # Statistical scores
+            f_scores = f_regression(X, y)[0]
+
+            # Mutual information scores
+            mi_scores = mutual_info_regression(X, y, random_state=42)
+
+            # Correlation with target
+            correlations = [np.corrcoef(X[:, i], y)[0, 1] for i in range(X.shape[1])]
+
+            # Combine results
+            importance_df = pd.DataFrame({
+                'feature': feature_names,
+                'rf_importance': rf_importance,
+                'f_score': f_scores,
+                'mutual_info': mi_scores,
+                'correlation': correlations
+            })
+
+            # Rank features by each method
+            importance_df['rf_rank'] = importance_df['rf_importance'].rank(ascending=False)
+            importance_df['f_rank'] = importance_df['f_score'].rank(ascending=False)
+            importance_df['mi_rank'] = importance_df['mutual_info'].rank(ascending=False)
+            importance_df['corr_rank'] = importance_df['correlation'].abs().rank(ascending=False)
+
+            # Calculate average rank
+            importance_df['avg_rank'] = importance_df[['rf_rank', 'f_rank', 'mi_rank', 'corr_rank']].mean(axis=1)
+
+            # Sort by average rank
+            importance_df = importance_df.sort_values('avg_rank')
+
+            analysis_results = {
+                'importance_dataframe': importance_df,
+                'top_features_by_avg_rank': importance_df.head(10)['feature'].tolist(),
+                'method_correlations': {
+                    'rf_vs_f_score': np.corrcoef(rf_importance, f_scores)[0, 1],
+                    'rf_vs_mi': np.corrcoef(rf_importance, mi_scores)[0, 1],
+                    'f_score_vs_mi': np.corrcoef(f_scores, mi_scores)[0, 1]
+                }
+            }
+
+            self.logger.log_data_operation("Feature Importance Analysis Success",
+                                         f"Analyzed {len(feature_names)} features")
+
+        except Exception as e:
+            self.logger.log_error(e, "get_feature_importance_analysis")
+            analysis_results = {'error': str(e)}
+
+        return analysis_results
+
+    def apply_feature_selection_pipeline(self, X: np.ndarray, y: np.ndarray,
+                                       feature_names: List[str],
+                                       ensemble_type: str = 'traditional_ml') -> Tuple[np.ndarray, List[str], Dict[str, Any]]:
+        """
+        Apply the complete feature selection pipeline.
+
+        Args:
+            X: Feature matrix
+            y: Target variable
+            feature_names: Names of features
+            ensemble_type: Type of ensemble
+
+        Returns:
+            Tuple of (X_selected, selected_feature_names, pipeline_info)
+        """
+        self.logger.log_data_operation("Feature Selection Pipeline",
+                                     f"Running complete pipeline for {ensemble_type}")
+
+        pipeline_info = {
+            'original_features': X.shape[1],
+            'ensemble_type': ensemble_type,
+            'steps': []
+        }
+
+        try:
+            # Step 1: Remove constant and near-constant features
+            var_threshold = VarianceThreshold(threshold=0.001)
+            X_var = var_threshold.fit_transform(X)
+            var_selected = var_threshold.get_support()
+            var_feature_names = [feature_names[i] for i in range(len(feature_names)) if var_selected[i]]
+
+            pipeline_info['steps'].append({
+                'step': 'variance_threshold',
+                'features_removed': X.shape[1] - X_var.shape[1],
+                'features_remaining': X_var.shape[1]
+            })
+
+            # Step 2: Apply ensemble-specific selection
+            X_selected, selected_indices, selector, selection_info = self.select_features(
+                X_var, y, var_feature_names, ensemble_type=ensemble_type
+            )
+
+            # Get final feature names
+            selected_feature_names = [var_feature_names[i] for i in selected_indices]
+
+            pipeline_info['steps'].append({
+                'step': 'ensemble_specific_selection',
+                'method': selection_info.get('method', 'unknown'),
+                'features_selected': len(selected_indices),
+                'selection_info': selection_info
+            })
+
+            pipeline_info['final_features'] = len(selected_feature_names)
+            pipeline_info['feature_reduction_ratio'] = pipeline_info['final_features'] / pipeline_info['original_features']
+
+            self.logger.log_data_operation("Feature Selection Pipeline Success",
+                                         f"Reduced from {X.shape[1]} to {len(selected_feature_names)} features")
+
+            return X_selected, selected_feature_names, pipeline_info
+
+        except Exception as e:
+            self.logger.log_error(e, "apply_feature_selection_pipeline")
+            return X, feature_names, pipeline_info
+
+    def get_feature_selector(self, ensemble_type: str, method: str = None) -> Optional[Any]:
+        """Get stored feature selector for a specific ensemble type."""
+        if method is None:
+            method = self._get_auto_method(ensemble_type)
+
+        selector_key = f"{ensemble_type}_{method}"
+        return self.feature_selectors.get(selector_key)
+
+    def get_feature_selection_results(self) -> Dict[str, Any]:
+        """Get all feature selection results."""
+        return self.feature_selection_results.copy()
+
+
+class CustomIndexSelector:
+    """Custom selector that selects features based on provided indices."""
+
+    def __init__(self, selected_indices: np.ndarray, total_features: int):
+        self.selected_indices = selected_indices
+        self.total_features = total_features
+        self._support = np.zeros(total_features, dtype=bool)
+        self._support[selected_indices] = True
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        return X[:, self.selected_indices]
+
+    def get_support(self, indices=False):
+        if indices:
+            return self.selected_indices
+        return self._support
+
+    def fit_transform(self, X, y=None):
+        return self.transform(X)
 
 
 class PreprocessingError(Exception):

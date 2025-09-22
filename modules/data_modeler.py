@@ -1,12 +1,46 @@
 import numpy as np
 import pandas as pd
 from typing import Dict, List, Tuple, Optional, Any, Union
-from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier, VotingRegressor, AdaBoostRegressor, GradientBoostingRegressor
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.svm import SVR, SVC
 from sklearn.model_selection import cross_val_score, GridSearchCV
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 import joblib
 import time
+
+# XGBoost import
+try:
+    import xgboost as xgb
+    XGB_AVAILABLE = True
+except ImportError:
+    XGB_AVAILABLE = False
+
+# TensorFlow/Keras imports
+try:
+    import tensorflow as tf
+    from tensorflow import keras
+    from tensorflow.keras import layers
+    from tensorflow.keras.models import Sequential
+    from tensorflow.keras.layers import LSTM, Dense, Conv1D, MaxPooling1D, Flatten, Dropout
+    TF_AVAILABLE = True
+except ImportError:
+    TF_AVAILABLE = False
+
+# Prophet import
+try:
+    from prophet import Prophet
+    PROPHET_AVAILABLE = True
+except ImportError:
+    PROPHET_AVAILABLE = False
+
+# GARCH import
+try:
+    from arch import arch_model
+    ARCH_AVAILABLE = True
+except ImportError:
+    ARCH_AVAILABLE = False
+
 from .logger import StockPredictorLogger
 from .config_manager import ConfigManager
 
@@ -90,7 +124,7 @@ class StockPredictor:
             }
 
             self.logger.log_model_operation("Regression Training Success",
-                                          f"CV RMSE: {cv_rmse:.4f} (±{cv_scores.std():.4f})")
+                                          f"CV RMSE: {cv_rmse:.4f} (ï¿½{cv_scores.std():.4f})")
 
             return model
 
@@ -161,7 +195,7 @@ class StockPredictor:
             }
 
             self.logger.log_model_operation("Classification Training Success",
-                                          f"CV Accuracy: {cv_accuracy:.4f} (±{cv_scores.std():.4f})")
+                                          f"CV Accuracy: {cv_accuracy:.4f} (ï¿½{cv_scores.std():.4f})")
 
             return model
 
@@ -435,6 +469,505 @@ class StockPredictor:
     def get_model_performance(self) -> Dict:
         """Get performance metrics for all trained models."""
         return self.model_performance.copy()
+
+
+class TraditionalMLEnsemble:
+    """Traditional ML Ensemble using RandomForest, XGBoost, AdaBoost, and Linear Regression."""
+
+    def __init__(self, logger):
+        self.logger = logger
+        self.models = {}
+        self.ensemble_model = None
+        self.is_trained = False
+
+    def create_models(self, **kwargs):
+        """Create individual models for the ensemble."""
+        models = []
+
+        # RandomForest
+        rf_params = kwargs.get('rf_params', {'n_estimators': 100, 'random_state': 42})
+        models.append(('rf', RandomForestRegressor(**rf_params)))
+
+        # XGBoost (if available)
+        if XGB_AVAILABLE:
+            xgb_params = kwargs.get('xgb_params', {'n_estimators': 100, 'random_state': 42})
+            models.append(('xgb', xgb.XGBRegressor(**xgb_params)))
+        else:
+            # Fallback to GradientBoosting
+            gb_params = kwargs.get('gb_params', {'n_estimators': 100, 'random_state': 42})
+            models.append(('gb', GradientBoostingRegressor(**gb_params)))
+
+        # AdaBoost
+        ada_params = kwargs.get('ada_params', {'n_estimators': 100, 'random_state': 42})
+        models.append(('ada', AdaBoostRegressor(**ada_params)))
+
+        # Linear Regression
+        models.append(('lr', LinearRegression()))
+
+        self.models = dict(models)
+        return models
+
+    def train(self, X_train, y_train, **kwargs):
+        """Train the ensemble model."""
+        self.logger.info("Training Traditional ML Ensemble")
+
+        # Create models
+        model_list = self.create_models(**kwargs)
+
+        # Create voting regressor
+        self.ensemble_model = VotingRegressor(estimators=model_list)
+
+        # Train the ensemble
+        self.ensemble_model.fit(X_train, y_train)
+        self.is_trained = True
+
+        self.logger.info("Traditional ML Ensemble training completed")
+        return self.ensemble_model
+
+    def predict(self, X_test):
+        """Make predictions using the ensemble."""
+        if not self.is_trained:
+            raise ValueError("Model must be trained before making predictions")
+        return self.ensemble_model.predict(X_test)
+
+    def get_individual_predictions(self, X_test):
+        """Get predictions from individual models."""
+        if not self.is_trained:
+            raise ValueError("Model must be trained before making predictions")
+
+        predictions = {}
+        for name, model in self.ensemble_model.named_estimators_.items():
+            predictions[name] = model.predict(X_test)
+        return predictions
+
+
+class DeepLearningEnsemble:
+    """Deep Learning Ensemble using LSTM, 1D CNN, TCN, and Dense Network."""
+
+    def __init__(self, logger, sequence_length=60):
+        if not TF_AVAILABLE:
+            raise ImportError("TensorFlow is required for DeepLearningEnsemble")
+
+        self.logger = logger
+        self.sequence_length = sequence_length
+        self.models = {}
+        self.ensemble_model = None
+        self.is_trained = False
+
+    def create_lstm_model(self, input_shape, **kwargs):
+        """Create LSTM model."""
+        model = Sequential([
+            LSTM(50, return_sequences=True, input_shape=input_shape),
+            Dropout(0.2),
+            LSTM(50, return_sequences=False),
+            Dropout(0.2),
+            Dense(25),
+            Dense(1)
+        ])
+        model.compile(optimizer='adam', loss='mse', metrics=['mae'])
+        return model
+
+    def create_cnn_model(self, input_shape, **kwargs):
+        """Create 1D CNN model."""
+        model = Sequential([
+            Conv1D(filters=64, kernel_size=3, activation='relu', input_shape=input_shape),
+            Conv1D(filters=64, kernel_size=3, activation='relu'),
+            MaxPooling1D(pool_size=2),
+            Flatten(),
+            Dense(50, activation='relu'),
+            Dense(1)
+        ])
+        model.compile(optimizer='adam', loss='mse', metrics=['mae'])
+        return model
+
+    def create_tcn_model(self, input_shape, **kwargs):
+        """Create Temporal Convolutional Network."""
+        # Simplified TCN using dilated convolutions
+        model = Sequential([
+            Conv1D(filters=32, kernel_size=3, dilation_rate=1, activation='relu', input_shape=input_shape),
+            Conv1D(filters=32, kernel_size=3, dilation_rate=2, activation='relu'),
+            Conv1D(filters=32, kernel_size=3, dilation_rate=4, activation='relu'),
+            Conv1D(filters=32, kernel_size=3, dilation_rate=8, activation='relu'),
+            layers.GlobalMaxPooling1D(),
+            Dense(50, activation='relu'),
+            Dense(1)
+        ])
+        model.compile(optimizer='adam', loss='mse', metrics=['mae'])
+        return model
+
+    def create_dense_model(self, input_shape, **kwargs):
+        """Create Dense Network."""
+        # Flatten the input for dense layers
+        model = Sequential([
+            layers.Flatten(input_shape=input_shape),
+            Dense(128, activation='relu'),
+            Dropout(0.3),
+            Dense(64, activation='relu'),
+            Dropout(0.3),
+            Dense(32, activation='relu'),
+            Dense(1)
+        ])
+        model.compile(optimizer='adam', loss='mse', metrics=['mae'])
+        return model
+
+    def prepare_sequences(self, data):
+        """Prepare data sequences for time series models."""
+        X, y = [], []
+        for i in range(self.sequence_length, len(data)):
+            X.append(data[i-self.sequence_length:i])
+            y.append(data[i])
+        return np.array(X), np.array(y)
+
+    def train(self, X_train, y_train, epochs=50, batch_size=32, **kwargs):
+        """Train the deep learning ensemble."""
+        self.logger.info("Training Deep Learning Ensemble")
+
+        # Prepare sequence data
+        if len(X_train.shape) == 2:
+            # Reshape for sequence modeling
+            X_train_seq = X_train.reshape((X_train.shape[0], X_train.shape[1], 1))
+        else:
+            X_train_seq = X_train
+
+        input_shape = (X_train_seq.shape[1], X_train_seq.shape[2])
+
+        # Create models
+        self.models['lstm'] = self.create_lstm_model(input_shape, **kwargs)
+        self.models['cnn'] = self.create_cnn_model(input_shape, **kwargs)
+        self.models['tcn'] = self.create_tcn_model(input_shape, **kwargs)
+        self.models['dense'] = self.create_dense_model(input_shape, **kwargs)
+
+        # Train individual models
+        self.trained_models = {}
+        for name, model in self.models.items():
+            self.logger.info(f"Training {name} model")
+            history = model.fit(X_train_seq, y_train, epochs=epochs, batch_size=batch_size,
+                              validation_split=0.2, verbose=0)
+            self.trained_models[name] = model
+
+        self.is_trained = True
+        self.logger.info("Deep Learning Ensemble training completed")
+        return self.trained_models
+
+    def predict(self, X_test):
+        """Make ensemble predictions."""
+        if not self.is_trained:
+            raise ValueError("Model must be trained before making predictions")
+
+        # Prepare sequence data
+        if len(X_test.shape) == 2:
+            X_test_seq = X_test.reshape((X_test.shape[0], X_test.shape[1], 1))
+        else:
+            X_test_seq = X_test
+
+        # Get predictions from all models
+        predictions = []
+        for name, model in self.trained_models.items():
+            pred = model.predict(X_test_seq, verbose=0)
+            predictions.append(pred.flatten())
+
+        # Average the predictions
+        ensemble_pred = np.mean(predictions, axis=0)
+        return ensemble_pred
+
+    def get_individual_predictions(self, X_test):
+        """Get predictions from individual models."""
+        if not self.is_trained:
+            raise ValueError("Model must be trained before making predictions")
+
+        if len(X_test.shape) == 2:
+            X_test_seq = X_test.reshape((X_test.shape[0], X_test.shape[1], 1))
+        else:
+            X_test_seq = X_test
+
+        predictions = {}
+        for name, model in self.trained_models.items():
+            pred = model.predict(X_test_seq, verbose=0)
+            predictions[name] = pred.flatten()
+        return predictions
+
+
+class HybridMLDLEnsemble:
+    """Hybrid ML/DL Ensemble combining RandomForest, LSTM, and XGBoost."""
+
+    def __init__(self, logger, sequence_length=60):
+        self.logger = logger
+        self.sequence_length = sequence_length
+        self.rf_model = None
+        self.lstm_model = None
+        self.meta_model = None
+        self.is_trained = False
+
+    def create_lstm_model(self, input_shape):
+        """Create LSTM model for temporal features."""
+        if not TF_AVAILABLE:
+            raise ImportError("TensorFlow is required for LSTM")
+
+        model = Sequential([
+            LSTM(50, return_sequences=True, input_shape=input_shape),
+            Dropout(0.2),
+            LSTM(50),
+            Dropout(0.2),
+            Dense(25),
+            Dense(1)
+        ])
+        model.compile(optimizer='adam', loss='mse')
+        return model
+
+    def train(self, X_train, y_train, epochs=50, **kwargs):
+        """Train the hybrid ensemble."""
+        self.logger.info("Training Hybrid ML/DL Ensemble")
+
+        # Train RandomForest on original features
+        rf_params = kwargs.get('rf_params', {'n_estimators': 100, 'random_state': 42})
+        self.rf_model = RandomForestRegressor(**rf_params)
+        self.rf_model.fit(X_train, y_train)
+
+        # Prepare sequence data for LSTM
+        if len(X_train.shape) == 2:
+            X_train_seq = X_train.reshape((X_train.shape[0], X_train.shape[1], 1))
+        else:
+            X_train_seq = X_train
+
+        # Train LSTM
+        if TF_AVAILABLE:
+            input_shape = (X_train_seq.shape[1], X_train_seq.shape[2])
+            self.lstm_model = self.create_lstm_model(input_shape)
+            self.lstm_model.fit(X_train_seq, y_train, epochs=epochs, verbose=0)
+
+        # Get predictions from both models for meta-learning
+        rf_pred = self.rf_model.predict(X_train)
+        if TF_AVAILABLE and self.lstm_model:
+            lstm_pred = self.lstm_model.predict(X_train_seq, verbose=0).flatten()
+        else:
+            lstm_pred = np.zeros_like(rf_pred)
+
+        # Create meta-features
+        meta_features = np.column_stack([rf_pred, lstm_pred])
+
+        # Train meta-model (XGBoost if available, otherwise GradientBoosting)
+        if XGB_AVAILABLE:
+            self.meta_model = xgb.XGBRegressor(**kwargs.get('xgb_params', {'n_estimators': 100, 'random_state': 42}))
+        else:
+            self.meta_model = GradientBoostingRegressor(**kwargs.get('gb_params', {'n_estimators': 100, 'random_state': 42}))
+
+        self.meta_model.fit(meta_features, y_train)
+        self.is_trained = True
+
+        self.logger.info("Hybrid ML/DL Ensemble training completed")
+        return self
+
+    def predict(self, X_test):
+        """Make predictions using the hybrid ensemble."""
+        if not self.is_trained:
+            raise ValueError("Model must be trained before making predictions")
+
+        # Get RF predictions
+        rf_pred = self.rf_model.predict(X_test)
+
+        # Get LSTM predictions
+        if TF_AVAILABLE and self.lstm_model:
+            if len(X_test.shape) == 2:
+                X_test_seq = X_test.reshape((X_test.shape[0], X_test.shape[1], 1))
+            else:
+                X_test_seq = X_test
+            lstm_pred = self.lstm_model.predict(X_test_seq, verbose=0).flatten()
+        else:
+            lstm_pred = np.zeros_like(rf_pred)
+
+        # Create meta-features
+        meta_features = np.column_stack([rf_pred, lstm_pred])
+
+        # Final prediction from meta-model
+        final_pred = self.meta_model.predict(meta_features)
+        return final_pred
+
+
+class SpecializedFinancialEnsemble:
+    """Specialized Financial Ensemble using Prophet, LSTM, RandomForest, and GARCH."""
+
+    def __init__(self, logger, sequence_length=60):
+        self.logger = logger
+        self.sequence_length = sequence_length
+        self.prophet_model = None
+        self.lstm_model = None
+        self.rf_model = None
+        self.garch_model = None
+        self.is_trained = False
+
+    def prepare_prophet_data(self, dates, prices):
+        """Prepare data for Prophet model."""
+        df = pd.DataFrame({
+            'ds': dates,
+            'y': prices
+        })
+        return df
+
+    def train(self, X_train, y_train, dates=None, epochs=50, **kwargs):
+        """Train the specialized financial ensemble."""
+        self.logger.info("Training Specialized Financial Ensemble")
+
+        # Train RandomForest for multi-feature predictions
+        rf_params = kwargs.get('rf_params', {'n_estimators': 100, 'random_state': 42})
+        self.rf_model = RandomForestRegressor(**rf_params)
+        self.rf_model.fit(X_train, y_train)
+
+        # Train LSTM for temporal patterns
+        if TF_AVAILABLE:
+            if len(X_train.shape) == 2:
+                X_train_seq = X_train.reshape((X_train.shape[0], X_train.shape[1], 1))
+            else:
+                X_train_seq = X_train
+
+            input_shape = (X_train_seq.shape[1], X_train_seq.shape[2])
+            self.lstm_model = Sequential([
+                LSTM(50, return_sequences=True, input_shape=input_shape),
+                Dropout(0.2),
+                LSTM(50),
+                Dropout(0.2),
+                Dense(1)
+            ])
+            self.lstm_model.compile(optimizer='adam', loss='mse')
+            self.lstm_model.fit(X_train_seq, y_train, epochs=epochs, verbose=0)
+
+        # Train Prophet for trend/seasonality (if available and dates provided)
+        if PROPHET_AVAILABLE and dates is not None:
+            try:
+                prophet_data = self.prepare_prophet_data(dates, y_train)
+                self.prophet_model = Prophet(daily_seasonality=True, weekly_seasonality=True, yearly_seasonality=False)
+                self.prophet_model.fit(prophet_data)
+            except Exception as e:
+                self.logger.warning(f"Prophet training failed: {e}")
+                self.prophet_model = None
+
+        # Train GARCH for volatility modeling (if available)
+        if ARCH_AVAILABLE:
+            try:
+                # Use price returns for GARCH
+                returns = np.diff(y_train) / y_train[:-1] * 100  # Percentage returns
+                self.garch_model = arch_model(returns, vol='GARCH', p=1, q=1)
+                self.garch_fitted = self.garch_model.fit(disp='off')
+            except Exception as e:
+                self.logger.warning(f"GARCH training failed: {e}")
+                self.garch_model = None
+
+        self.is_trained = True
+        self.logger.info("Specialized Financial Ensemble training completed")
+        return self
+
+    def predict(self, X_test, future_dates=None, periods=1):
+        """Make predictions using the specialized financial ensemble."""
+        if not self.is_trained:
+            raise ValueError("Model must be trained before making predictions")
+
+        predictions = []
+        weights = []
+
+        # RandomForest prediction
+        rf_pred = self.rf_model.predict(X_test)
+        predictions.append(rf_pred)
+        weights.append(0.4)
+
+        # LSTM prediction
+        if TF_AVAILABLE and self.lstm_model:
+            if len(X_test.shape) == 2:
+                X_test_seq = X_test.reshape((X_test.shape[0], X_test.shape[1], 1))
+            else:
+                X_test_seq = X_test
+            lstm_pred = self.lstm_model.predict(X_test_seq, verbose=0).flatten()
+            predictions.append(lstm_pred)
+            weights.append(0.4)
+
+        # Prophet prediction (trend/seasonality component)
+        if self.prophet_model and future_dates is not None:
+            try:
+                future_df = pd.DataFrame({'ds': future_dates})
+                prophet_forecast = self.prophet_model.predict(future_df)
+                prophet_pred = prophet_forecast['yhat'].values
+                if len(prophet_pred) == len(rf_pred):
+                    predictions.append(prophet_pred)
+                    weights.append(0.2)
+            except Exception as e:
+                self.logger.warning(f"Prophet prediction failed: {e}")
+
+        # Normalize weights
+        weights = np.array(weights) / np.sum(weights)
+
+        # Weighted average of predictions
+        if len(predictions) > 1:
+            final_pred = np.average(predictions, axis=0, weights=weights)
+        else:
+            final_pred = predictions[0]
+
+        return final_pred
+
+    def predict_volatility(self, horizon=1):
+        """Predict volatility using GARCH model."""
+        if self.garch_model and hasattr(self, 'garch_fitted'):
+            try:
+                forecast = self.garch_fitted.forecast(horizon=horizon)
+                return forecast.variance.values[-1, :]
+            except Exception as e:
+                self.logger.warning(f"GARCH volatility prediction failed: {e}")
+                return None
+        return None
+
+
+class EnsembleManager:
+    """Manager class for all ensemble approaches."""
+
+    def __init__(self, logger):
+        self.logger = logger
+        self.ensembles = {}
+
+    def create_ensemble(self, ensemble_type, **kwargs):
+        """Create and return an ensemble of the specified type."""
+        if ensemble_type == 'traditional_ml':
+            ensemble = TraditionalMLEnsemble(self.logger)
+        elif ensemble_type == 'deep_learning':
+            ensemble = DeepLearningEnsemble(self.logger, **kwargs)
+        elif ensemble_type == 'hybrid':
+            ensemble = HybridMLDLEnsemble(self.logger, **kwargs)
+        elif ensemble_type == 'financial':
+            ensemble = SpecializedFinancialEnsemble(self.logger, **kwargs)
+        else:
+            raise ValueError(f"Unknown ensemble type: {ensemble_type}")
+
+        self.ensembles[ensemble_type] = ensemble
+        return ensemble
+
+    def get_ensemble(self, ensemble_type):
+        """Get an existing ensemble."""
+        return self.ensembles.get(ensemble_type)
+
+    def compare_ensembles(self, X_test, y_test):
+        """Compare performance of all trained ensembles."""
+        results = {}
+
+        for name, ensemble in self.ensembles.items():
+            if hasattr(ensemble, 'is_trained') and ensemble.is_trained:
+                try:
+                    predictions = ensemble.predict(X_test)
+
+                    # Calculate metrics
+                    mse = mean_squared_error(y_test, predictions)
+                    mae = mean_absolute_error(y_test, predictions)
+                    rmse = np.sqrt(mse)
+
+                    results[name] = {
+                        'mse': mse,
+                        'mae': mae,
+                        'rmse': rmse,
+                        'predictions': predictions
+                    }
+
+                    self.logger.info(f"{name} - RMSE: {rmse:.4f}, MAE: {mae:.4f}")
+
+                except Exception as e:
+                    self.logger.error(f"Error evaluating {name}: {e}")
+                    results[name] = {'error': str(e)}
+
+        return results
 
 
 class ModelingError(Exception):

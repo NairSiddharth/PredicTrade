@@ -1,0 +1,43 @@
+{
+  "data_sources": {
+    "google_trends": {
+      "enabled": true,
+      "timeframe": "today 1-y",
+      "category": 107,
+      "geo": ["US"]
+    },
+    "stock_prices": {
+      "enabled": true,
+      "default_period": "1y"
+    },
+    "financial_ratios": {
+      "enabled": true,
+      "ratios": ["price_to_fcf", "price_to_earnings", "price_to_book"]
+    }
+  },
+  "machine_learning": {
+    "test_size": 0.3,
+    "random_state": 42,
+    "models": {
+      "random_forest": {
+        "n_estimators": 500,
+        "random_state": 42
+      }
+    }
+  },
+  "logging": {
+    "level": "INFO",
+    "log_file": "stock_predictor.log",
+    "log_format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  },
+  "data_storage": {
+    "cache_enabled": true,
+    "cache_duration_hours": 24,
+    "data_directory": "data"
+  },
+  "api_settings": {
+    "request_timeout": 30,
+    "retry_attempts": 3,
+    "rate_limit_delay": 1.0
+  }
+}

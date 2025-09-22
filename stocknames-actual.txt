@@ -1,10 +1,10 @@
-facebook
-apple
-amazon
-netflix
-google
-microsoft
-chipotlemexicangroup
-starbucks
-costco
+PIMCO
+TRIN
+GDXY
+NVDA
+MSTY
+YBTC
+WULF
+CIFR
+ULTY
 

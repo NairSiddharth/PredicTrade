@@ -66,22 +66,29 @@ Additionally, I plan to investigate whether the stock market has become disconne
 
 ## Data Sources
 
-1) yfinance: base api, scrapes for its data will be used for fallback method primarily if I hit an api endpoint and I get an error indicating that I have used too many calls.
+1) yfinance: base api, scrapes for its data so will be used for fallback method primarily if I hit an api endpoint and I get an error indicating that I have used too many calls.
    1) <https://ranaroussi.github.io/yfinance/reference/yfinance.stock.html>
    2) <https://ranaroussi.github.io/yfinance/reference/yfinance.financials.html>
    3) <https://ranaroussi.github.io/yfinance/reference/yfinance.analysis.html>
 2) Finnhub: One of three primary sources for data, mostly US focused.
-   1) <https://finnhub.io/docs/api/company-basic-financials>
-   2) <https://finnhub.io/docs/api/earnings-calendar\>
-   3) <https://finnhub.io/docs/api/quote>
+   1) <https://finnhub.io/docs/api/company-basic-financials> contains 10DayAverageTradingVolume", "52WeekHigh", "52WeekLow", "52WeekLowDate", "52WeekPriceReturnDaily", "beta"
+   2) <https://finnhub.io/docs/api/earnings-calendar\> (1 month of historical earnings and new updates for free tier) contains  "date",
+      "epsActual", "epsEstimate", "quarter", "revenueActual", "revenueEstimate", "year"
+   3) <https://finnhub.io/docs/api/quote> contains "c" (current price), "h" (high price of day), "l" (low price of day), "o" (open price of day), "pc" (previous close), "t" (timestamp)
+   4) <https://finnhub.io/docs/api/company-peers> returns list of peers, (grouping optional) but can be grouped as followed: sector, industry, subIndustry. Default to subIndustry
+   5) <https://finnhub.io/docs/api/recommendation-trends> contains "buy", "hold", "period", "sell", "strongBuy", "strongSell", "symbol"
 3) Tiingo: One of three primary sources of data, generous limits for requests (request in CSV format for ability to train models and not need to continuously API and waste calls)
-   1) <https://www.tiingo.com/documentation/fundamentals> (available for the dow 30 only)
+   1) <https://www.tiingo.com/documentation/fundamentals> (3 Years of the DOW 30 tickers are available for free)
+      1) API Endpoint: <https://api.tiingo.com/tiingo/fundamentals/(tickerHere)/daily> contains Date, Market Cap, Enterprise Value, P/E Ratio, P/B Ratio, Trailing PEG Ratio (1Y)
+      2) API Endpoint: <https://api.tiingo.com/tiingo/fundamentals/(tickerHere)/statements> contains Date, Quarter, Year, Statement Data
    2) <https://www.tiingo.com/documentation/end-of-day>
+      1) API Endpoint: <https://api.tiingo.com/tiingo/daily/(tickerHere)/prices?startDate=2012-1-1&endDate=2016-1-1&format=csv&resampleFreq=monthly> contains Date, Open, High, Low, Close, Volume, Adj, Open, Adj, High, Adj. Low, Adj. Close, Adj. Volume, Dividend, Split
    3) <https://www.tiingo.com/documentation/iex> (could be a good cross-check for alpaca?)
-   4) <https://www.tiingo.com/documentation/news> (maybe should look into adding for sentiment analysis)
-4) Alpaca Markets: One of three primary sources of data, generous free tiers for requests (including live data 500 requests per day), only downside free tier is limited to IEX exchange in US
+   4) <https://www.tiingo.com/documentation/news> (maybe should look into adding for sentiment analysis?)
+4) Alpaca Markets: Secondary source of data, generous free tiers for requests (including live data 500 requests per day), only downside free tier is limited to IEX exchange in US
    1) <https://docs.alpaca.markets/reference/stockbarsingle-1>
    2) <https://docs.alpaca.markets/reference/stockbars>
    3) <https://docs.alpaca.markets/reference/corporateactions-1>
    4) <https://docs.alpaca.markets/reference/stocksnapshots-1> (might be the one I need combined with 3)
-5) FRED API: Financial St. Louis FED Market API, Free Finance Data to potentially calculate a Fear-Greed Index for specific stocks
+5) FRED API: Financial St. Louis FED Market API, One of three primary sources of data that provides official federally sourced free data to potentially calculate a Fear-Greed Index for specific stocks
+6) (Not an API, but congressional trades) -> <https://pelositracker.app/portfolios>, would be a good lagging indicator of stock potential?

@@ -70,7 +70,7 @@ class StockPredictorLogger:
 
         return logger
 
-    def get_logger(self, module_name: str) -> logging.Logger:
+    def get_logger(self, module_name: str) -> 'ModuleLogger':
         """
         Get a logger for a specific module.
 
@@ -78,9 +78,10 @@ class StockPredictorLogger:
             module_name: Name of the module requesting the logger
 
         Returns:
-            Configured logger instance
+            Configured logger instance with custom methods
         """
-        return logging.getLogger(f"stock_predictor.{module_name}")
+        base_logger = logging.getLogger(f"stock_predictor.{module_name}")
+        return ModuleLogger(base_logger)
 
     def log_function_entry(self, func_name: str, **kwargs) -> None:
         """Log function entry with parameters."""
@@ -144,3 +145,62 @@ class StockPredictorLogger:
                 logger.error(f"Error in {func_name}: {str(e)}", exc_info=True)
                 raise
         return wrapper
+
+
+class ModuleLogger:
+    """Wrapper for standard logger that provides custom logging methods."""
+
+    def __init__(self, base_logger: logging.Logger):
+        """Initialize with a base logger."""
+        self.logger = base_logger
+
+    def debug(self, message: str) -> None:
+        """Log debug message."""
+        self.logger.debug(message)
+
+    def info(self, message: str) -> None:
+        """Log info message."""
+        self.logger.info(message)
+
+    def warning(self, message: str) -> None:
+        """Log warning message."""
+        self.logger.warning(message)
+
+    def error(self, message: str) -> None:
+        """Log error message."""
+        self.logger.error(message)
+
+    def critical(self, message: str) -> None:
+        """Log critical message."""
+        self.logger.critical(message)
+
+    def log_data_operation(self, operation: str, details: str) -> None:
+        """Log data operations (scraping, preprocessing, etc.)."""
+        self.logger.info(f"Data Operation - {operation}: {details}")
+
+    def log_model_operation(self, operation: str, details: str) -> None:
+        """Log model operations (training, prediction, etc.)."""
+        self.logger.info(f"Model Operation - {operation}: {details}")
+
+    def log_error(self, error: Exception, context: str = "") -> None:
+        """Log errors with context."""
+        if context:
+            self.logger.error(f"Error in {context}: {str(error)}", exc_info=True)
+        else:
+            self.logger.error(f"Error: {str(error)}", exc_info=True)
+
+    def log_performance(self, operation: str, duration: float, details: str = "") -> None:
+        """Log performance metrics."""
+        message = f"Performance - {operation}: {duration:.2f}s"
+        if details:
+            message += f" - {details}"
+        self.logger.info(message)
+
+    def log_api_request(self, url: str, status_code: int, duration: float) -> None:
+        """Log API requests."""
+        self.logger.info(f"API Request - {url} - Status: {status_code} - Duration: {duration:.2f}s")
+
+    def log_data_quality(self, dataset: str, quality_metrics: dict) -> None:
+        """Log data quality metrics."""
+        metrics_str = ", ".join([f"{k}: {v}" for k, v in quality_metrics.items()])
+        self.logger.info(f"Data Quality - {dataset}: {metrics_str}")

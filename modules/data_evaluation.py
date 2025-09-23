@@ -49,6 +49,8 @@ class ModelEvaluator:
 
             # Calculate additional metrics
             mape = self._calculate_mape(y_true, y_pred)
+            smape = self._calculate_smape(y_true, y_pred)
+            mase = self._calculate_mase(y_true, y_pred)
             directional_accuracy = self._calculate_directional_accuracy(y_true, y_pred)
 
             metrics = {
@@ -57,6 +59,8 @@ class ModelEvaluator:
                 'mae': mae,
                 'r2_score': r2,
                 'mape': mape,
+                'smape': smape,
+                'mase': mase,
                 'directional_accuracy': directional_accuracy,
                 'n_samples': len(y_true)
             }
@@ -183,6 +187,218 @@ class ModelEvaluator:
 
         except Exception:
             return 0.0
+
+    def _calculate_smape(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        """
+        Calculate Symmetric Mean Absolute Percentage Error.
+
+        Args:
+            y_true: True values
+            y_pred: Predicted values
+
+        Returns:
+            sMAPE as percentage
+        """
+        try:
+            # Calculate sMAPE: 100 * mean(|actual - forecast| / ((|actual| + |forecast|) / 2))
+            denominator = (np.abs(y_true) + np.abs(y_pred)) / 2
+
+            # Avoid division by zero
+            mask = denominator != 0
+            if not np.any(mask):
+                return float('inf')
+
+            smape = 100 * np.mean(np.abs(y_true[mask] - y_pred[mask]) / denominator[mask])
+            return smape
+
+        except Exception:
+            return float('inf')
+
+    def _calculate_mase(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        """
+        Calculate Mean Absolute Scaled Error.
+
+        Args:
+            y_true: True values
+            y_pred: Predicted values
+
+        Returns:
+            MASE value
+        """
+        try:
+            if len(y_true) < 2:
+                return float('inf')
+
+            # Calculate MAE of predictions
+            mae_forecast = np.mean(np.abs(y_true - y_pred))
+
+            # Calculate MAE of naive forecast (using previous period)
+            naive_forecast = y_true[:-1]
+            actual_values = y_true[1:]
+            mae_naive = np.mean(np.abs(actual_values - naive_forecast))
+
+            # Avoid division by zero
+            if mae_naive == 0:
+                return 0.0 if mae_forecast == 0 else float('inf')
+
+            mase = mae_forecast / mae_naive
+            return mase
+
+        except Exception:
+            return float('inf')
+
+    def evaluate_financial_trading_performance(self, y_true: np.ndarray, y_pred: np.ndarray,
+                                             dates: Optional[np.ndarray] = None,
+                                             model_name: str = "model",
+                                             risk_free_rate: float = 0.02) -> Dict[str, float]:
+        """
+        Evaluate model performance from a financial trading perspective.
+
+        Args:
+            y_true: True price values
+            y_pred: Predicted price values
+            dates: Optional array of dates for time-based calculations
+            model_name: Name of the model being evaluated
+            risk_free_rate: Annual risk-free rate (default 2%)
+
+        Returns:
+            Dictionary containing financial trading metrics
+        """
+        self.logger.log_model_operation("Financial Trading Evaluation", f"Evaluating {model_name}")
+
+        try:
+            if len(y_true) < 2:
+                return {}
+
+            # Calculate price returns
+            actual_returns = np.diff(y_true) / y_true[:-1]
+            predicted_returns = np.diff(y_pred) / y_pred[:-1]
+
+            # Hit rate (directional accuracy) - already calculated in directional_accuracy
+            hit_rate = self._calculate_directional_accuracy(y_true, y_pred) / 100
+
+            # Calculate strategy returns (if you followed model predictions)
+            strategy_returns = actual_returns * np.sign(predicted_returns)
+
+            # Sharpe Ratio
+            daily_risk_free_rate = risk_free_rate / 252  # Convert annual to daily
+            excess_returns = strategy_returns - daily_risk_free_rate
+            sharpe_ratio = np.mean(excess_returns) / np.std(strategy_returns) * np.sqrt(252) if np.std(strategy_returns) != 0 else 0
+
+            # Sortino Ratio (downside deviation)
+            downside_returns = strategy_returns[strategy_returns < 0]
+            downside_deviation = np.std(downside_returns) if len(downside_returns) > 0 else 0
+            sortino_ratio = np.mean(excess_returns) / downside_deviation * np.sqrt(252) if downside_deviation != 0 else 0
+
+            # Maximum Drawdown
+            cumulative_returns = np.cumprod(1 + strategy_returns)
+            running_max = np.maximum.accumulate(cumulative_returns)
+            drawdown = (cumulative_returns - running_max) / running_max
+            max_drawdown = np.min(drawdown)
+
+            # Win Rate (percentage of profitable trades)
+            win_rate = np.mean(strategy_returns > 0)
+
+            # Average Win/Loss
+            winning_trades = strategy_returns[strategy_returns > 0]
+            losing_trades = strategy_returns[strategy_returns < 0]
+            avg_win = np.mean(winning_trades) if len(winning_trades) > 0 else 0
+            avg_loss = np.mean(losing_trades) if len(losing_trades) > 0 else 0
+            win_loss_ratio = abs(avg_win / avg_loss) if avg_loss != 0 else float('inf')
+
+            # Profit Factor
+            gross_profit = np.sum(winning_trades) if len(winning_trades) > 0 else 0
+            gross_loss = abs(np.sum(losing_trades)) if len(losing_trades) > 0 else 0
+            profit_factor = gross_profit / gross_loss if gross_loss != 0 else float('inf')
+
+            # Total Return and Volatility
+            total_return = np.prod(1 + strategy_returns) - 1
+            annualized_return = (1 + total_return) ** (252 / len(strategy_returns)) - 1
+            annualized_volatility = np.std(strategy_returns) * np.sqrt(252)
+
+            # Calmar Ratio (return/max drawdown)
+            calmar_ratio = abs(annualized_return / max_drawdown) if max_drawdown != 0 else 0
+
+            # Information Ratio (excess return over benchmark per unit of tracking error)
+            # Using buy-and-hold as benchmark
+            benchmark_returns = actual_returns
+            excess_vs_benchmark = strategy_returns - benchmark_returns
+            tracking_error = np.std(excess_vs_benchmark)
+            information_ratio = np.mean(excess_vs_benchmark) / tracking_error if tracking_error != 0 else 0
+
+            financial_metrics = {
+                'hit_rate': hit_rate,
+                'sharpe_ratio': sharpe_ratio,
+                'sortino_ratio': sortino_ratio,
+                'max_drawdown': max_drawdown,
+                'win_rate': win_rate,
+                'avg_win': avg_win,
+                'avg_loss': avg_loss,
+                'win_loss_ratio': win_loss_ratio,
+                'profit_factor': profit_factor,
+                'total_return': total_return,
+                'annualized_return': annualized_return,
+                'annualized_volatility': annualized_volatility,
+                'calmar_ratio': calmar_ratio,
+                'information_ratio': information_ratio,
+                'n_trades': len(strategy_returns)
+            }
+
+            # Store results
+            self.evaluation_results[f"{model_name}_financial"] = financial_metrics
+
+            self.logger.log_model_operation("Financial Trading Evaluation Success",
+                                          f"Hit Rate: {hit_rate:.3f}, Sharpe: {sharpe_ratio:.3f}, Max DD: {max_drawdown:.3f}")
+
+            return financial_metrics
+
+        except Exception as e:
+            self.logger.log_error(e, f"evaluate_financial_trading_performance - {model_name}")
+            return {}
+
+    def evaluate_comprehensive_performance(self, y_true: np.ndarray, y_pred: np.ndarray,
+                                         dates: Optional[np.ndarray] = None,
+                                         model_name: str = "model") -> Dict[str, Any]:
+        """
+        Evaluate model using both traditional ML metrics and financial trading metrics.
+
+        Args:
+            y_true: True values
+            y_pred: Predicted values
+            dates: Optional dates array
+            model_name: Name of the model
+
+        Returns:
+            Dictionary containing comprehensive evaluation metrics
+        """
+        self.logger.log_model_operation("Comprehensive Evaluation", f"Full evaluation for {model_name}")
+
+        try:
+            # Get traditional ML metrics
+            ml_metrics = self.evaluate_regression_model(y_true, y_pred, model_name)
+
+            # Get financial trading metrics
+            financial_metrics = self.evaluate_financial_trading_performance(y_true, y_pred, dates, model_name)
+
+            # Combine results
+            comprehensive_metrics = {
+                'ml_metrics': ml_metrics,
+                'financial_metrics': financial_metrics,
+                'model_name': model_name,
+                'evaluation_timestamp': pd.Timestamp.now().isoformat()
+            }
+
+            # Store combined results
+            self.evaluation_results[f"{model_name}_comprehensive"] = comprehensive_metrics
+
+            self.logger.log_model_operation("Comprehensive Evaluation Success",
+                                          f"Complete evaluation for {model_name}")
+
+            return comprehensive_metrics
+
+        except Exception as e:
+            self.logger.log_error(e, f"evaluate_comprehensive_performance - {model_name}")
+            return {}
 
     def compare_models(self, model_results: Dict[str, Dict]) -> pd.DataFrame:
         """
@@ -329,9 +545,11 @@ class ModelEvaluator:
                 report_lines.extend([
                     f"Root Mean Square Error: {metrics['rmse']:.4f}",
                     f"Mean Absolute Error: {metrics['mae']:.4f}",
-                    f"R� Score: {metrics['r2_score']:.4f}",
+                    f"R² Score: {metrics['r2_score']:.4f}",
                     f"Mean Absolute Percentage Error: {metrics['mape']:.2f}%",
-                    f"Directional Accuracy: {metrics['directional_accuracy']:.2f}%"
+                    f"Symmetric MAPE: {metrics['smape']:.2f}%",
+                    f"Mean Absolute Scaled Error: {metrics['mase']:.4f}",
+                    f"Directional Accuracy (Hit Rate): {metrics['directional_accuracy']:.2f}%"
                 ])
             elif 'accuracy' in metrics:  # Classification model
                 report_lines.extend([

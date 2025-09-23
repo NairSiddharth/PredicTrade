@@ -1,0 +1,158 @@
+2025-09-22 23:22:05,690 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching UNRATE (Unemployment_Rate)
+2025-09-22 23:22:06,475 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=UNRATE&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.78s
+2025-09-22 23:22:06,520 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 188 records for UNRATE
+2025-09-22 23:22:06,521 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Unemployment_Rate vs Close
+2025-09-22 23:22:06,531 - stock_predictor.feature_evaluator - ERROR - Error aligning data for Unemployment_Rate: Not allowed to merge between different levels. (1 levels on the left, 2 on the right)
+2025-09-22 23:22:06,531 - stock_predictor.feature_evaluator - WARNING - No aligned data for Unemployment_Rate
+2025-09-22 23:22:06,531 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching UMCSENT (Consumer_Confidence)
+2025-09-22 23:22:06,895 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=UMCSENT&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.36s
+2025-09-22 23:22:06,930 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 187 records for UMCSENT
+2025-09-22 23:22:06,931 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Consumer_Confidence vs Close
+2025-09-22 23:22:06,937 - stock_predictor.feature_evaluator - ERROR - Error aligning data for Consumer_Confidence: Not allowed to merge between different levels. (1 levels on the left, 2 on the right)
+2025-09-22 23:22:06,938 - stock_predictor.feature_evaluator - WARNING - No aligned data for Consumer_Confidence
+2025-09-22 23:22:06,939 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching FEDFUNDS (Federal_Funds_Rate)
+2025-09-22 23:22:07,332 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=FEDFUNDS&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.39s
+2025-09-22 23:22:07,372 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 188 records for FEDFUNDS
+2025-09-22 23:22:07,373 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Federal_Funds_Rate vs Close
+2025-09-22 23:22:07,378 - stock_predictor.feature_evaluator - ERROR - Error aligning data for Federal_Funds_Rate: Not allowed to merge between different levels. (1 levels on the left, 2 on the right)
+2025-09-22 23:22:07,378 - stock_predictor.feature_evaluator - WARNING - No aligned data for Federal_Funds_Rate
+2025-09-22 23:22:07,380 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching GS10 (10Y_Treasury_Yield)
+2025-09-22 23:22:07,763 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=GS10&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.38s
+2025-09-22 23:22:07,806 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 188 records for GS10
+2025-09-22 23:22:07,808 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating 10Y_Treasury_Yield vs Close
+2025-09-22 23:22:07,812 - stock_predictor.feature_evaluator - ERROR - Error aligning data for 10Y_Treasury_Yield: Not allowed to merge between different levels. (1 levels on the left, 2 on the right)
+2025-09-22 23:22:07,813 - stock_predictor.feature_evaluator - WARNING - No aligned data for 10Y_Treasury_Yield
+2025-09-22 23:22:07,814 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching PSAVERT (Personal_Savings_Rate)
+2025-09-22 23:22:08,219 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=PSAVERT&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.40s
+2025-09-22 23:22:08,261 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 187 records for PSAVERT
+2025-09-22 23:22:08,263 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Personal_Savings_Rate vs Close
+2025-09-22 23:22:08,268 - stock_predictor.feature_evaluator - ERROR - Error aligning data for Personal_Savings_Rate: Not allowed to merge between different levels. (1 levels on the left, 2 on the right)
+2025-09-22 23:22:08,269 - stock_predictor.feature_evaluator - WARNING - No aligned data for Personal_Savings_Rate
+2025-09-22 23:28:55,454 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching UNRATE (Unemployment_Rate)
+2025-09-22 23:28:55,885 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=UNRATE&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.43s
+2025-09-22 23:28:55,928 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 188 records for UNRATE
+2025-09-22 23:28:55,929 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Unemployment_Rate vs Close
+2025-09-22 23:28:55,936 - stock_predictor.feature_evaluator - ERROR - Error aligning data for Unemployment_Rate: Not allowed to merge between different levels. (1 levels on the left, 2 on the right)
+2025-09-22 23:28:55,937 - stock_predictor.feature_evaluator - WARNING - No aligned data for Unemployment_Rate
+2025-09-22 23:28:55,937 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching UMCSENT (Consumer_Confidence)
+2025-09-22 23:28:56,291 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=UMCSENT&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.35s
+2025-09-22 23:28:56,333 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 187 records for UMCSENT
+2025-09-22 23:28:56,334 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Consumer_Confidence vs Close
+2025-09-22 23:28:56,340 - stock_predictor.feature_evaluator - ERROR - Error aligning data for Consumer_Confidence: Not allowed to merge between different levels. (1 levels on the left, 2 on the right)
+2025-09-22 23:28:56,341 - stock_predictor.feature_evaluator - WARNING - No aligned data for Consumer_Confidence
+2025-09-22 23:28:56,341 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching FEDFUNDS (Federal_Funds_Rate)
+2025-09-22 23:28:56,723 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=FEDFUNDS&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.38s
+2025-09-22 23:28:56,761 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 188 records for FEDFUNDS
+2025-09-22 23:28:56,762 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Federal_Funds_Rate vs Close
+2025-09-22 23:28:56,768 - stock_predictor.feature_evaluator - ERROR - Error aligning data for Federal_Funds_Rate: Not allowed to merge between different levels. (1 levels on the left, 2 on the right)
+2025-09-22 23:28:56,769 - stock_predictor.feature_evaluator - WARNING - No aligned data for Federal_Funds_Rate
+2025-09-22 23:28:56,770 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching GS10 (10Y_Treasury_Yield)
+2025-09-22 23:28:57,188 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=GS10&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.42s
+2025-09-22 23:28:57,235 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 188 records for GS10
+2025-09-22 23:28:57,236 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating 10Y_Treasury_Yield vs Close
+2025-09-22 23:28:57,243 - stock_predictor.feature_evaluator - ERROR - Error aligning data for 10Y_Treasury_Yield: Not allowed to merge between different levels. (1 levels on the left, 2 on the right)
+2025-09-22 23:28:57,243 - stock_predictor.feature_evaluator - WARNING - No aligned data for 10Y_Treasury_Yield
+2025-09-22 23:28:57,244 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching PSAVERT (Personal_Savings_Rate)
+2025-09-22 23:28:57,627 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=PSAVERT&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.38s
+2025-09-22 23:28:57,670 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 187 records for PSAVERT
+2025-09-22 23:28:57,671 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Personal_Savings_Rate vs Close
+2025-09-22 23:28:57,677 - stock_predictor.feature_evaluator - ERROR - Error aligning data for Personal_Savings_Rate: Not allowed to merge between different levels. (1 levels on the left, 2 on the right)
+2025-09-22 23:28:57,678 - stock_predictor.feature_evaluator - WARNING - No aligned data for Personal_Savings_Rate
+2025-09-22 23:41:20,179 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching UNRATE (Unemployment_Rate)
+2025-09-22 23:41:20,600 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=UNRATE&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.42s
+2025-09-22 23:41:20,650 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 188 records for UNRATE
+2025-09-22 23:41:20,651 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Unemployment_Rate vs Close
+2025-09-22 23:41:20,659 - stock_predictor.feature_evaluator - INFO - Successfully aligned 123 data points for Unemployment_Rate
+2025-09-22 23:41:20,668 - stock_predictor.feature_evaluator - WARNING - Insufficient data for rolling correlation (need 252, have 123)
+2025-09-22 23:41:20,676 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated Unemployment_Rate: r=-0.606
+2025-09-22 23:41:20,677 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching UMCSENT (Consumer_Confidence)
+2025-09-22 23:41:21,044 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=UMCSENT&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.37s
+2025-09-22 23:41:21,093 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 187 records for UMCSENT
+2025-09-22 23:41:21,094 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Consumer_Confidence vs Close
+2025-09-22 23:41:21,101 - stock_predictor.feature_evaluator - INFO - Successfully aligned 122 data points for Consumer_Confidence
+2025-09-22 23:41:21,115 - stock_predictor.feature_evaluator - WARNING - Insufficient data for rolling correlation (need 252, have 122)
+2025-09-22 23:41:21,121 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated Consumer_Confidence: r=-0.320
+2025-09-22 23:41:21,121 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching FEDFUNDS (Federal_Funds_Rate)
+2025-09-22 23:41:21,512 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=FEDFUNDS&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.39s
+2025-09-22 23:41:21,556 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 188 records for FEDFUNDS
+2025-09-22 23:41:21,558 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Federal_Funds_Rate vs Close
+2025-09-22 23:41:21,565 - stock_predictor.feature_evaluator - INFO - Successfully aligned 123 data points for Federal_Funds_Rate
+2025-09-22 23:41:21,574 - stock_predictor.feature_evaluator - WARNING - Insufficient data for rolling correlation (need 252, have 123)
+2025-09-22 23:41:21,578 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated Federal_Funds_Rate: r=0.728
+2025-09-22 23:41:21,579 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching GS10 (10Y_Treasury_Yield)
+2025-09-22 23:41:21,956 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=GS10&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.38s
+2025-09-22 23:41:22,001 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 188 records for GS10
+2025-09-22 23:41:22,002 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating 10Y_Treasury_Yield vs Close
+2025-09-22 23:41:22,009 - stock_predictor.feature_evaluator - INFO - Successfully aligned 123 data points for 10Y_Treasury_Yield
+2025-09-22 23:41:22,019 - stock_predictor.feature_evaluator - WARNING - Insufficient data for rolling correlation (need 252, have 123)
+2025-09-22 23:41:22,025 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated 10Y_Treasury_Yield: r=0.390
+2025-09-22 23:41:22,026 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching PSAVERT (Personal_Savings_Rate)
+2025-09-22 23:41:22,475 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=PSAVERT&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2010-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.45s
+2025-09-22 23:41:22,516 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 187 records for PSAVERT
+2025-09-22 23:41:22,518 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Personal_Savings_Rate vs Close
+2025-09-22 23:41:22,525 - stock_predictor.feature_evaluator - INFO - Successfully aligned 122 data points for Personal_Savings_Rate
+2025-09-22 23:41:22,536 - stock_predictor.feature_evaluator - WARNING - Insufficient data for rolling correlation (need 252, have 122)
+2025-09-22 23:41:22,540 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated Personal_Savings_Rate: r=-0.058
+2025-09-22 23:41:22,545 - stock_predictor.feature_evaluator - INFO - Data Operation - Export Success: Results exported to economic_evaluation_results.json
+2025-09-22 23:46:23,818 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching UNRATE (Unemployment_Rate)
+2025-09-22 23:46:24,224 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=UNRATE&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=1990-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.41s
+2025-09-22 23:46:24,312 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 428 records for UNRATE
+2025-09-22 23:46:24,313 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Unemployment_Rate vs Close
+2025-09-22 23:46:24,325 - stock_predictor.feature_evaluator - INFO - Successfully aligned 275 data points for Unemployment_Rate
+2025-09-22 23:46:24,347 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated Unemployment_Rate: r=-0.371
+2025-09-22 23:46:24,347 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching UMCSENT (Consumer_Confidence)
+2025-09-22 23:46:24,800 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=UMCSENT&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=1990-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.45s
+2025-09-22 23:46:24,879 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 427 records for UMCSENT
+2025-09-22 23:46:24,880 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Consumer_Confidence vs Close
+2025-09-22 23:46:24,891 - stock_predictor.feature_evaluator - INFO - Successfully aligned 274 data points for Consumer_Confidence
+2025-09-22 23:46:24,909 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated Consumer_Confidence: r=-0.357
+2025-09-22 23:46:24,910 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching FEDFUNDS (Federal_Funds_Rate)
+2025-09-22 23:46:25,427 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=FEDFUNDS&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=1990-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.52s
+2025-09-22 23:46:25,514 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 428 records for FEDFUNDS
+2025-09-22 23:46:25,515 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Federal_Funds_Rate vs Close
+2025-09-22 23:46:25,525 - stock_predictor.feature_evaluator - INFO - Successfully aligned 275 data points for Federal_Funds_Rate
+2025-09-22 23:46:25,543 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated Federal_Funds_Rate: r=-0.177
+2025-09-22 23:46:25,544 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching GS10 (10Y_Treasury_Yield)
+2025-09-22 23:46:25,926 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=GS10&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=1990-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.38s
+2025-09-22 23:46:26,007 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 428 records for GS10
+2025-09-22 23:46:26,009 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating 10Y_Treasury_Yield vs Close
+2025-09-22 23:46:26,016 - stock_predictor.feature_evaluator - INFO - Successfully aligned 275 data points for 10Y_Treasury_Yield
+2025-09-22 23:46:26,034 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated 10Y_Treasury_Yield: r=-0.528
+2025-09-22 23:46:26,036 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching PSAVERT (Personal_Savings_Rate)
+2025-09-22 23:46:26,496 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=PSAVERT&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=1990-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.46s
+2025-09-22 23:46:26,594 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 427 records for PSAVERT
+2025-09-22 23:46:26,596 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Personal_Savings_Rate vs Close
+2025-09-22 23:46:26,608 - stock_predictor.feature_evaluator - INFO - Successfully aligned 274 data points for Personal_Savings_Rate
+2025-09-22 23:46:26,626 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated Personal_Savings_Rate: r=-0.004
+2025-09-22 23:46:26,632 - stock_predictor.feature_evaluator - INFO - Data Operation - Export Success: Results exported to economic_evaluation_results.json
+2025-09-22 23:48:24,490 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching UNRATE (Unemployment_Rate)
+2025-09-22 23:48:24,895 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=UNRATE&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2000-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.40s
+2025-09-22 23:48:24,953 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 308 records for UNRATE
+2025-09-22 23:48:24,954 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Unemployment_Rate vs Close
+2025-09-22 23:48:24,964 - stock_predictor.feature_evaluator - INFO - Successfully aligned 198 data points for Unemployment_Rate
+2025-09-22 23:48:24,985 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated Unemployment_Rate: r=-0.417
+2025-09-22 23:48:24,985 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching UMCSENT (Consumer_Confidence)
+2025-09-22 23:48:25,371 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=UMCSENT&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2000-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.39s
+2025-09-22 23:48:25,432 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 307 records for UMCSENT
+2025-09-22 23:48:25,434 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Consumer_Confidence vs Close
+2025-09-22 23:48:25,441 - stock_predictor.feature_evaluator - INFO - Successfully aligned 197 data points for Consumer_Confidence
+2025-09-22 23:48:25,463 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated Consumer_Confidence: r=-0.345
+2025-09-22 23:48:25,463 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching FEDFUNDS (Federal_Funds_Rate)
+2025-09-22 23:48:25,840 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=FEDFUNDS&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2000-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.38s
+2025-09-22 23:48:25,897 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 308 records for FEDFUNDS
+2025-09-22 23:48:25,898 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Federal_Funds_Rate vs Close
+2025-09-22 23:48:25,905 - stock_predictor.feature_evaluator - INFO - Successfully aligned 198 data points for Federal_Funds_Rate
+2025-09-22 23:48:25,926 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated Federal_Funds_Rate: r=0.213
+2025-09-22 23:48:25,927 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching GS10 (10Y_Treasury_Yield)
+2025-09-22 23:48:26,287 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=GS10&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2000-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.36s
+2025-09-22 23:48:26,355 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 308 records for GS10
+2025-09-22 23:48:26,356 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating 10Y_Treasury_Yield vs Close
+2025-09-22 23:48:26,364 - stock_predictor.feature_evaluator - INFO - Successfully aligned 198 data points for 10Y_Treasury_Yield
+2025-09-22 23:48:26,384 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated 10Y_Treasury_Yield: r=-0.218
+2025-09-22 23:48:26,385 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Fetch: Fetching PSAVERT (Personal_Savings_Rate)
+2025-09-22 23:48:26,740 - stock_predictor.data_scraper - INFO - API Request - https://api.stlouisfed.org/fred/series/observations?series_id=PSAVERT&api_key=d9ea3dded66f97fa63d2e3b99ed3aff3&file_type=json&observation_start=2000-01-01&observation_end=2025-09-22&sort_order=asc - Status: 200 - Duration: 0.36s
+2025-09-22 23:48:26,798 - stock_predictor.data_scraper - INFO - Data Operation - FRED Data Success: Retrieved 307 records for PSAVERT
+2025-09-22 23:48:26,799 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Evaluation: Evaluating Personal_Savings_Rate vs Close
+2025-09-22 23:48:26,811 - stock_predictor.feature_evaluator - INFO - Successfully aligned 197 data points for Personal_Savings_Rate
+2025-09-22 23:48:26,829 - stock_predictor.feature_evaluator - INFO - Data Operation - Individual Indicator Success: Evaluated Personal_Savings_Rate: r=0.153
+2025-09-22 23:48:26,835 - stock_predictor.feature_evaluator - INFO - Data Operation - Export Success: Results exported to economic_evaluation_results.json

@@ -1,154 +1,188 @@
-# Stock Predictor Improvement Plan
+# PredicTrade: Educational Stock Analysis & Research Platform
 
-## Current State Assessment
+## Project Purpose & Vision
 
-### Strengths
-- Attempts to combine multiple data sources (Google Trends, stock prices, financial ratios)
-- Uses Random Forest, which is appropriate for this type of problem
-- Modular function structure shows some organizational thinking
-- Includes price-to-free-cash-flow ratio, which is a legitimate fundamental indicator
+**PredicTrade** is an educational research platform designed to understand machine learning applications in quantitative finance. The project serves dual purposes:
 
-### Critical Issues
+1. **Educational Goal**: Learn about ML and the various financial/non-financial data points that affect stock prices, gaining insight into quantitative finance algorithms
+2. **Research Goal**: Investigate whether the stock market has become disconnected from the real economy by analyzing market performance against household economic indicators
 
-#### Code Quality & Functionality (Score: 2/10)
-- **Numerous syntax errors**: Lines 122-124, 127-130 contain invalid function calls that will cause runtime errors
-- **Improper numba usage**: `@jit(nopython=True)` decorators on functions that use Python objects (file I/O, lists, pandas) - these will fail
-- **Global variable abuse**: Heavy reliance on global state makes the code unmaintainable and error-prone
-- **No error handling**: Any network failure, parsing error, or missing data will crash the program
-- **Broken data flow**: Functions don't properly return or pass data between each other
+## Three-Tier Architecture
 
-#### Data Acquisition (Score: 3/10)
-- **Fragile web scraping**: Using BeautifulSoup with hardcoded CSS selectors that will break when websites change
-- **Terms of service violations**: Scraping Yahoo Finance and other financial sites likely violates their ToS
-- **No rate limiting**: Could get IP banned from repeated requests
-- **No data validation**: No checks for missing, corrupted, or inconsistent data
-- **Limited timeframe**: Only gets 1 year of data when more historical data would be beneficial
+### Tier 1: Personal Portfolio Analysis
+- **Objective**: Portfolio management decisions (Buy More/Sell/Hold)
+- **Focus**: Risk-adjusted returns, allocation optimization, sector rotation
+- **Features**: Risk metrics, correlation analysis, portfolio-specific indicators
 
-#### Machine Learning Approach (Score: 4/10)
-- **Inappropriate metrics**: Using `accuracy_score` for regression (should use RMSE, MAE, etc.)
-- **Poor train/test methodology**: 70% test split is excessive; no time-aware splitting for time series
-- **No feature engineering**: Raw data without scaling, normalization, or technical indicators
-- **No model validation**: No cross-validation, hyperparameter tuning, or multiple model comparison
-- **Overly simplistic**: Only 3 features when financial prediction typically requires dozens
+### Tier 2: Tracked Stocks Analysis
+- **Objective**: Prediction accuracy testing on selected stocks
+- **Focus**: High-accuracy price prediction with comprehensive feature sets
+- **Features**: Full fundamental + technical + sentiment analysis
 
-#### Financial Domain Knowledge (Score: 5/10)
-- **Limited fundamental analysis**: Only P/FCF ratio among many important financial metrics
-- **No technical analysis**: Missing moving averages, RSI, MACD, volume indicators
-- **No market context**: Ignores broader market conditions, sector performance, economic indicators
-- **Price prediction vs. returns**: Predicting absolute prices is much harder than predicting returns or direction
+### Tier 3: Random Stock Generalization
+- **Objective**: Test model generalization across random market selections
+- **Focus**: Robust features that work across sectors and market conditions
+- **Features**: Generalizable indicators from major indices (Dow, Nasdaq, S&P 500, Russell 2000)
 
-## Comprehensive Improvement Plan
+## Current Implementation Status
 
-### Phase 1: Foundation & Infrastructure (Weeks 1-2)
+### ✅ **COMPLETED: Foundation & Infrastructure**
+- Modern class-based architecture with proper separation of concerns
+- Comprehensive logging and configuration management
+- Professional error handling and retry mechanisms
+- Data validation and quality checks
 
-#### 1.1 Code Architecture Redesign
-- Implement proper class-based architecture with separate modules for data acquisition, preprocessing, modeling, and evaluation
-- Add comprehensive logging and configuration management
-- Implement proper error handling and retry mechanisms
-- Replace global variables with proper data passing patterns
+### ✅ **COMPLETED: Sentiment-Only Fear-Greed Index**
+- **Multi-source sentiment aggregation** (orthogonal to technical features):
+  - Google Trends (35%): 70/30 US/world weighted search sentiment
+  - News Sentiment (30%): Pygooglenews + TextBlob analysis
+  - Professional Sentiment (20%): Finnhub financial news + social sentiment
+  - Market Context (15%): VIX-based market fear from FRED API
+- **Clean feature engineering**: Zero overlap with price/volume technical indicators
+- **Educational value**: Understanding multi-source sentiment validation
+- **Research application**: Sentiment vs economic fundamentals comparison
 
-#### 1.2 Data Infrastructure
-- Replace web scraping with proper financial APIs (yfinance, Alpha Vantage, Finnhub)
-- Implement data caching and persistence (SQLite/PostgreSQL)
-- Add data validation and quality checks
-- Create data pipeline with proper ETL processes
+## Feature Development Roadmap
 
-### Phase 2: Enhanced Data Collection (Weeks 3-4)
+### 🎯 **NEXT PRIORITY: Economic Context Engine (Phase 2)**
 
-#### 2.1 Fundamental Data Expansion
-- Price-to-earnings ratio, Price-to-book ratio, Debt-to-equity ratio
-- Revenue growth, Earnings growth, Free cash flow growth
-- Return on equity, Return on assets, Profit margins
-- Dividend yield, Payout ratio (where applicable)
+#### 2.1 Macro-Economic Indicators (FRED API)
+**For Economic Disconnect Research:**
+- **Real Economy Health**: GDP growth, unemployment rate, consumer price index, personal income growth
+- **Household Economics**: Consumer confidence, personal savings rate, household debt-to-income, retail sales
+- **Financial Conditions**: Fed funds rate, 10Y treasury yield, credit spreads, dollar index
+- **Market Disconnect Metrics**: Correlation analysis between economic health and market performance
 
-#### 2.2 Technical Indicators
+#### 2.2 Data Sources Integration
+- **Primary APIs**: Finnhub, Tiingo, Alpaca Markets (generous free tiers)
+- **Fallback**: yfinance (scraping-based, unlimited)
+- **Macro Data**: FRED API (Federal Reserve economic data)
+- **Sentiment**: Pygooglenews, Finnhub social sentiment
+
+### 📊 **Phase 3: Technical Analysis Engine**
+
+#### 3.1 Price-Based Technical Indicators
 - Moving averages (SMA, EMA), Bollinger Bands, RSI, MACD
-- Volume indicators (OBV, Volume Rate of Change)
 - Momentum indicators (Stochastic, Williams %R)
-- Volatility indicators (ATR, VIX correlation)
+- Support/resistance levels, trend analysis
 
-#### 2.3 Market Context Data
-- Sector performance and sector rotation indicators
-- Market sentiment indicators (VIX, Put/Call ratio)
-- Economic indicators (Interest rates, GDP growth, inflation)
-- News sentiment analysis (alternative to Google Trends)
+#### 3.2 Volume-Based Indicators
+- Volume indicators (OBV, Volume Rate of Change)
+- Volume-price trend analysis
+- Accumulation/distribution metrics
 
-### Phase 3: Advanced Feature Engineering (Weeks 5-6)
+### 💰 **Phase 4: Fundamental Analysis Engine**
 
-#### 3.1 Correlation Analysis Implementation
-- Comprehensive correlation matrices between all features
-- Feature selection based on correlation with target variables
-- Principal Component Analysis for dimensionality reduction
-- Rolling correlation analysis to detect regime changes
+#### 4.1 Financial Ratios Expansion
+- Valuation ratios: P/E, P/B, P/S, EV/EBITDA
+- Profitability ratios: ROE, ROA, profit margins
+- Financial health: Debt-to-equity, current ratio, quick ratio
 
-#### 3.2 Time Series Feature Engineering
-- Lag features (previous N days of returns, volumes, ratios)
-- Rolling statistics (mean, std, min, max over various windows)
-- Trend features (linear regression slopes over different timeframes)
-- Seasonal and cyclical decomposition
+#### 4.2 Growth Metrics
+- Revenue growth, earnings growth, free cash flow growth
+- Dividend analysis (yield, payout ratio, growth rate)
 
-### Phase 4: Dual ML Framework (Weeks 7-10)
+### 🔬 **Phase 5: Machine Learning Framework**
 
-#### 4.1 Regression Models (Price Prediction)
-- **Scikit-learn**: Random Forest, Gradient Boosting, Support Vector Regression
-- **Keras 3**: LSTM networks for sequential prediction, Dense networks for feature-based prediction
-- Ensemble methods combining multiple model predictions
-- Time series cross-validation with proper temporal splits
+#### 5.1 Orthogonal Feature Architecture
+**Clean separation to avoid multicollinearity:**
+- **Sentiment Features**: Fear-Greed index, news sentiment, social sentiment
+- **Economic Features**: Macro-economic indicators, household metrics
+- **Technical Features**: Price/volume indicators, momentum signals
+- **Fundamental Features**: Financial ratios, growth metrics
 
-#### 4.2 Classification Models (Undervalued Detection)
-- Define "undervalued" criteria (P/E < sector average, P/B < 1.5, etc.)
-- Binary classification: undervalued vs. fairly valued/overvalued
-- Multi-class classification: undervalued/fairly valued/overvalued
-- Feature importance analysis to understand what drives undervaluation
+#### 5.2 Three-Tier Model Development
+**Tier 1 (Portfolio)**: Risk-adjusted classification (Buy More/Sell/Hold)
+**Tier 2 (Tracked)**: High-accuracy regression for price prediction
+**Tier 3 (Random)**: Generalization testing across market segments
 
-### Phase 5: Advanced Analytics & Evaluation (Weeks 11-12)
+#### 5.3 Model Types by Objective
+- **Price Prediction**: LSTM, Random Forest, Gradient Boosting
+- **Economic Disconnect Research**: Correlation analysis, regime detection
+- **Portfolio Management**: Risk-adjusted scoring, allocation optimization
 
-#### 5.1 Model Evaluation Framework
-- **Regression metrics**: RMSE, MAE, MAPE, directional accuracy
-- **Classification metrics**: Precision, Recall, F1-score, ROC-AUC
-- **Financial metrics**: Sharpe ratio, maximum drawdown, alpha/beta analysis
-- Walk-forward validation with realistic trading constraints
+### 📊 **Phase 6: Research & Analysis Framework**
 
-#### 5.2 Backtesting & Strategy Implementation
-- Realistic trading simulation with transaction costs
-- Portfolio allocation strategies based on model predictions
-- Risk management and position sizing
-- Performance attribution analysis
+#### 6.1 Economic Disconnect Investigation
+- **Market vs Economy Correlation**: Rolling correlation analysis between market performance and economic health
+- **Regime Detection**: Identify periods of market-economy disconnect
+- **Household Impact Analysis**: How market performance affects real household economics
+- **Predictive Disconnect**: Can economic indicators predict market corrections?
 
-### Phase 6: Learning & Research Components (Ongoing)
+#### 6.2 Educational Learning Components
+- **Feature Importance Analysis**: Understanding what drives stock prices
+- **Model Interpretability**: SHAP/LIME for feature contribution analysis
+- **Cross-Validation Strategies**: Time-aware splitting for financial data
+- **Backtesting Framework**: Realistic trading simulation with costs
 
-#### 6.1 Experimental Framework
-- A/B testing different feature combinations
-- Hyperparameter optimization using Optuna or similar
-- Model interpretability using SHAP or LIME
-- Comparative analysis between Keras and scikit-learn approaches
+### 🚀 **Phase 7: Advanced Research (Future)**
 
-#### 6.2 Research Opportunities
-- Alternative data sources (satellite imagery, social media sentiment)
-- Graph neural networks for sector/industry relationships
-- Reinforcement learning for trading strategies
-- Attention mechanisms for time series modeling
+#### 7.1 Alternative Data Integration
+- **Satellite Data**: Economic activity monitoring
+- **Social Media**: Broader sentiment analysis beyond financial news
+- **Supply Chain Data**: Company interconnection analysis
 
-## Immediate Next Steps (Priority Order)
+#### 7.2 Advanced ML Techniques
+- **Graph Neural Networks**: Sector/industry relationship modeling
+- **Reinforcement Learning**: Dynamic trading strategy optimization
+- **Attention Mechanisms**: Time series pattern recognition
 
-1. **Fix critical bugs** and implement basic error handling
-2. **Replace web scraping** with yfinance API for initial data source
-3. **Restructure code** into proper classes and modules
-4. **Implement proper time series splitting** for train/validation/test
-5. **Add comprehensive logging** and data quality checks
-6. **Create correlation analysis framework** to identify best features
-7. **Implement both regression and classification pipelines**
-8. **Add proper evaluation metrics** for both problem types
+## Implementation Status & Next Steps
 
-## Expected Learning Outcomes
+### ✅ **COMPLETED**
+1. ✅ Foundation & Infrastructure - Modern class-based architecture
+2. ✅ Sentiment-Only Fear-Greed Index - Multi-source orthogonal sentiment analysis
+3. ✅ API Integration - Finnhub, FRED, Pygooglenews, Google Trends
+4. ✅ Error Handling & Logging - Professional data pipeline management
 
-- Deep understanding of feature engineering for financial data
-- Practical experience with both traditional ML and deep learning approaches
-- Knowledge of proper time series modeling techniques
-- Understanding of financial metrics and fundamental analysis
-- Experience with model evaluation and backtesting
-- Insights into what actually drives stock price movements
+### 🎯 **IMMEDIATE NEXT PRIORITY**
+1. **Economic Context Engine** - FRED API macro-economic indicators
+2. **Economic Disconnect Research Framework** - Market vs economy correlation analysis
+3. **Technical Analysis Engine** - Price/volume technical indicators
+4. **Fundamental Analysis Engine** - Financial ratios and growth metrics
 
-## Goals
+### 📋 **Implementation Sequence**
+1. Build Economic Context Engine (Phase 2) - Support disconnect research
+2. Develop Technical Analysis features (Phase 3) - Orthogonal to sentiment
+3. Add Fundamental Analysis (Phase 4) - Complete feature set
+4. Implement ML Framework (Phase 5) - Three-tier architecture
+5. Deploy Research Analytics (Phase 6) - Economic disconnect investigation
 
-This comprehensive approach will transform the current prototype into a robust, educational, and potentially profitable stock analysis system while providing hands-on experience with the full machine learning pipeline in a financial context.
+## Educational Learning Outcomes
+
+### 🎓 **Quantitative Finance Education**
+- **Multi-source data integration**: Understanding how different data types affect markets
+- **Feature engineering**: Clean separation of sentiment, technical, fundamental, and economic features
+- **Time series analysis**: Proper temporal modeling for financial data
+- **Risk management**: Portfolio allocation and risk-adjusted returns
+
+### 🔬 **Research Skills Development**
+- **Economic analysis**: Market-economy relationship investigation
+- **Model interpretability**: Understanding what drives predictions
+- **Backtesting methodology**: Realistic trading simulation
+- **Statistical analysis**: Correlation, regime detection, hypothesis testing
+
+### 💻 **Technical Skills**
+- **API integration**: Professional data pipeline development
+- **Machine learning**: Both traditional ML and deep learning approaches
+- **Data visualization**: Market analysis and research presentation
+- **Software engineering**: Modular, maintainable financial software
+
+## Project Success Metrics
+
+### 📊 **Educational Success**
+- Comprehensive understanding of quantitative finance data sources
+- Ability to analyze market-economy relationships
+- Proficiency in financial ML model development and evaluation
+
+### 🔬 **Research Success**
+- Clear findings on market-economy disconnect patterns
+- Identification of leading economic indicators for market movements
+- Publication-quality analysis of household economics vs market performance
+
+### 💰 **Performance Success**
+- **Tier 1**: Improved portfolio allocation decisions vs buy-and-hold
+- **Tier 2**: Directional accuracy >60% for tracked stocks
+- **Tier 3**: Consistent performance across random stock selections
+
+This educational research platform provides hands-on experience with the full quantitative finance pipeline while investigating fundamental questions about market-economy relationships.

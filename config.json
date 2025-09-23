@@ -2,9 +2,37 @@
   "data_sources": {
     "google_trends": {
       "enabled": true,
-      "timeframe": "today 1-y",
-      "category": 107,
-      "geo": ["US"]
+      "timeframe": "today 3-m",
+      "category": 7,
+      "geo": "US",
+      "gprop": "",
+      "us_weight": 0.7,
+      "world_weight": 0.3,
+      "us_share_of_global_searches": 0.27,
+      "multirange_enabled": false,
+      "regional_analysis_enabled": true,
+      "resolution": "COUNTRY"
+    },
+    "sentiment_analysis": {
+      "enabled": true,
+      "news_days_back": 7,
+      "max_news_articles": 20,
+      "sentiment_weights": {
+        "google_trends": 0.35,
+        "news_sentiment": 0.30,
+        "finnhub_sentiment": 0.20,
+        "market_context": 0.15
+      }
+    },
+    "fear_greed_index": {
+      "enabled": true,
+      "sentiment_only": true,
+      "classification_thresholds": {
+        "extreme_fear": 25,
+        "fear": 45,
+        "neutral": 55,
+        "greed": 75
+      }
     },
     "stock_prices": {
       "enabled": true,
@@ -38,6 +66,8 @@
   "api_settings": {
     "request_timeout": 30,
     "retry_attempts": 3,
-    "rate_limit_delay": 1.0
+    "rate_limit_delay": 2.0,
+    "rate_limit_cooldown": 60.0,
+    "max_requests_per_session": 100
   }
 }

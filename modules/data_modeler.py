@@ -27,12 +27,16 @@ try:
 except ImportError:
     TF_AVAILABLE = False
 
-# Prophet import
+# Darts import for time series forecasting
 try:
-    from prophet import Prophet
-    PROPHET_AVAILABLE = True
+    from darts import TimeSeries
+    from darts.models import (
+        Prophet, ExponentialSmoothing, ARIMA,
+        LinearRegressionModel, NaiveDrift
+    )
+    DARTS_AVAILABLE = True
 except ImportError:
-    PROPHET_AVAILABLE = False
+    DARTS_AVAILABLE = False
 
 # GARCH import
 try:
@@ -784,24 +788,92 @@ class HybridMLDLEnsemble:
 
 
 class SpecializedFinancialEnsemble:
-    """Specialized Financial Ensemble using Prophet, LSTM, RandomForest, and GARCH."""
+    """Specialized Financial Ensemble using Darts time series models, LSTM, RandomForest, and GARCH."""
 
     def __init__(self, logger, sequence_length=60):
         self.logger = logger
         self.sequence_length = sequence_length
-        self.prophet_model = None
+        self.darts_models = {}
         self.lstm_model = None
         self.rf_model = None
         self.garch_model = None
         self.is_trained = False
+        self.time_series = None
 
-    def prepare_prophet_data(self, dates, prices):
-        """Prepare data for Prophet model."""
-        df = pd.DataFrame({
-            'ds': dates,
-            'y': prices
-        })
-        return df
+    def prepare_darts_data(self, dates, prices):
+        """Prepare data for Darts time series models."""
+        try:
+            if not DARTS_AVAILABLE:
+                self.logger.warning("Darts not available")
+                return None
+
+            if dates is None or prices is None:
+                self.logger.warning("Dates or prices are None")
+                return None
+
+            if len(dates) != len(prices):
+                self.logger.warning("Dates and prices have different lengths")
+                return None
+
+            if len(dates) < 10:  # Minimum data points for forecasting
+                self.logger.warning("Insufficient data points for time series forecasting")
+                return None
+
+            # Convert to pandas DataFrame first
+            df = pd.DataFrame({
+                'date': pd.to_datetime(dates),
+                'value': prices
+            })
+
+            # Remove duplicates and sort by date
+            df = df.drop_duplicates(subset=['date']).sort_values('date')
+            df = df.set_index('date')
+
+            # Remove any rows with NaN values
+            df = df.dropna()
+
+            if len(df) < 10:
+                self.logger.warning("Insufficient valid data points after cleaning")
+                return None
+
+            # Create Darts TimeSeries object
+            ts = TimeSeries.from_dataframe(df, value_cols=['value'])
+
+            self.logger.info(f"Created Darts TimeSeries with {len(ts)} data points")
+            return ts
+
+        except Exception as e:
+            self.logger.warning(f"Failed to create Darts TimeSeries: {e}")
+            return None
+
+    def create_darts_models(self):
+        """Create and configure Darts forecasting models."""
+        models = {}
+
+        if not DARTS_AVAILABLE:
+            self.logger.warning("Darts not available, skipping time series models")
+            return models
+
+        try:
+            # Prophet model (via Darts wrapper)
+            models['prophet'] = Prophet()
+
+            # Exponential Smoothing for trend analysis
+            models['exp_smoothing'] = ExponentialSmoothing()
+
+            # ARIMA for statistical forecasting
+            models['arima'] = ARIMA()
+
+            # Naive drift as baseline
+            models['naive_drift'] = NaiveDrift()
+
+            # Linear regression for multivariate capability (if more features added later)
+            models['linear_reg'] = LinearRegressionModel(lags=5)
+
+        except Exception as e:
+            self.logger.warning(f"Failed to create some Darts models: {e}")
+
+        return models
 
     def train(self, X_train, y_train, dates=None, epochs=50, **kwargs):
         """Train the specialized financial ensemble."""
@@ -830,15 +902,34 @@ class SpecializedFinancialEnsemble:
             self.lstm_model.compile(optimizer='adam', loss='mse')
             self.lstm_model.fit(X_train_seq, y_train, epochs=epochs, verbose=0)
 
-        # Train Prophet for trend/seasonality (if available and dates provided)
-        if PROPHET_AVAILABLE and dates is not None:
+        # Train Darts time series models (if available and dates provided)
+        if DARTS_AVAILABLE and dates is not None:
             try:
-                prophet_data = self.prepare_prophet_data(dates, y_train)
-                self.prophet_model = Prophet(daily_seasonality=True, weekly_seasonality=True, yearly_seasonality=False)
-                self.prophet_model.fit(prophet_data)
+                # Prepare time series data
+                self.time_series = self.prepare_darts_data(dates, y_train)
+
+                if self.time_series is not None:
+                    # Create and train multiple Darts models
+                    darts_model_configs = self.create_darts_models()
+
+                    for model_name, model in darts_model_configs.items():
+                        try:
+                            self.logger.info(f"Training Darts {model_name} model")
+                            model.fit(self.time_series)
+                            self.darts_models[model_name] = model
+                            self.logger.info(f"Successfully trained {model_name}")
+                        except Exception as e:
+                            self.logger.warning(f"Failed to train {model_name}: {e}")
+                            continue
+
+                    if self.darts_models:
+                        self.logger.info(f"Successfully trained {len(self.darts_models)} Darts models")
+                    else:
+                        self.logger.warning("No Darts models were successfully trained")
+
             except Exception as e:
-                self.logger.warning(f"Prophet training failed: {e}")
-                self.prophet_model = None
+                self.logger.warning(f"Darts training failed: {e}")
+                self.darts_models = {}
 
         # Train GARCH for volatility modeling (if available)
         if ARCH_AVAILABLE:
@@ -878,17 +969,52 @@ class SpecializedFinancialEnsemble:
             predictions.append(lstm_pred)
             weights.append(0.4)
 
-        # Prophet prediction (trend/seasonality component)
-        if self.prophet_model and future_dates is not None:
+        # Darts time series predictions (trend/seasonality component)
+        if self.darts_models and periods > 0:
             try:
-                future_df = pd.DataFrame({'ds': future_dates})
-                prophet_forecast = self.prophet_model.predict(future_df)
-                prophet_pred = prophet_forecast['yhat'].values
-                if len(prophet_pred) == len(rf_pred):
-                    predictions.append(prophet_pred)
-                    weights.append(0.2)
+                darts_predictions = []
+                darts_weights = []
+
+                for model_name, model in self.darts_models.items():
+                    try:
+                        # Make forecast for the specified number of periods
+                        forecast = model.predict(n=periods)
+                        forecast_values = forecast.values().flatten()
+
+                        # Ensure prediction length matches other predictions
+                        if len(forecast_values) == len(rf_pred):
+                            darts_predictions.append(forecast_values)
+                            # Assign weights based on model type
+                            if model_name == 'prophet':
+                                darts_weights.append(0.3)  # Higher weight for Prophet
+                            elif model_name == 'exp_smoothing':
+                                darts_weights.append(0.25)
+                            elif model_name == 'arima':
+                                darts_weights.append(0.25)
+                            else:
+                                darts_weights.append(0.1)  # Lower weight for others
+
+                        self.logger.info(f"Successfully generated predictions from {model_name}")
+
+                    except Exception as e:
+                        self.logger.warning(f"Prediction failed for {model_name}: {e}")
+                        continue
+
+                # If we have Darts predictions, combine them
+                if darts_predictions:
+                    # Normalize weights
+                    darts_weights = np.array(darts_weights)
+                    darts_weights = darts_weights / np.sum(darts_weights)
+
+                    # Weighted average of Darts predictions
+                    combined_darts_pred = np.average(darts_predictions, axis=0, weights=darts_weights)
+                    predictions.append(combined_darts_pred)
+                    weights.append(0.3)  # Weight for combined Darts prediction
+
+                    self.logger.info(f"Combined predictions from {len(darts_predictions)} Darts models")
+
             except Exception as e:
-                self.logger.warning(f"Prophet prediction failed: {e}")
+                self.logger.warning(f"Darts predictions failed: {e}")
 
         # Normalize weights
         weights = np.array(weights) / np.sum(weights)
@@ -968,6 +1094,42 @@ class EnsembleManager:
                     results[name] = {'error': str(e)}
 
         return results
+
+    def get_trained_darts_models(self) -> Dict[str, str]:
+        """Get information about successfully trained Darts models."""
+        model_info = {}
+        for model_name, model in self.darts_models.items():
+            model_info[model_name] = str(type(model).__name__)
+        return model_info
+
+    def is_darts_available(self) -> bool:
+        """Check if Darts is available and models are trained."""
+        return DARTS_AVAILABLE and len(self.darts_models) > 0
+
+    def validate_darts_integration(self) -> Dict[str, Any]:
+        """Validate the Darts integration and return status information."""
+        validation_results = {
+            'darts_library_available': DARTS_AVAILABLE,
+            'time_series_created': self.time_series is not None,
+            'models_trained': len(self.darts_models),
+            'trained_model_names': list(self.darts_models.keys()),
+            'integration_status': 'success' if self.is_darts_available() else 'failed'
+        }
+
+        if DARTS_AVAILABLE:
+            try:
+                # Test basic Darts functionality
+                test_series = TimeSeries.from_values(np.random.randn(30))
+                test_model = NaiveDrift()
+                test_model.fit(test_series)
+                test_pred = test_model.predict(n=5)
+                validation_results['basic_functionality_test'] = 'passed'
+            except Exception as e:
+                validation_results['basic_functionality_test'] = f'failed: {e}'
+        else:
+            validation_results['basic_functionality_test'] = 'skipped - Darts not available'
+
+        return validation_results
 
 
 class ModelingError(Exception):

@@ -985,6 +985,48 @@ class DataScraper:
         """Get Trade Weighted Dollar Index from FRED (DTWEXBGS)."""
         return self.get_fred_economic_indicator('DTWEXBGS', start_date, end_date, 'Dollar_Index')
 
+    # Leading Economic Indicators
+    def get_initial_claims(self, start_date: str = "2010-01-01", end_date: str = None) -> pd.DataFrame:
+        """Get Initial Jobless Claims from FRED (ICSA)."""
+        return self.get_fred_economic_indicator('ICSA', start_date, end_date, 'Initial_Claims')
+
+    def get_weekly_hours_manufacturing(self, start_date: str = "2010-01-01", end_date: str = None) -> pd.DataFrame:
+        """Get Average Weekly Hours in Manufacturing from FRED (AWHMAN)."""
+        return self.get_fred_economic_indicator('AWHMAN', start_date, end_date, 'Weekly_Hours_Manufacturing')
+
+    def get_manufacturers_new_orders_total(self, start_date: str = "2010-01-01", end_date: str = None) -> pd.DataFrame:
+        """Get Manufacturers' New Orders: Total Manufacturing from FRED (AMTMNO)."""
+        orders_data = self.get_fred_economic_indicator('AMTMNO', start_date, end_date, 'Manufacturers_Orders_Total')
+
+        if not orders_data.empty:
+            # Calculate year-over-year growth rate
+            orders_data['Manufacturers_Orders_Total_Growth'] = orders_data['Manufacturers_Orders_Total'].pct_change(periods=12) * 100
+            return orders_data[['Manufacturers_Orders_Total_Growth']].dropna()
+
+        return orders_data
+
+    def get_manufacturers_new_orders_nondefense(self, start_date: str = "2010-01-01", end_date: str = None) -> pd.DataFrame:
+        """Get Manufacturers' New Orders: Nondefense Capital Goods from FRED (NEWORDER)."""
+        orders_data = self.get_fred_economic_indicator('NEWORDER', start_date, end_date, 'Manufacturers_Orders_Nondefense')
+
+        if not orders_data.empty:
+            # Calculate year-over-year growth rate
+            orders_data['Manufacturers_Orders_Nondefense_Growth'] = orders_data['Manufacturers_Orders_Nondefense'].pct_change(periods=12) * 100
+            return orders_data[['Manufacturers_Orders_Nondefense_Growth']].dropna()
+
+        return orders_data
+
+    def get_building_permits(self, start_date: str = "2010-01-01", end_date: str = None) -> pd.DataFrame:
+        """Get Building Permits for New Private Housing Units from FRED (PERMIT)."""
+        permits_data = self.get_fred_economic_indicator('PERMIT', start_date, end_date, 'Building_Permits')
+
+        if not permits_data.empty:
+            # Calculate year-over-year growth rate
+            permits_data['Building_Permits_Growth'] = permits_data['Building_Permits'].pct_change(periods=12) * 100
+            return permits_data[['Building_Permits_Growth']].dropna()
+
+        return permits_data
+
     def collect_all_economic_indicators(self, start_date: str = "2010-01-01",
                                       end_date: str = None) -> Dict[str, pd.DataFrame]:
         """
@@ -1049,6 +1091,23 @@ class DataScraper:
             time.sleep(self.rate_limit_delay)
 
             indicators['Dollar_Index'] = self.get_dollar_index(start_date, end_date)
+            time.sleep(self.rate_limit_delay)
+
+            # Leading Economic Indicators
+            self.logger.info("Collecting Leading Economic indicators...")
+            indicators['Initial_Claims'] = self.get_initial_claims(start_date, end_date)
+            time.sleep(self.rate_limit_delay)
+
+            indicators['Weekly_Hours_Manufacturing'] = self.get_weekly_hours_manufacturing(start_date, end_date)
+            time.sleep(self.rate_limit_delay)
+
+            indicators['Manufacturers_Orders_Total_Growth'] = self.get_manufacturers_new_orders_total(start_date, end_date)
+            time.sleep(self.rate_limit_delay)
+
+            indicators['Manufacturers_Orders_Nondefense_Growth'] = self.get_manufacturers_new_orders_nondefense(start_date, end_date)
+            time.sleep(self.rate_limit_delay)
+
+            indicators['Building_Permits_Growth'] = self.get_building_permits(start_date, end_date)
             time.sleep(self.rate_limit_delay)
 
             # Remove empty DataFrames

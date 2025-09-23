@@ -203,8 +203,40 @@ class FeatureEvaluator:
             self.logger.debug(f"Indicator clean shape: {indicator_clean.shape}, columns: {indicator_clean.columns.tolist()}")
             self.logger.debug(f"Market clean shape: {market_clean.shape}, columns: {market_clean.columns.tolist()}")
 
-            # Merge on date
-            aligned = pd.merge(indicator_clean, market_clean, on='date', how='inner', suffixes=('', '_market'))
+            # Check if we need to handle different data frequencies
+            indicator_freq = self._detect_data_frequency(indicator_clean)
+            market_freq = self._detect_data_frequency(market_clean)
+
+            self.logger.debug(f"Indicator frequency: {indicator_freq}, Market frequency: {market_freq}")
+
+            # If frequencies differ, upsample indicator to preserve daily market signal
+            if indicator_freq != market_freq and market_freq == 'daily':
+                self.logger.info(f"Upsampling {indicator_freq} indicator to daily frequency to preserve market signal")
+
+                # Upsample indicator data to daily frequency
+                indicator_clean.set_index('date', inplace=True)
+
+                if indicator_freq == 'weekly':
+                    # Forward fill weekly data to daily
+                    indicator_daily = indicator_clean.resample('D').ffill()
+                elif indicator_freq == 'monthly':
+                    # Forward fill monthly data to daily
+                    indicator_daily = indicator_clean.resample('D').ffill()
+                else:
+                    # For quarterly or other frequencies
+                    indicator_daily = indicator_clean.resample('D').ffill()
+
+                indicator_daily.reset_index(inplace=True)
+                indicator_clean = indicator_daily
+
+            # Merge on date with tolerance for slight date mismatches
+            aligned = pd.merge_asof(
+                indicator_clean.sort_values('date'),
+                market_clean.sort_values('date'),
+                on='date',
+                direction='nearest',
+                suffixes=('', '_market')
+            )
 
             if aligned.empty:
                 self.logger.warning(f"No overlapping dates found for {indicator_name}")
@@ -224,6 +256,42 @@ class FeatureEvaluator:
             self.logger.error(f"Error aligning data for {indicator_name}: {str(e)}")
             self.logger.debug(f"Full traceback: {traceback.format_exc()}")
             return pd.DataFrame()
+
+    def _detect_data_frequency(self, data: pd.DataFrame) -> str:
+        """
+        Detect the frequency of time series data.
+
+        Args:
+            data: DataFrame with 'date' column
+
+        Returns:
+            String indicating frequency: 'daily', 'weekly', 'monthly', 'quarterly', 'unknown'
+        """
+        try:
+            if len(data) < 3:
+                return 'unknown'
+
+            dates = pd.to_datetime(data['date']).sort_values()
+            intervals = dates.diff().dropna()
+
+            # Calculate median interval in days
+            median_interval = intervals.median().days
+
+            # Classify based on typical intervals
+            if median_interval <= 3:
+                return 'daily'
+            elif 4 <= median_interval <= 10:
+                return 'weekly'
+            elif 20 <= median_interval <= 40:
+                return 'monthly'
+            elif 80 <= median_interval <= 100:
+                return 'quarterly'
+            else:
+                return 'unknown'
+
+        except Exception as e:
+            self.logger.debug(f"Error detecting frequency: {e}")
+            return 'unknown'
 
     def _calculate_correlations(self, data: pd.DataFrame,
                               indicator_name: str,

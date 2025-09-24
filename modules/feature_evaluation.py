@@ -146,6 +146,9 @@ class FeatureEvaluator:
                 date_columns = [col for col in indicator_df.columns if 'date' in col.lower()]
                 if date_columns:
                     indicator_df.rename(columns={date_columns[0]: 'date'}, inplace=True)
+                elif 'index' in indicator_df.columns:
+                    # FRED data comes with dates in index, becomes 'index' column after reset_index
+                    indicator_df.rename(columns={'index': 'date'}, inplace=True)
                 else:
                     self.logger.error(f"No date column found in indicator data for {indicator_name}")
                     self.logger.debug(f"Available columns: {indicator_df.columns.tolist()}")

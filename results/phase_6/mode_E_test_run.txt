@@ -1,0 +1,59 @@
+2025-10-24 15:22:14.579620: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-24 15:22:16.189489: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\fs\__init__.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)  # type: ignore
+[ProductionPredictor] Initializing in mode A...
+[ProductionPredictor] Mode A initialized successfully
+Traceback (most recent call last):
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\pandas\core\arrays\datetimelike.py", line 559, in _validate_comparison_value
+    self._check_compatible_with(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\pandas\core\arrays\datetimes.py", line 542, in _check_compatible_with
+    self._assert_tzawareness_compat(other)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\pandas\core\arrays\datetimes.py", line 788, in _assert_tzawareness_compat
+    raise TypeError(
+        "Cannot compare tz-naive and tz-aware datetime-like objects"
+    )
+TypeError: Cannot compare tz-naive and tz-aware datetime-like objects
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\pandas\core\arrays\datetimelike.py", line 1006, in _cmp_method
+    other = self._validate_comparison_value(other)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\pandas\core\arrays\datetimelike.py", line 562, in _validate_comparison_value
+    raise InvalidComparison(other) from err
+pandas.errors.InvalidComparison: 2013-01-01 00:00:00
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 879, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 853, in main
+    results = engine.run_backtest(start_date, end_date, stocks)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 217, in run_backtest
+    self.current_regime = self._get_regime_at_date(current_date)
+                          ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 639, in _get_regime_at_date
+    before = self.regime_series[self.regime_series.index <= date]
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\pandas\core\arraylike.py", line 52, in __le__
+    return self._cmp_method(other, operator.le)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 7263, in _cmp_method
+    result = op(self._values, other)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\pandas\core\arraylike.py", line 52, in __le__
+    return self._cmp_method(other, operator.le)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\pandas\core\arrays\datetimelike.py", line 1008, in _cmp_method
+    return invalid_comparison(self, other, op)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\pandas\core\ops\invalid.py", line 40, in invalid_comparison
+    raise TypeError(f"Invalid comparison between dtype={left.dtype} and {typ}")
+TypeError: Invalid comparison between dtype=datetime64[ns, America/New_York] and Timestamp

@@ -1,0 +1,27 @@
+{
+  "mode": "F",
+  "start_date": "2013-01-01",
+  "end_date": "2016-12-31",
+  "initial_capital": 100000.0,
+  "final_value": 100000.0,
+  "total_return": 0.0,
+  "cagr": 0.0,
+  "sharpe": NaN,
+  "max_drawdown": 0.0,
+  "regime_breakdown": {},
+  "stop_loss_stats": {
+    "total_triggers": 0,
+    "partial_exits": 0,
+    "full_exits": 0,
+    "avg_loss_at_trigger": 0.0,
+    "stop_loss_saves": 0,
+    "false_positives": 0
+  },
+  "tax_stats": {
+    "short_term_gains": 0.0,
+    "long_term_gains": 0.0,
+    "avg_holding_period": 0
+  },
+  "defensive_stats": {},
+  "trades": [],
+  "daily_values": {

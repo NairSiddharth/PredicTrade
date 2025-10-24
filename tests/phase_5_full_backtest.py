@@ -507,9 +507,9 @@ def main():
     )
 
     # Save results
-    output_file = 'results/phase_5_full_backtest_results.json' if not args.test else 'results/phase_5_test_backtest_results.json'
+    output_file = 'results/phase_5/phase_5_full_backtest_results.json' if not args.test else 'results/phase_5/phase_5_test_backtest_results.json'
 
-    os.makedirs('results', exist_ok=True)
+    os.makedirs('results/phase_5', exist_ok=True)
     with open(output_file, 'w') as f:
         json.dump(results, f, indent=2, default=str)
 

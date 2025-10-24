@@ -1,0 +1,729 @@
+2025-10-24 16:31:55.502882: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-24 16:31:57.516887: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\fs\__init__.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)  # type: ignore
+[ProductionPredictor] Initializing in mode A...
+[ProductionPredictor] Mode A initialized successfully
+  [PREDICT] AAPL on 2013-01-22 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8099 observations (up to 2013-01-22 00:00:00)
+  [ML] Generated 8099 predictions for AAPL
+  [PREDICT] NVDA on 2013-01-22 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-01-22 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-01-22 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-01-22 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-01-22 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 1918 observations (up to 2013-01-22 00:00:00)
+  [ML] Generated 1918 predictions for HTGC
+  [PREDICT] XOM on 2013-01-22 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-01-22 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-01-22 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-02-12 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8114 observations (up to 2013-02-12 00:00:00)
+  [ML] Generated 8114 predictions for AAPL
+  [PREDICT] NVDA on 2013-02-12 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-02-12 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-02-12 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-02-12 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-02-12 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 1933 observations (up to 2013-02-12 00:00:00)
+  [ML] Generated 1933 predictions for HTGC
+  [PREDICT] XOM on 2013-02-12 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-02-12 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-02-12 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-03-05 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8128 observations (up to 2013-03-05 00:00:00)
+  [ML] Generated 8128 predictions for AAPL
+  [PREDICT] NVDA on 2013-03-05 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-03-05 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-03-05 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-03-05 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-03-05 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 1947 observations (up to 2013-03-05 00:00:00)
+  [ML] Generated 1947 predictions for HTGC
+  [PREDICT] XOM on 2013-03-05 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-03-05 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-03-05 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-03-26 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8143 observations (up to 2013-03-26 00:00:00)
+  [ML] Generated 8143 predictions for AAPL
+  [PREDICT] NVDA on 2013-03-26 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-03-26 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-03-26 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-03-26 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-03-26 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 1962 observations (up to 2013-03-26 00:00:00)
+  [ML] Generated 1962 predictions for HTGC
+  [PREDICT] XOM on 2013-03-26 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-03-26 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-03-26 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-04-16 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8157 observations (up to 2013-04-16 00:00:00)
+  [ML] Generated 8157 predictions for AAPL
+  [PREDICT] NVDA on 2013-04-16 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-04-16 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-04-16 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-04-16 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-04-16 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 1976 observations (up to 2013-04-16 00:00:00)
+  [ML] Generated 1976 predictions for HTGC
+  [PREDICT] XOM on 2013-04-16 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-04-16 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-04-16 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-05-07 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8172 observations (up to 2013-05-07 00:00:00)
+  [ML] Generated 8172 predictions for AAPL
+  [PREDICT] NVDA on 2013-05-07 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-05-07 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-05-07 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-05-07 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-05-07 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 1991 observations (up to 2013-05-07 00:00:00)
+  [ML] Generated 1991 predictions for HTGC
+  [PREDICT] XOM on 2013-05-07 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-05-07 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-05-07 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-05-28 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8186 observations (up to 2013-05-28 00:00:00)
+  [ML] Generated 8186 predictions for AAPL
+  [PREDICT] NVDA on 2013-05-28 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-05-28 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-05-28 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-05-28 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-05-28 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2005 observations (up to 2013-05-28 00:00:00)
+  [ML] Generated 2005 predictions for HTGC
+  [PREDICT] XOM on 2013-05-28 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-05-28 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-05-28 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-06-18 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8201 observations (up to 2013-06-18 00:00:00)
+  [ML] Generated 8201 predictions for AAPL
+  [PREDICT] NVDA on 2013-06-18 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-06-18 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-06-18 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-06-18 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-06-18 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2020 observations (up to 2013-06-18 00:00:00)
+  [ML] Generated 2020 predictions for HTGC
+  [PREDICT] XOM on 2013-06-18 00:00:00 using mode A2025-10-24 16:36:32,712 - stock_predictor.phase_6_backtest_mode_E - WARNING - No positive predictions, moving to cash
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 104: character maps to <undefined>
+Call stack:
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 897, in <module>
+    main()
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 871, in main
+    results = engine.run_backtest(start_date, end_date, stocks)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 240, in run_backtest
+    self.logger.info(f"Regime change detected: {prev_regime} \u2192 {self.current_regime}")
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\modules\logger.py", line 163, in info
+    self.logger.info(message)
+Message: 'Regime change detected: BULL \u2192 SIDEWAYS'
+Arguments: ()
+2025-10-24 16:36:49,923 - stock_predictor.phase_6_backtest_mode_E - WARNING - No positive predictions, moving to cash
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 108: character maps to <undefined>
+Call stack:
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 897, in <module>
+    main()
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 871, in main
+    results = engine.run_backtest(start_date, end_date, stocks)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 240, in run_backtest
+    self.logger.info(f"Regime change detected: {prev_regime} \u2192 {self.current_regime}")
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\modules\logger.py", line 163, in info
+    self.logger.info(message)
+Message: 'Regime change detected: SIDEWAYS \u2192 BULL'
+Arguments: ()
+2025-10-24 16:37:10,140 - stock_predictor.phase_6_backtest_mode_E - WARNING - No positive predictions, moving to cash
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 104: character maps to <undefined>
+Call stack:
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 897, in <module>
+    main()
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 871, in main
+    results = engine.run_backtest(start_date, end_date, stocks)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 240, in run_backtest
+    self.logger.info(f"Regime change detected: {prev_regime} \u2192 {self.current_regime}")
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\modules\logger.py", line 163, in info
+    self.logger.info(message)
+Message: 'Regime change detected: BULL \u2192 SIDEWAYS'
+Arguments: ()
+2025-10-24 16:37:28,345 - stock_predictor.phase_6_backtest_mode_E - WARNING - No positive predictions, moving to cash
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 108: character maps to <undefined>
+Call stack:
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 897, in <module>
+    main()
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 871, in main
+    results = engine.run_backtest(start_date, end_date, stocks)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 240, in run_backtest
+    self.logger.info(f"Regime change detected: {prev_regime} \u2192 {self.current_regime}")
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\modules\logger.py", line 163, in info
+    self.logger.info(message)
+Message: 'Regime change detected: SIDEWAYS \u2192 BULL'
+Arguments: ()
+2025-10-24 16:37:48,727 - stock_predictor.phase_6_backtest_mode_E - WARNING - No positive predictions, moving to cash
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 104: character maps to <undefined>
+Call stack:
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 897, in <module>
+    main()
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 871, in main
+    results = engine.run_backtest(start_date, end_date, stocks)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 240, in run_backtest
+    self.logger.info(f"Regime change detected: {prev_regime} \u2192 {self.current_regime}")
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\modules\logger.py", line 163, in info
+    self.logger.info(message)
+Message: 'Regime change detected: BULL \u2192 SIDEWAYS'
+Arguments: ()
+
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-06-18 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-06-18 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-06-20 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8203 observations (up to 2013-06-20 00:00:00)
+  [ML] Generated 8203 predictions for AAPL
+  [PREDICT] NVDA on 2013-06-20 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-06-20 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-06-20 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-06-20 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-06-20 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2022 observations (up to 2013-06-20 00:00:00)
+  [ML] Generated 2022 predictions for HTGC
+  [PREDICT] XOM on 2013-06-20 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-06-20 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-06-20 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-06-21 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8204 observations (up to 2013-06-21 00:00:00)
+  [ML] Generated 8204 predictions for AAPL
+  [PREDICT] NVDA on 2013-06-21 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-06-21 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-06-21 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-06-21 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-06-21 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2023 observations (up to 2013-06-21 00:00:00)
+  [ML] Generated 2023 predictions for HTGC
+  [PREDICT] XOM on 2013-06-21 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-06-21 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-06-21 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-06-24 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8205 observations (up to 2013-06-24 00:00:00)
+  [ML] Generated 8205 predictions for AAPL
+  [PREDICT] NVDA on 2013-06-24 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-06-24 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-06-24 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-06-24 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-06-24 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2024 observations (up to 2013-06-24 00:00:00)
+  [ML] Generated 2024 predictions for HTGC
+  [PREDICT] XOM on 2013-06-24 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-06-24 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-06-24 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-06-25 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8206 observations (up to 2013-06-25 00:00:00)
+  [ML] Generated 8206 predictions for AAPL
+  [PREDICT] NVDA on 2013-06-25 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-06-25 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-06-25 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-06-25 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-06-25 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2025 observations (up to 2013-06-25 00:00:00)
+  [ML] Generated 2025 predictions for HTGC
+  [PREDICT] XOM on 2013-06-25 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-06-25 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-06-25 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-07-16 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8220 observations (up to 2013-07-16 00:00:00)
+  [ML] Generated 8220 predictions for AAPL
+  [PREDICT] NVDA on 2013-07-16 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-07-16 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-07-16 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-07-16 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-07-16 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2039 observations (up to 2013-07-16 00:00:00)
+  [ML] Generated 2039 predictions for HTGC
+  [PREDICT] XOM on 2013-07-16 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-07-16 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-07-16 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-08-06 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8235 observations (up to 2013-08-06 00:00:00)
+  [ML] Generated 8235 predictions for AAPL
+  [PREDICT] NVDA on 2013-08-06 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-08-06 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-08-06 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-08-06 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-08-06 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2054 observations (up to 2013-08-06 00:00:00)
+  [ML] Generated 2054 predictions for HTGC
+  [PREDICT] XOM on 2013-08-06 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-08-06 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-08-06 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-08-14 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8241 observations (up to 2013-08-14 00:00:00)
+  [ML] Generated 8241 predictions for AAPL
+  [PREDICT] NVDA on 2013-08-14 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-08-14 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-08-14 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-08-14 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-08-14 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2060 observations (up to 2013-08-14 00:00:00)
+  [ML] Generated 2060 predictions for HTGC
+  [PREDICT] XOM on 2013-08-14 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-08-14 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-08-14 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-08-24 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8248 observations (up to 2013-08-24 00:00:00)
+  [ML] Generated 8248 predictions for AAPL
+  [PREDICT] NVDA on 2013-08-24 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-08-24 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-08-24 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-08-24 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-08-24 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2067 observations (up to 2013-08-24 00:00:00)--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 108: character maps to <undefined>
+Call stack:
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 897, in <module>
+    main()
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 871, in main
+    results = engine.run_backtest(start_date, end_date, stocks)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 240, in run_backtest
+    self.logger.info(f"Regime change detected: {prev_regime} \u2192 {self.current_regime}")
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\modules\logger.py", line 163, in info
+    self.logger.info(message)
+Message: 'Regime change detected: SIDEWAYS \u2192 BULL'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 104: character maps to <undefined>
+Call stack:
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 897, in <module>
+    main()
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 871, in main
+    results = engine.run_backtest(start_date, end_date, stocks)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 240, in run_backtest
+    self.logger.info(f"Regime change detected: {prev_regime} \u2192 {self.current_regime}")
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\modules\logger.py", line 163, in info
+    self.logger.info(message)
+Message: 'Regime change detected: BULL \u2192 SIDEWAYS'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 108: character maps to <undefined>
+Call stack:
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 897, in <module>
+    main()
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 871, in main
+    results = engine.run_backtest(start_date, end_date, stocks)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 240, in run_backtest
+    self.logger.info(f"Regime change detected: {prev_regime} \u2192 {self.current_regime}")
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\modules\logger.py", line 163, in info
+    self.logger.info(message)
+Message: 'Regime change detected: SIDEWAYS \u2192 BULL'
+Arguments: ()
+
+  [ML] Generated 2067 predictions for HTGC
+  [PREDICT] XOM on 2013-08-24 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-08-24 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-08-24 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-09-03 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8254 observations (up to 2013-09-03 00:00:00)
+  [ML] Generated 8254 predictions for AAPL
+  [PREDICT] NVDA on 2013-09-03 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-09-03 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-09-03 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-09-03 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-09-03 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2073 observations (up to 2013-09-03 00:00:00)
+  [ML] Generated 2073 predictions for HTGC
+  [PREDICT] XOM on 2013-09-03 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-09-03 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-09-03 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-09-24 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8269 observations (up to 2013-09-24 00:00:00)
+  [ML] Generated 8269 predictions for AAPL
+  [PREDICT] NVDA on 2013-09-24 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-09-24 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-09-24 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-09-24 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-09-24 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2088 observations (up to 2013-09-24 00:00:00)
+  [ML] Generated 2088 predictions for HTGC
+  [PREDICT] XOM on 2013-09-24 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-09-24 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-09-24 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-10-08 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8279 observations (up to 2013-10-08 00:00:00)
+  [ML] Generated 8279 predictions for AAPL
+  [PREDICT] NVDA on 2013-10-08 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-10-08 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-10-08 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-10-08 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-10-08 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2098 observations (up to 2013-10-08 00:00:00)
+  [ML] Generated 2098 predictions for HTGC
+  [PREDICT] XOM on 2013-10-08 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-10-08 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-10-08 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-10-09 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8280 observations (up to 2013-10-09 00:00:00)
+  [ML] Generated 8280 predictions for AAPL
+  [PREDICT] NVDA on 2013-10-09 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-10-09 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-10-09 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-10-09 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-10-09 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2099 observations (up to 2013-10-09 00:00:00)
+  [ML] Generated 2099 predictions for HTGC
+  [PREDICT] XOM on 2013-10-09 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-10-09 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-10-09 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-10-30 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8295 observations (up to 2013-10-30 00:00:00)
+  [ML] Generated 8295 predictions for AAPL
+  [PREDICT] NVDA on 2013-10-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-10-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-10-30 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-10-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-10-30 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2114 observations (up to 2013-10-30 00:00:00)
+  [ML] Generated 2114 predictions for HTGC
+  [PREDICT] XOM on 2013-10-30 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-10-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-10-30 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-11-20 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8310 observations (up to 2013-11-20 00:00:00)
+  [ML] Generated 8310 predictions for AAPL
+  [PREDICT] NVDA on 2013-11-20 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-11-20 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-11-20 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-11-20 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-11-20 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2129 observations (up to 2013-11-20 00:00:00)
+  [ML] Generated 2129 predictions for HTGC
+  [PREDICT] XOM on 2013-11-20 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-11-20 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-11-20 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2013-12-11 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8324 observations (up to 2013-12-11 00:00:00)
+  [ML] Generated 8324 predictions for AAPL
+  [PREDICT] NVDA on 2013-12-11 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2013-12-11 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2013-12-11 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2013-12-11 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2013-12-11 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2143 observations (up to 2013-12-11 00:00:00)
+  [ML] Generated 2143 predictions for HTGC
+  [PREDICT] XOM on 2013-12-11 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] BAC on 2013-12-11 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] WULF on 2013-12-11 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] AAPL on 2014-01-01 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for AAPL on 8337 observations (up to 2014-01-01 00:00:00)
+  [ML] Generated 8337 predictions for AAPL
+  [PREDICT] NVDA on 2014-01-01 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] UNH on 2014-01-01 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] O on 2014-01-01 00:00:00 using mode A
+    Fundamental approach: original
+  [PREDICT] KO on 2014-01-01 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] HTGC on 2014-01-01 00:00:00 using mode A--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 104: character maps to <undefined>
+Call stack:
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 897, in <module>
+    main()
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 871, in main
+    results = engine.run_backtest(start_date, end_date, stocks)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 240, in run_backtest
+    self.logger.info(f"Regime change detected: {prev_regime} \u2192 {self.current_regime}")
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\modules\logger.py", line 163, in info
+    self.logger.info(message)
+Message: 'Regime change detected: BULL \u2192 SIDEWAYS'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nairs\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 108: character maps to <undefined>
+Call stack:
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 897, in <module>
+    main()
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 871, in main
+    results = engine.run_backtest(start_date, end_date, stocks)
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\tests\phase_6_regime_aware_backtest.py", line 240, in run_backtest
+    self.logger.info(f"Regime change detected: {prev_regime} \u2192 {self.current_regime}")
+  File "C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\modules\logger.py", line 163, in info
+    self.logger.info(message)
+Message: 'Regime change detected: SIDEWAYS \u2192 BULL'
+Arguments: ()

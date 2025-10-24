@@ -1,0 +1,269 @@
+{
+  "evaluation_date": "2025-10-21T15:59:22.917907",
+  "methodology": "Combined market-based signals + technical indicators",
+  "note": "Using market proxies (VIX, SPY, TLT, GLD, DXY) instead of FRED economic data",
+  "market_proxies": [
+    "vix",
+    "spy",
+    "spy_returns",
+    "tlt",
+    "gld",
+    "dxy"
+  ],
+  "technical_indicators": [
+    "volatility",
+    "momentum",
+    "adx",
+    "volume_roc"
+  ],
+  "signal_weights": {
+    "market_signals": 0.6,
+    "technical": 0.4
+  },
+  "stock_results": {
+    "NVDA": {
+      "status": "success",
+      "ticker": "NVDA",
+      "n_observations": 471,
+      "horizon_days": 20,
+      "economic_only": {
+        "ic": -0.2288682265981565,
+        "pvalue": 5.150668425171899e-07,
+        "significant": true
+      },
+      "technical_only": {
+        "ic": 0.00503053787546427,
+        "pvalue": 0.9132929013357228,
+        "significant": false
+      },
+      "combined_signal": {
+        "ic": -0.15612928121719677,
+        "pvalue": 0.0006731883385166112,
+        "significant": true,
+        "weight_economic": 0.6,
+        "weight_technical": 0.4
+      },
+      "incremental_analysis": {
+        "incremental_ic": 0.07273894538095974,
+        "incremental_pct": 31.78201992567265,
+        "technical_adds_value": true
+      },
+      "signal_correlation": {
+        "econ_tech_correlation": -0.26701993231777177,
+        "pvalue": 3.9366902845419495e-09,
+        "orthogonal": true
+      }
+    },
+    "TSLA": {
+      "status": "success",
+      "ticker": "TSLA",
+      "n_observations": 471,
+      "horizon_days": 20,
+      "economic_only": {
+        "ic": 0.13144390517294843,
+        "pvalue": 0.004270014952512105,
+        "significant": true
+      },
+      "technical_only": {
+        "ic": -0.012223189491020098,
+        "pvalue": 0.7913336488701395,
+        "significant": false
+      },
+      "combined_signal": {
+        "ic": 0.05131752729344154,
+        "pvalue": 0.2663559769840603,
+        "significant": false,
+        "weight_economic": 0.6,
+        "weight_technical": 0.4
+      },
+      "incremental_analysis": {
+        "incremental_ic": -0.0801263778795069,
+        "incremental_pct": -60.95861027111141,
+        "technical_adds_value": false
+      },
+      "signal_correlation": {
+        "econ_tech_correlation": 0.20572466055803434,
+        "pvalue": 6.75970064807468e-06,
+        "orthogonal": true
+      }
+    },
+    "AAPL": {
+      "status": "success",
+      "ticker": "AAPL",
+      "n_observations": 471,
+      "horizon_days": 20,
+      "economic_only": {
+        "ic": -0.03964767170233439,
+        "pvalue": 0.3906130223790689,
+        "significant": false
+      },
+      "technical_only": {
+        "ic": -0.06577070523083144,
+        "pvalue": 0.1541162724759977,
+        "significant": false
+      },
+      "combined_signal": {
+        "ic": -0.06693858659824836,
+        "pvalue": 0.14691800605131583,
+        "significant": false,
+        "weight_economic": 0.6,
+        "weight_technical": 0.4
+      },
+      "incremental_analysis": {
+        "incremental_ic": -0.027290914895913974,
+        "incremental_pct": -68.83358775972495,
+        "technical_adds_value": false
+      },
+      "signal_correlation": {
+        "econ_tech_correlation": -0.09859823811970668,
+        "pvalue": 0.03240644241569742,
+        "orthogonal": true
+      }
+    },
+    "MSFT": {
+      "status": "success",
+      "ticker": "MSFT",
+      "n_observations": 471,
+      "horizon_days": 20,
+      "economic_only": {
+        "ic": -0.11824727065584655,
+        "pvalue": 0.01021505367158246,
+        "significant": true
+      },
+      "technical_only": {
+        "ic": 0.10056654133006862,
+        "pvalue": 0.02908854495809241,
+        "significant": true
+      },
+      "combined_signal": {
+        "ic": -0.01886836441481897,
+        "pvalue": 0.6829509648603145,
+        "significant": false,
+        "weight_economic": 0.6,
+        "weight_technical": 0.4
+      },
+      "incremental_analysis": {
+        "incremental_ic": 0.09937890624102758,
+        "incremental_pct": 84.04329815803148,
+        "technical_adds_value": true
+      },
+      "signal_correlation": {
+        "econ_tech_correlation": -0.07764269683620965,
+        "pvalue": 0.09235430646921602,
+        "orthogonal": true
+      }
+    },
+    "AMZN": {
+      "status": "success",
+      "ticker": "AMZN",
+      "n_observations": 471,
+      "horizon_days": 20,
+      "economic_only": {
+        "ic": -0.0779178658630424,
+        "pvalue": 0.09120207803588513,
+        "significant": false
+      },
+      "technical_only": {
+        "ic": -0.05475191852278914,
+        "pvalue": 0.23562713304900607,
+        "significant": false
+      },
+      "combined_signal": {
+        "ic": -0.09424535041034914,
+        "pvalue": 0.040906095508762653,
+        "significant": true,
+        "weight_economic": 0.6,
+        "weight_technical": 0.4
+      },
+      "incremental_analysis": {
+        "incremental_ic": -0.01632748454730673,
+        "incremental_pct": -20.95473787232037,
+        "technical_adds_value": false
+      },
+      "signal_correlation": {
+        "econ_tech_correlation": -0.053935958768530044,
+        "pvalue": 0.24269094115485867,
+        "orthogonal": true
+      }
+    },
+    "JNJ": {
+      "status": "success",
+      "ticker": "JNJ",
+      "n_observations": 471,
+      "horizon_days": 20,
+      "economic_only": {
+        "ic": 0.03161043364012854,
+        "pvalue": 0.4937386054916185,
+        "significant": false
+      },
+      "technical_only": {
+        "ic": 0.11652398813857925,
+        "pvalue": 0.011381159729848109,
+        "significant": true
+      },
+      "combined_signal": {
+        "ic": 0.10907660539184724,
+        "pvalue": 0.017883667454433712,
+        "significant": true,
+        "weight_economic": 0.6,
+        "weight_technical": 0.4
+      },
+      "incremental_analysis": {
+        "incremental_ic": 0.0774661717517187,
+        "incremental_pct": 245.06519788256753,
+        "technical_adds_value": true
+      },
+      "signal_correlation": {
+        "econ_tech_correlation": 0.19398606387026673,
+        "pvalue": 2.2438092332946465e-05,
+        "orthogonal": true
+      }
+    },
+    "PG": {
+      "status": "success",
+      "ticker": "PG",
+      "n_observations": 471,
+      "horizon_days": 20,
+      "economic_only": {
+        "ic": -0.2920925392949759,
+        "pvalue": 1.0210862878342917e-10,
+        "significant": true
+      },
+      "technical_only": {
+        "ic": -0.04764781411288563,
+        "pvalue": 0.30211110213123477,
+        "significant": false
+      },
+      "combined_signal": {
+        "ic": -0.24276393613575864,
+        "pvalue": 9.575515109298485e-08,
+        "significant": true,
+        "weight_economic": 0.6,
+        "weight_technical": 0.4
+      },
+      "incremental_analysis": {
+        "incremental_ic": 0.04932860315921728,
+        "incremental_pct": 16.888005177496755,
+        "technical_adds_value": true
+      },
+      "signal_correlation": {
+        "econ_tech_correlation": 0.06321411610058769,
+        "pvalue": 0.17080204063637375,
+        "orthogonal": true
+      }
+    }
+  },
+  "aggregate_statistics": {
+    "n_successful_evaluations": 7,
+    "n_stocks_tested": 7,
+    "average_economic_ic": -0.08481703361446839,
+    "average_technical_ic": 0.00596106285522655,
+    "average_combined_ic": -0.05979305515586902,
+    "average_incremental_ic": 0.025023978458599383,
+    "average_incremental_pct": 32.43308360580167,
+    "stocks_with_positive_incremental": 4,
+    "pct_stocks_improved": 57.14285714285714,
+    "average_signal_correlation": -0.004895997930475626,
+    "signals_orthogonal": true
+  }
+}

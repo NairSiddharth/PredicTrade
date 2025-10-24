@@ -1,0 +1,20 @@
+{
+  "ticker": "GOOY",
+  "fund_name": "YieldMax GOOGL Option Income Strategy ETF",
+  "category": "Derivative Income",
+  "yield": 0.3646,
+  "ytd_return": 25.95832,
+  "three_year_avg_return": null,
+  "five_year_avg_return": null,
+  "total_assets": 165046688,
+  "nav": 13.9533,
+  "last_updated": "2025-10-21T17:27:15.294097",
+  "nav_1y_ago": 9.98133659362793,
+  "current_nav": 13.720000267028809,
+  "nav_change_1y": 0.37456543403091286,
+  "volatility_1y": 0.25736313925738963,
+  "distribution_count_1y": 28,
+  "annual_distribution": 11.363999999999999,
+  "distribution_coverage": 1.3289918755192607,
+  "sustainability_score": 66.44959377596304
+}

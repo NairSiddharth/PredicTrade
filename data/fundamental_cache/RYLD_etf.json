@@ -1,0 +1,18 @@
+{
+  "ticker": "RYLD",
+  "fund_name": "Global X Russell 2000 Covered Call ETF",
+  "category": "Derivative Income",
+  "yield": 0.11350001,
+  "ytd_return": 0.83249,
+  "three_year_avg_return": 0.0541081,
+  "five_year_avg_return": 0.058063302,
+  "total_assets": 1251986176,
+  "nav": 15.37,
+  "last_updated": "2025-10-21T17:27:24.057823",
+  "nav_1y_ago": NaN,
+  "current_nav": 15.350000381469727,
+  "nav_change_1y": null,
+  "volatility_1y": 0.16668791587963852,
+  "distribution_count_1y": 77,
+  "annual_distribution": 15.067999999999998
+}

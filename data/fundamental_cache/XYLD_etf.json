@@ -1,0 +1,18 @@
+{
+  "ticker": "XYLD",
+  "fund_name": "Global X S&P 500 Covered Call ETF",
+  "category": "Derivative Income",
+  "yield": 0.096499994,
+  "ytd_return": 1.70787,
+  "three_year_avg_return": 0.12511581,
+  "five_year_avg_return": 0.089284696,
+  "total_assets": 3075322368,
+  "nav": 39.6,
+  "last_updated": "2025-10-21T17:27:23.195458",
+  "nav_1y_ago": NaN,
+  "current_nav": 39.619998931884766,
+  "nav_change_1y": null,
+  "volatility_1y": 0.14672891494092266,
+  "distribution_count_1y": 148,
+  "annual_distribution": 41.25999999999999
+}

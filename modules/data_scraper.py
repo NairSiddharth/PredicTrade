@@ -11,6 +11,7 @@ from .config_manager import ConfigManager
 import numpy as np
 from textblob import TextBlob
 import re
+import yfinance as yf
 
 #alpace - minimum historical bars should get 1 "historical bar" per day, ideally want to capture the start price and end price of a given stock for the day, along with volume and ideally some other metrics like high and low price for the day. This will account for after hours trading as well because we will see the diff between one days closing price and the next days opening price. Also want to capture dividend
 class DataScraper:
@@ -1098,6 +1099,107 @@ class DataScraper:
         except Exception as e:
             self.logger.log_error(e, f"get_stock_prices for {ticker}")
             return pd.DataFrame()
+
+    def get_stock_ohlcv_data(self, ticker: str, period: str = "1y", interval: str = "1d") -> pd.DataFrame:
+        """
+        Fetch stock OHLCV (Open, High, Low, Close, Volume) data using yfinance.
+
+        This is the preferred method for technical indicator calculation as it provides
+        reliable, complete OHLCV data without web scraping fragility.
+
+        Args:
+            ticker: Stock ticker symbol
+            period: Period of data to download (e.g., '1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', 'max')
+            interval: Data interval (e.g., '1m', '2m', '5m', '15m', '30m', '60m', '90m', '1h', '1d', '5d', '1wk', '1mo', '3mo')
+
+        Returns:
+            DataFrame with columns: date (index), open, high, low, close, volume, adj_close
+        """
+        self.logger.log_data_operation("OHLCV Data Fetch", f"Fetching {period} of {interval} data for {ticker}")
+
+        try:
+            # Create yfinance Ticker object
+            stock = yf.Ticker(ticker)
+
+            # Download historical data
+            df = stock.history(period=period, interval=interval)
+
+            if df.empty:
+                self.logger.warning(f"No OHLCV data available for {ticker}")
+                return pd.DataFrame()
+
+            # Reset index to make date a column FIRST (before lowercasing)
+            df = df.reset_index()
+
+            # Now lowercase all column names for consistency
+            df.columns = df.columns.str.lower()
+
+            # After lowercasing, the Date column is now 'date' automatically
+            # But if it was unnamed index, rename it from 'index' to 'date'
+            if 'date' not in df.columns and 'index' in df.columns:
+                df = df.rename(columns={'index': 'date'})
+
+            # Ensure we have all required columns
+            required_cols = ['open', 'high', 'low', 'close', 'volume']
+            missing_cols = [col for col in required_cols if col not in df.columns]
+
+            if missing_cols:
+                self.logger.warning(f"Missing columns for {ticker}: {missing_cols}")
+                return pd.DataFrame()
+
+            # Add adj_close if available (already lowercase from earlier rename)
+            if 'adj close' in df.columns:
+                df = df.rename(columns={'adj close': 'adj_close'})
+
+            # Select and order columns
+            available_cols = ['date', 'open', 'high', 'low', 'close', 'volume']
+            if 'adj_close' in df.columns:
+                available_cols.append('adj_close')
+
+            df = df[available_cols]
+
+            self.logger.log_data_operation("OHLCV Success",
+                                         f"Retrieved {len(df)} {interval} bars for {ticker}")
+            return df
+
+        except Exception as e:
+            self.logger.log_error(e, f"get_stock_ohlcv_data for {ticker}")
+            return pd.DataFrame()
+
+    def get_benchmark_data(self, benchmarks: list = None, period: str = "2y", interval: str = "1d") -> dict:
+        """
+        Fetch OHLCV data for multiple benchmark ETFs/indices.
+
+        Default benchmarks cover major asset classes for relative performance analysis:
+        - SPY: S&P 500 (broad market)
+        - QQQ: Nasdaq-100 (tech/growth)
+        - SCHD: Dividend-focused large caps
+        - GLD: Gold (alternative asset/hedge)
+
+        Args:
+            benchmarks: List of benchmark tickers (uses defaults if None)
+            period: Period of data to download
+            interval: Data interval
+
+        Returns:
+            Dictionary mapping benchmark ticker to DataFrame with OHLCV data
+        """
+        if benchmarks is None:
+            benchmarks = ['SPY', 'QQQ', 'SCHD', 'GLD']
+
+        self.logger.log_data_operation("Benchmark Data Fetch",
+                                      f"Loading {len(benchmarks)} benchmarks: {', '.join(benchmarks)}")
+
+        benchmark_data = {}
+        for ticker in benchmarks:
+            df = self.get_stock_ohlcv_data(ticker, period=period, interval=interval)
+            if not df.empty:
+                benchmark_data[ticker] = df
+                self.logger.info(f"Loaded {ticker}: {len(df)} bars")
+            else:
+                self.logger.warning(f"Failed to load benchmark {ticker}")
+
+        return benchmark_data
 
     def get_price_to_fcf_ratio(self, ticker: str, company_name: str) -> pd.DataFrame:
         """

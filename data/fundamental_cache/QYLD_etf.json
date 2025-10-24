@@ -1,0 +1,18 @@
+{
+  "ticker": "QYLD",
+  "fund_name": "Global X NASDAQ 100 Covered Call ETF",
+  "category": "Derivative Income",
+  "yield": 0.1084,
+  "ytd_return": 2.12988,
+  "three_year_avg_return": 0.16529791,
+  "five_year_avg_return": 0.082428195,
+  "total_assets": 8139184640,
+  "nav": 17.26,
+  "last_updated": "2025-10-21T17:27:22.065248",
+  "nav_1y_ago": NaN,
+  "current_nav": 17.270000457763672,
+  "nav_change_1y": null,
+  "volatility_1y": 0.17668009413033609,
+  "distribution_count_1y": 137,
+  "annual_distribution": 26.401000000000003
+}

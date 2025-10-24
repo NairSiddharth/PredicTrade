@@ -1,0 +1,30 @@
+{
+  "mode_b_adaptive": {
+    "B3_3month": {
+      "description": "Responsive to recent trends",
+      "window_days": 63,
+      "min_observations": 40,
+      "rebalance_frequency": "monthly",
+      "trading_days_per_month": 21
+    },
+    "B6_6month": {
+      "description": "Stable and noise-resistant",
+      "window_days": 126,
+      "min_observations": 80,
+      "rebalance_frequency": "monthly",
+      "trading_days_per_month": 21
+    },
+    "B4.5_split": {
+      "description": "Balanced approach (split the difference)",
+      "window_days": 95,
+      "min_observations": 60,
+      "rebalance_frequency": "monthly",
+      "trading_days_per_month": 21
+    }
+  },
+  "metadata": {
+    "trading_days_per_month": 21,
+    "trading_days_per_year": 252,
+    "created_date": "2025-10-22 19:33:53.199071"
+  }
+}

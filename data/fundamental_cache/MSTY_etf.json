@@ -1,0 +1,20 @@
+{
+  "ticker": "MSTY",
+  "fund_name": "Yieldmax MSTR Option Income Strategy ETF",
+  "category": "Derivative Income",
+  "yield": 1.9393,
+  "ytd_return": 9.23491,
+  "three_year_avg_return": null,
+  "five_year_avg_return": null,
+  "total_assets": 4113706496,
+  "nav": 12.1538,
+  "last_updated": "2025-10-21T17:27:12.086837",
+  "nav_1y_ago": 10.254016876220703,
+  "current_nav": 12.34000015258789,
+  "nav_change_1y": 0.20343084096190928,
+  "volatility_1y": 0.7088200073178149,
+  "distribution_count_1y": 20,
+  "annual_distribution": 43.50000000000001,
+  "distribution_coverage": 1.0479536385371768,
+  "sustainability_score": 52.397681926858844
+}

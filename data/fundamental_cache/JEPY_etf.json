@@ -1,0 +1,20 @@
+{
+  "ticker": "JEPY",
+  "fund_name": "Defiance S&P 500 Enhanced Options 0DTE Income ETF",
+  "category": "Trading--Miscellaneous",
+  "yield": 0.5567,
+  "ytd_return": -1.88882,
+  "three_year_avg_return": null,
+  "five_year_avg_return": null,
+  "total_assets": 65823616,
+  "nav": 33.2612,
+  "last_updated": "2025-10-21T17:27:29.059249",
+  "nav_1y_ago": 30.157386779785156,
+  "current_nav": 33.36000061035156,
+  "nav_change_1y": 0.10619666266021283,
+  "volatility_1y": 0.14021167348110666,
+  "distribution_count_1y": 67,
+  "annual_distribution": 38.249614,
+  "distribution_coverage": 1.0837293111132156,
+  "sustainability_score": 54.18646555566078
+}

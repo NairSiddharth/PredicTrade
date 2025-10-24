@@ -1,0 +1,20 @@
+{
+  "ticker": "TSLY",
+  "fund_name": "YieldMax TSLA Option Income Strategy ETF",
+  "category": "Derivative Income",
+  "yield": 0.9404,
+  "ytd_return": 10.19533,
+  "three_year_avg_return": null,
+  "five_year_avg_return": null,
+  "total_assets": 1302384512,
+  "nav": 8.5074,
+  "last_updated": "2025-10-21T17:27:12.794784",
+  "nav_1y_ago": 4.9583964347839355,
+  "current_nav": 8.449999809265137,
+  "nav_change_1y": 0.7041799542261388,
+  "volatility_1y": 0.5588818835661753,
+  "distribution_count_1y": 36,
+  "annual_distribution": 35.654,
+  "distribution_coverage": 1.0979302006641949,
+  "sustainability_score": 54.89651003320974
+}

@@ -1,0 +1,20 @@
+{
+  "ticker": "NVDY",
+  "fund_name": "YieldMax NVDA Option Income Strategy ETF",
+  "category": "Derivative Income",
+  "yield": 0.7687,
+  "ytd_return": 25.28109,
+  "three_year_avg_return": null,
+  "five_year_avg_return": null,
+  "total_assets": 1845740672,
+  "nav": 15.7148,
+  "last_updated": "2025-10-21T17:27:13.656397",
+  "nav_1y_ago": 13.22797679901123,
+  "current_nav": 15.630000114440918,
+  "nav_change_1y": 0.18158659876159103,
+  "volatility_1y": 0.4050403702955887,
+  "distribution_count_1y": 31,
+  "annual_distribution": 35.09400000000001,
+  "distribution_coverage": 1.0684454127608618,
+  "sustainability_score": 53.42227063804309
+}

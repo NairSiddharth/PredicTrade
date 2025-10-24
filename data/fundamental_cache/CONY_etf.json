@@ -1,0 +1,20 @@
+{
+  "ticker": "CONY",
+  "fund_name": "YieldMax COIN Option Income Strategy ETF",
+  "category": "Derivative Income",
+  "yield": 1.5824001,
+  "ytd_return": 6.15865,
+  "three_year_avg_return": null,
+  "five_year_avg_return": null,
+  "total_assets": 1349025664,
+  "nav": 6.5137,
+  "last_updated": "2025-10-21T17:27:15.974081",
+  "nav_1y_ago": 5.430035591125488,
+  "current_nav": 6.429999828338623,
+  "nav_change_1y": 0.18415426942088814,
+  "volatility_1y": 0.6508543511095707,
+  "distribution_count_1y": 26,
+  "annual_distribution": 31.822000000000003,
+  "distribution_coverage": 1.0314236766140763,
+  "sustainability_score": 51.571183830703816
+}

@@ -1,0 +1,306 @@
+{
+  "evaluation_date": "2025-10-21T19:39:57.999328",
+  "methodology": "Multi-factor IC-weighted optimization (Phase 4D) - Extended 2001-2025 dataset",
+  "period": "max (2001-2025)",
+  "factor_weights": {
+    "economic": 0.6562137049941928,
+    "technical": 0.00929152148664344,
+    "fundamental": 0.3344947735191638
+  },
+  "factor_ics": {
+    "economic": 0.565,
+    "technical": 0.008,
+    "fundamental": 0.288
+  },
+  "results_by_category": {
+    "high_vol_tech": {
+      "NVDA": {
+        "ticker": "NVDA",
+        "composite_ic": -0.25381537119869474,
+        "composite_pvalue": 1.2990238878327357e-05,
+        "composite_significant": true,
+        "individual_ics": {
+          "economic": -0.2960440444285366,
+          "technical": 0.14180571798303254,
+          "fundamental": -0.24468661209103446
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 288,
+        "improvement_vs_best": -0.5498594156272314
+      },
+      "TSLA": {
+        "ticker": "TSLA",
+        "composite_ic": 0.07387629595584495,
+        "composite_pvalue": 0.19527399477080812,
+        "composite_significant": false,
+        "individual_ics": {
+          "economic": -0.07478712015771008,
+          "technical": -0.004593245777085426,
+          "fundamental": -0.4058098280949244
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 309,
+        "improvement_vs_best": -0.33193353213907945
+      },
+      "AMD": {
+        "ticker": "AMD",
+        "composite_ic": -0.36226078963316666,
+        "composite_pvalue": 5.1500238935611446e-11,
+        "composite_significant": true,
+        "individual_ics": {
+          "economic": -0.44385741593062294,
+          "technical": 0.09965875026946118,
+          "fundamental": -0.2836003728530804
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 309,
+        "improvement_vs_best": -0.8061182055637897
+      },
+      "COIN": {
+        "ticker": "COIN",
+        "composite_ic": -0.03876011242124615,
+        "composite_pvalue": 0.4972428184378418,
+        "composite_significant": false,
+        "individual_ics": {
+          "economic": -0.18668607326597791,
+          "technical": 0.06520798337271871,
+          "fundamental": -0.47025880477180193
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 309,
+        "improvement_vs_best": -0.509018917193048
+      },
+      "PLTR": {
+        "ticker": "PLTR",
+        "composite_ic": 0.2549127352447114,
+        "composite_pvalue": 5.679435624846937e-06,
+        "composite_significant": true,
+        "individual_ics": {
+          "economic": 0.18176830167644742,
+          "technical": -0.21446874453451334,
+          "fundamental": -0.4076088951508039
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 309,
+        "improvement_vs_best": -0.15269615990609248
+      }
+    },
+    "med_vol_large_cap": {
+      "AAPL": {
+        "ticker": "AAPL",
+        "composite_ic": 0.06844314470371468,
+        "composite_pvalue": 0.23027458133661763,
+        "composite_significant": false,
+        "individual_ics": {
+          "economic": 0.00818743947852223,
+          "technical": -0.1999337023765461,
+          "fundamental": -0.22001566739568781
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 309,
+        "improvement_vs_best": -0.15157252269197313
+      },
+      "MSFT": {
+        "ticker": "MSFT",
+        "composite_ic": -0.3537380877813072,
+        "composite_pvalue": 1.5427313300807762e-10,
+        "composite_significant": true,
+        "individual_ics": {
+          "economic": -0.3579976030304596,
+          "technical": 0.11403231907459906,
+          "fundamental": -0.3430796262929053
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 309,
+        "improvement_vs_best": -0.7117356908117668
+      },
+      "GOOGL": {
+        "ticker": "GOOGL",
+        "composite_ic": -0.02237727821818019,
+        "composite_pvalue": 0.6951974941997724,
+        "composite_significant": false,
+        "individual_ics": {
+          "economic": -0.11754472392932591,
+          "technical": 0.26762845672961544,
+          "fundamental": -0.3832423994902016
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 309,
+        "improvement_vs_best": -0.4056196777083818
+      },
+      "AMZN": {
+        "ticker": "AMZN",
+        "composite_ic": 0.2244662634578074,
+        "composite_pvalue": 6.871892790689599e-05,
+        "composite_significant": true,
+        "individual_ics": {
+          "economic": 0.0993063629236603,
+          "technical": -0.04547813601994622,
+          "fundamental": -0.3102963280667449
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 309,
+        "improvement_vs_best": -0.0858300646089375
+      },
+      "META": {
+        "ticker": "META",
+        "composite_ic": 0.2167863142181964,
+        "composite_pvalue": 0.00012249043915884932,
+        "composite_significant": true,
+        "individual_ics": {
+          "economic": 0.056953588786402026,
+          "technical": -0.2100467337235267,
+          "fundamental": -0.5248055862470338
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 309,
+        "improvement_vs_best": -0.3080192720288374
+      }
+    },
+    "low_vol_dividend": {
+      "JNJ": {
+        "ticker": "JNJ",
+        "composite_ic": 0.08678684297224853,
+        "composite_pvalue": 0.1279429314985141,
+        "composite_significant": false,
+        "individual_ics": {
+          "economic": -0.07267253349473705,
+          "technical": 0.14345260126656928,
+          "fundamental": -0.42016868074593616
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 309,
+        "improvement_vs_best": -0.33338183777368763
+      },
+      "PG": {
+        "ticker": "PG",
+        "composite_ic": 0.2815265536217618,
+        "composite_pvalue": 4.883192677729608e-07,
+        "composite_significant": true,
+        "individual_ics": {
+          "economic": 0.13713782495193388,
+          "technical": -0.4088082290399859,
+          "fundamental": -0.22311907089734015
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 309,
+        "improvement_vs_best": -0.1272816754182241
+      },
+      "KO": {
+        "ticker": "KO",
+        "composite_ic": 0.09438341176518439,
+        "composite_pvalue": 0.09770487757294882,
+        "composite_significant": false,
+        "individual_ics": {
+          "economic": 0.018006854800238743,
+          "technical": 0.11193927787848454,
+          "fundamental": -0.10519069493144775
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 309,
+        "improvement_vs_best": -0.01755586611330015
+      },
+      "WMT": {
+        "ticker": "WMT",
+        "composite_ic": 0.3258171274248581,
+        "composite_pvalue": 1.5096943916643145e-08,
+        "composite_significant": true,
+        "individual_ics": {
+          "economic": 0.14359463085379837,
+          "technical": -0.39727362933903093,
+          "fundamental": -0.5949254011388894
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 288,
+        "improvement_vs_best": -0.2691082737140313
+      },
+      "PEP": {
+        "ticker": "PEP",
+        "composite_ic": 0.10529608193247403,
+        "composite_pvalue": 0.0645189738592041,
+        "composite_significant": false,
+        "individual_ics": {
+          "economic": -0.07464278604198099,
+          "technical": 0.06787575093243742,
+          "fundamental": -0.338246310335737
+        },
+        "weights_used": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "n_observations": 309,
+        "improvement_vs_best": -0.23295022840326296
+      }
+    }
+  },
+  "aggregate_statistics": {
+    "n_stocks_tested": 15,
+    "avg_composite_ic": 0.18421642736995977,
+    "median_composite_ic": 0.2167863142181964,
+    "max_composite_ic": 0.36226078963316666,
+    "avg_improvement": -0.33284542264677625,
+    "n_improved": 0,
+    "n_degraded": 15,
+    "pct_improved": 0.0,
+    "base_economic_ic": 0.565,
+    "base_technical_ic": 0.008,
+    "base_fundamental_ic": 0.288
+  }
+}

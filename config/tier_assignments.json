@@ -1,0 +1,69 @@
+{
+  "mode_d_tier_based": {
+    "tier_1_category_only": {
+      "description": "Categories where category-specific won decisively (>60%)",
+      "categories": [
+        "traditional_dividend_aristocrats",
+        "banks_regional_banks",
+        "consumer_discretionary",
+        "healthcare",
+        "energy_commodities"
+      ],
+      "approach": "category"
+    },
+    "tier_2_weighted_hybrid": {
+      "description": "Categories where category + ML both work",
+      "categories": [
+        "business_development_companies",
+        "crypto_mining"
+      ],
+      "approach": "weighted",
+      "weights": {
+        "category": 0.5,
+        "ml": 0.5
+      }
+    },
+    "tier_3_original": {
+      "description": "Categories where original P/B+P/E won",
+      "categories": [
+        "utilities",
+        "reits"
+      ],
+      "approach": "original"
+    },
+    "tier_4_stock_specific": {
+      "description": "Categories with mixed results - use stock-level lookup",
+      "categories": [
+        "mega_cap_tech",
+        "high_vol_tech_growth"
+      ],
+      "approach": "stock_specific",
+      "stock_overrides": {
+        "AAPL": "ml",
+        "MSFT": "original",
+        "GOOGL": "original",
+        "META": "original",
+        "ADBE": "category",
+        "ORCL": "category",
+        "CRM": "ml",
+        "NVDA": "category",
+        "TSLA": "category",
+        "AMD": "category",
+        "SHOP": "category",
+        "NFLX": "original",
+        "COIN": "original",
+        "SNOW": "original",
+        "RBLX": "original",
+        "SQ": "category",
+        "ROKU": "original",
+        "ZM": "category"
+      }
+    }
+  },
+  "metadata": {
+    "source": "PHASE_4E_EXECUTIVE_SUMMARY.md",
+    "created_date": "2025-10-22 19:33:53.198572",
+    "total_tiers": 4,
+    "total_categories": 11
+  }
+}

@@ -1,0 +1,320 @@
+{
+  "metadata": {
+    "description": "Comprehensive stock list for Phase 4E multi-category evaluation",
+    "total_categories": 15,
+    "total_stocks": 127,
+    "created": "2025-10-22",
+    "purpose": "Test fundamental approaches across diverse market segments"
+  },
+  "categories": {
+    "high_yield_income_etfs": {
+      "description": "YieldMax, NEOS, Kurv, GraniteShares covered call ETFs with high monthly distributions",
+      "tickers": [
+        "MSTY",
+        "NVDY",
+        "TSLY",
+        "CONY",
+        "GDXY",
+        "ULTY",
+        "YBTC",
+        "KGLD"
+      ],
+      "special_metrics": [
+        "distribution_yield",
+        "nav_premium_discount",
+        "option_premium_capture",
+        "distribution_sustainability",
+        "expense_ratio"
+      ],
+      "count": 8
+    },
+    "traditional_covered_call_etfs": {
+      "description": "Established covered call and income-focused ETFs (JEPI, QYLD, etc.)",
+      "tickers": [
+        "JEPI",
+        "JEPQ",
+        "QYLD",
+        "XYLD",
+        "RYLD",
+        "DIVO",
+        "SPYI"
+      ],
+      "special_metrics": [
+        "distribution_yield",
+        "covered_call_premium_income",
+        "distribution_coverage",
+        "nav_stability"
+      ],
+      "count": 7
+    },
+    "business_development_companies": {
+      "description": "BDCs - high-yield lending companies with monthly/quarterly distributions",
+      "tickers": [
+        "HTGC",
+        "TRIN",
+        "ARCC",
+        "MAIN",
+        "PSEC",
+        "GAIN",
+        "FDUS",
+        "PDI"
+      ],
+      "special_metrics": [
+        "nav_per_share",
+        "distribution_coverage_ratio",
+        "net_investment_income",
+        "leverage_ratio",
+        "non_accrual_loans_pct"
+      ],
+      "count": 8
+    },
+    "reits": {
+      "description": "Real Estate Investment Trusts - diverse property types",
+      "tickers": [
+        "O",
+        "VICI",
+        "SPG",
+        "STAG",
+        "DLR",
+        "PLD",
+        "PSA"
+      ],
+      "special_metrics": [
+        "ffo",
+        "affo",
+        "occupancy_rate",
+        "debt_to_ebitda",
+        "distribution_payout_ratio"
+      ],
+      "count": 7
+    },
+    "traditional_dividend_aristocrats": {
+      "description": "Dividend Aristocrats - 25+ years of consecutive dividend increases",
+      "tickers": [
+        "KO",
+        "PG",
+        "JNJ",
+        "PEP",
+        "WMT",
+        "MMM",
+        "CAT",
+        "XOM",
+        "CVX",
+        "LOW"
+      ],
+      "special_metrics": [],
+      "note": "Use existing fundamental metrics (P/B, FCF yield, profit margin, ROE)",
+      "count": 10
+    },
+    "high_vol_tech_growth": {
+      "description": "High-volatility, high-growth technology stocks",
+      "tickers": [
+        "NVDA",
+        "TSLA",
+        "AMD",
+        "PLTR",
+        "COIN",
+        "MSTR",
+        "SMCI",
+        "ARM",
+        "SNOW"
+      ],
+      "special_metrics": [],
+      "note": "Use existing: earnings growth, FCF yield, P/B, profit margin",
+      "count": 9
+    },
+    "mega_cap_tech": {
+      "description": "FAANG+ mega-cap technology companies",
+      "tickers": [
+        "AAPL",
+        "MSFT",
+        "GOOGL",
+        "AMZN",
+        "META",
+        "NFLX",
+        "ORCL",
+        "ADBE"
+      ],
+      "special_metrics": [],
+      "note": "Use existing: revenue growth, gross margin, profit margin, operating margin",
+      "count": 8
+    },
+    "crypto_mining": {
+      "description": "Bitcoin and cryptocurrency mining companies",
+      "tickers": [
+        "WULF",
+        "CIFR",
+        "RIOT",
+        "MARA",
+        "CLSK",
+        "BTBT",
+        "HUT",
+        "BITF"
+      ],
+      "special_metrics": [
+        "bitcoin_holdings",
+        "hashrate",
+        "mining_efficiency_th_per_mw",
+        "production_cost_per_btc",
+        "energy_costs"
+      ],
+      "note": "May require manual data collection or specialized APIs",
+      "count": 8
+    },
+    "banks_regional_banks": {
+      "description": "Large banks and regional banks",
+      "tickers": [
+        "BAC",
+        "JPM",
+        "WFC",
+        "C",
+        "GS",
+        "USB",
+        "PNC",
+        "TFC",
+        "KEY",
+        "RF"
+      ],
+      "special_metrics": [
+        "net_interest_margin",
+        "loan_to_deposit_ratio",
+        "tier1_capital_ratio",
+        "non_performing_loans_pct",
+        "efficiency_ratio"
+      ],
+      "count": 10
+    },
+    "energy_commodities": {
+      "description": "Energy producers, refiners, and commodity companies including gold miners",
+      "tickers": [
+        "XOM",
+        "CVX",
+        "COP",
+        "SLB",
+        "EOG",
+        "MPC",
+        "PSX",
+        "VLO",
+        "GOLD"
+      ],
+      "special_metrics": [
+        "production_costs",
+        "reserves",
+        "free_cash_flow_yield",
+        "commodity_price_sensitivity"
+      ],
+      "count": 9
+    },
+    "healthcare": {
+      "description": "Pharma, biotech, medical devices, and healthcare services",
+      "tickers": [
+        "UNH",
+        "LLY",
+        "JNJ",
+        "ABBV",
+        "TMO",
+        "ISRG",
+        "BMY",
+        "GILD",
+        "REGN"
+      ],
+      "special_metrics": [
+        "r_and_d_spend_ratio"
+      ],
+      "note": "Use existing metrics + R&D ratio",
+      "count": 9
+    },
+    "consumer_discretionary": {
+      "description": "Consumer discretionary: retail, restaurants, travel, entertainment",
+      "tickers": [
+        "AMZN",
+        "HD",
+        "NKE",
+        "SBUX",
+        "MCD",
+        "TGT",
+        "BKNG",
+        "LOW",
+        "CMG"
+      ],
+      "special_metrics": [],
+      "note": "Use existing: revenue growth, operating margin, profit margin",
+      "count": 9
+    },
+    "utilities": {
+      "description": "Regulated utilities - stable, predictable cash flows",
+      "tickers": [
+        "NEE",
+        "DUK",
+        "SO",
+        "D",
+        "AEP",
+        "EXC",
+        "XEL",
+        "ES"
+      ],
+      "special_metrics": [],
+      "note": "Use conservative metrics: P/B, FCF yield, debt-to-equity, current ratio",
+      "count": 8
+    },
+    "broad_market_index_funds": {
+      "description": "Broad market index ETFs and mutual funds",
+      "tickers": [
+        "VOO",
+        "SPY",
+        "QQQ",
+        "VTI",
+        "IWM",
+        "DIA",
+        "VTV",
+        "VUG"
+      ],
+      "special_metrics": [
+        "expense_ratio",
+        "tracking_error",
+        "aum",
+        "pe_ratio_of_holdings"
+      ],
+      "count": 8
+    },
+    "leveraged_inverse_etfs": {
+      "description": "Leveraged and inverse ETFs (2x, 3x, -1x)",
+      "tickers": [
+        "TQQQ",
+        "SQQQ",
+        "UPRO",
+        "SPXU",
+        "SOXL",
+        "SOXS",
+        "TNA",
+        "TZA"
+      ],
+      "special_metrics": [
+        "leverage_ratio",
+        "decay_rate",
+        "expense_ratio",
+        "rebalancing_frequency"
+      ],
+      "note": "High-risk, not suitable for buy-and-hold",
+      "count": 8
+    }
+  },
+  "category_summary": {
+    "high_yield_income_etfs": 8,
+    "traditional_covered_call_etfs": 7,
+    "business_development_companies": 8,
+    "reits": 7,
+    "traditional_dividend_aristocrats": 10,
+    "high_vol_tech_growth": 9,
+    "mega_cap_tech": 8,
+    "crypto_mining": 8,
+    "banks_regional_banks": 10,
+    "energy_commodities": 9,
+    "healthcare": 9,
+    "consumer_discretionary": 9,
+    "utilities": 8,
+    "broad_market_index_funds": 8,
+    "leveraged_inverse_etfs": 8,
+    "total": 127
+  }
+}

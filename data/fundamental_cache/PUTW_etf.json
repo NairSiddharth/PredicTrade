@@ -1,0 +1,20 @@
+{
+  "ticker": "PUTW",
+  "fund_name": "WisdomTree Equity Premium Income Fund",
+  "category": "Derivative Income",
+  "yield": 0.1173,
+  "ytd_return": 9.98182,
+  "three_year_avg_return": 0.1512548,
+  "five_year_avg_return": 0.11902449,
+  "total_assets": 310228896,
+  "nav": 33.466,
+  "last_updated": "2025-10-21T17:27:29.662824",
+  "nav_1y_ago": 29.91388511657715,
+  "current_nav": 33.52000045776367,
+  "nav_change_1y": 0.12054988267599351,
+  "volatility_1y": 0.11058568890070578,
+  "distribution_count_1y": 39,
+  "annual_distribution": 8.014144,
+  "distribution_coverage": 1.4499688726814146,
+  "sustainability_score": 72.49844363407072
+}

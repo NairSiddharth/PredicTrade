@@ -1,0 +1,20 @@
+{
+  "ticker": "KMLM",
+  "fund_name": "KraneShares Mount Lucas Managed Futures Index Strategy ETF",
+  "category": "Systematic Trend",
+  "yield": 0.0085,
+  "ytd_return": -4.36016,
+  "three_year_avg_return": -0.0757163,
+  "five_year_avg_return": null,
+  "total_assets": 182105792,
+  "nav": 27.11,
+  "last_updated": "2025-10-21T17:27:28.336629",
+  "nav_1y_ago": 27.840734481811523,
+  "current_nav": 26.920000076293945,
+  "nav_change_1y": -0.033071484019902495,
+  "volatility_1y": 0.09818924412157348,
+  "distribution_count_1y": 3,
+  "annual_distribution": 4.549,
+  "distribution_coverage": 0.797596305667712,
+  "sustainability_score": 39.8798152833856
+}

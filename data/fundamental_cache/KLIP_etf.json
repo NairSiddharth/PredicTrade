@@ -1,0 +1,20 @@
+{
+  "ticker": "KLIP",
+  "fund_name": "KraneShares KWEB Covered Call Strategy ETF",
+  "category": "China Region",
+  "yield": 0.3061,
+  "ytd_return": 21.24847,
+  "three_year_avg_return": null,
+  "five_year_avg_return": null,
+  "total_assets": 119541720,
+  "nav": 32.73,
+  "last_updated": "2025-10-21T17:27:26.053606",
+  "nav_1y_ago": 26.696575164794922,
+  "current_nav": 32.61000061035156,
+  "nav_change_1y": 0.2215050211142717,
+  "volatility_1y": 0.19608169776049073,
+  "distribution_count_1y": 34,
+  "annual_distribution": 55.958999999999996,
+  "distribution_coverage": 1.105674251604865,
+  "sustainability_score": 55.28371258024325
+}

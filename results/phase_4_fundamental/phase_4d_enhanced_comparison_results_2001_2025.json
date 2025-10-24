@@ -1,0 +1,1301 @@
+{
+  "evaluation_date": "2025-10-22T15:02:28.498895",
+  "methodology": "Phase 4D Enhanced: Comparison of 3 fundamental approaches (2001-2025)",
+  "approaches": {
+    "1_original": "P/B + P/E simple average with static weights",
+    "2_category_specific": "Category-weighted composites with dynamic IC\u00b2 weights",
+    "3_ml_ensemble": "ExtraTrees + HistGB + CatBoost with dynamic IC\u00b2 weights"
+  },
+  "results_by_stock": {
+    "NVDA": {
+      "ticker": "NVDA",
+      "category": "high_vol_tech",
+      "n_observations": 86,
+      "individual_ics": {
+        "economic": -0.4375951752895185,
+        "technical": -0.45244587008821174,
+        "fundamental_original": -0.5414311995848861,
+        "fundamental_category": 0.48040945327609785,
+        "fundamental_ml": -0.27131177231391185
+      },
+      "original": {
+        "composite_ic": -0.034445020991556205,
+        "composite_pvalue": 0.7528761534662944,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": -0.5069861785933298
+      },
+      "category_specific": {
+        "composite_ic": -0.40482098212179823,
+        "composite_pvalue": 0.00011059151490929384,
+        "weights": {
+          "economic": 0.3054108096012559,
+          "technical": 0.32649205007087306,
+          "fundamental": 0.368097140327871
+        },
+        "improvement_vs_best": -0.07558847115429962
+      },
+      "ml_ensemble": {
+        "composite_ic": -0.48931553375159204,
+        "composite_pvalue": 1.745698801294494e-06,
+        "weights": {
+          "economic": 0.40759202418470586,
+          "technical": 0.43572640975722116,
+          "fundamental": 0.15668156605807293
+        },
+        "improvement_vs_best": 0.03686966366338029,
+        "ml_model_ics": {
+          "extra_trees": 0.28877744244526443,
+          "hist_gradient_boosting": -0.059416190617030525,
+          "catboost": -0.5933795122878301,
+          "ensemble": 0.0724855419136297
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.041473942137220915,
+            "p_e_ratio_inv": 0.04508787999157799,
+            "roe": 0.08167050521301403,
+            "roa": 0.022271626977710027,
+            "profit_margin": 0.1757772945522,
+            "operating_margin": 0.11272245494307828,
+            "gross_margin": 0.026786429958422835,
+            "debt_to_equity": 0.03962445582321721,
+            "current_ratio": 0.15642438560736885,
+            "quick_ratio": 0.1294677507415378,
+            "revenue_growth": 0.0009723145181416713,
+            "earnings_growth": 0.10097502065435301,
+            "fcf": 0.02556143645120477,
+            "fcf_yield": 0.04118450243095264
+          },
+          "catboost": {
+            "p_b_ratio_inv": 0.0,
+            "p_e_ratio_inv": 0.0,
+            "roe": 0.0,
+            "roa": 0.0,
+            "profit_margin": 0.0,
+            "operating_margin": 0.0,
+            "gross_margin": 0.0,
+            "debt_to_equity": 0.0,
+            "current_ratio": 7.990115652219157,
+            "quick_ratio": 58.69180865444016,
+            "revenue_growth": 0.0,
+            "earnings_growth": 0.0,
+            "fcf": 25.633858807848487,
+            "fcf_yield": 7.684216885492193
+          }
+        }
+      },
+      "winner": "ml",
+      "winner_ic": 0.48931553375159204
+    },
+    "TSLA": {
+      "ticker": "TSLA",
+      "category": "high_vol_tech",
+      "n_observations": 51,
+      "individual_ics": {
+        "economic": -0.33888884279846,
+        "technical": -0.440814479638009,
+        "fundamental_original": -0.9262443438914028,
+        "fundamental_category": 0.9262443438914028,
+        "fundamental_ml": 0.8990567191596094
+      },
+      "original": {
+        "composite_ic": 0.18190045248868777,
+        "composite_pvalue": 0.2014210634341776,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": -0.744343891402715
+      },
+      "category_specific": {
+        "composite_ic": 0.8366515837104072,
+        "composite_pvalue": 2.0819692986319894e-14,
+        "weights": {
+          "economic": 0.09840328218574196,
+          "technical": 0.16649712769860614,
+          "fundamental": 0.735099590115652
+        },
+        "improvement_vs_best": -0.0895927601809956
+      },
+      "ml_ensemble": {
+        "composite_ic": 0.0767420814479638,
+        "composite_pvalue": 0.5924757961885797,
+        "weights": {
+          "economic": 0.10277327804112385,
+          "technical": 0.17389110625109513,
+          "fundamental": 0.723335615707781
+        },
+        "improvement_vs_best": -0.8223146377116456,
+        "ml_model_ics": {
+          "extra_trees": -0.09863800573317842,
+          "hist_gradient_boosting": 0.42013889287526013,
+          "catboost": 0.4112931830658256,
+          "ensemble": -0.09892264859552502
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.10570455430954777,
+            "p_e_ratio_inv": 0.11423291261614016,
+            "roe": 0.00578812435862504,
+            "roa": 0.014416301964284024,
+            "profit_margin": 0.017390403465790908,
+            "operating_margin": 0.002873676052412884,
+            "gross_margin": 0.0037697940246254253,
+            "debt_to_equity": 0.02895982730026744,
+            "current_ratio": 0.06142259096667933,
+            "quick_ratio": 0.06212424311698423,
+            "revenue_growth": 0.16095645466467526,
+            "earnings_growth": 0.19440062254242185,
+            "fcf": 0.012663540605543916,
+            "fcf_yield": 0.21529695401200175
+          },
+          "catboost": {
+            "p_b_ratio_inv": 17.09358536704893,
+            "p_e_ratio_inv": 0.0,
+            "roe": 0.0,
+            "roa": 0.0,
+            "profit_margin": 0.0,
+            "operating_margin": 0.0,
+            "gross_margin": 0.0,
+            "debt_to_equity": 27.028018576128858,
+            "current_ratio": 0.005748436175958455,
+            "quick_ratio": 0.0,
+            "revenue_growth": 0.0,
+            "earnings_growth": 0.0,
+            "fcf": 40.97811639970813,
+            "fcf_yield": 14.89453122093812
+          }
+        }
+      },
+      "winner": "category",
+      "winner_ic": 0.8366515837104072
+    },
+    "AMD": {
+      "ticker": "AMD",
+      "category": "high_vol_tech",
+      "n_observations": 51,
+      "individual_ics": {
+        "economic": 0.10194217222392699,
+        "technical": -0.542443438914027,
+        "fundamental_original": -0.1891898007226454,
+        "fundamental_category": 0.1891898007226454,
+        "fundamental_ml": 0.18265017375532572
+      },
+      "original": {
+        "composite_ic": 0.3253393665158371,
+        "composite_pvalue": 0.019829523300314258,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": -0.2171040723981899
+      },
+      "category_specific": {
+        "composite_ic": -0.5560180995475112,
+        "composite_pvalue": 2.2750626159876178e-05,
+        "weights": {
+          "economic": 0.030526717379440352,
+          "technical": 0.8643333296262404,
+          "fundamental": 0.10513995299431923
+        },
+        "improvement_vs_best": 0.013574660633484226
+      },
+      "ml_ensemble": {
+        "composite_ic": -0.5460633484162897,
+        "composite_pvalue": 3.401252551628611e-05,
+        "weights": {
+          "economic": 0.03074633885284224,
+          "technical": 0.8705516909719224,
+          "fundamental": 0.0987019701752353
+        },
+        "improvement_vs_best": 0.0036199095022626526,
+        "ml_model_ics": {
+          "extra_trees": 0.5008761698823166,
+          "hist_gradient_boosting": 0.5424076591256781,
+          "catboost": 0.5183052360257446,
+          "ensemble": 0.5151609040519377
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.20337378212463064,
+            "p_e_ratio_inv": 0.1272136633153693,
+            "roe": 0.015463152423837693,
+            "roa": 0.0225050448364811,
+            "profit_margin": 0.0209787060060776,
+            "operating_margin": 0.02697259729091952,
+            "gross_margin": 0.038809513000006325,
+            "debt_to_equity": 0.02218205057225026,
+            "current_ratio": 0.10884267085583663,
+            "quick_ratio": 0.13391623974201458,
+            "revenue_growth": 0.03855478464222446,
+            "earnings_growth": 0.034592478357965445,
+            "fcf": 0.04773068891805443,
+            "fcf_yield": 0.15886462791433195
+          },
+          "catboost": {
+            "p_b_ratio_inv": 17.34638103353597,
+            "p_e_ratio_inv": 13.755199491637141,
+            "roe": 0.6927205517649079,
+            "roa": 8.392414727445667,
+            "profit_margin": 1.6779191376039848,
+            "operating_margin": 1.6057723776672252,
+            "gross_margin": 3.6216150175480135,
+            "debt_to_equity": 11.252950337951894,
+            "current_ratio": 5.919732487378662,
+            "quick_ratio": 5.851425432556805,
+            "revenue_growth": 2.3361179642032885,
+            "earnings_growth": 2.8964462118499448,
+            "fcf": 4.488165396167609,
+            "fcf_yield": 20.163139832688874
+          }
+        }
+      },
+      "winner": "category",
+      "winner_ic": 0.5560180995475112
+    },
+    "COIN": {
+      "ticker": "COIN",
+      "category": "high_vol_tech",
+      "n_observations": 51,
+      "individual_ics": {
+        "economic": 0.3747063627690289,
+        "technical": -0.7926696832579185,
+        "fundamental_original": -0.3075113122171946,
+        "fundamental_category": 0.3075113122171946,
+        "fundamental_ml": 0.28798446843262104
+      },
+      "original": {
+        "composite_ic": 0.6116742081447963,
+        "composite_pvalue": 1.8554066466459662e-06,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": -0.1809954751131222
+      },
+      "category_specific": {
+        "composite_ic": -0.622262443438914,
+        "composite_pvalue": 1.0893881016542049e-06,
+        "weights": {
+          "economic": 0.1626386531305275,
+          "technical": 0.7278235941772806,
+          "fundamental": 0.10953775269219189
+        },
+        "improvement_vs_best": -0.17040723981900452
+      },
+      "ml_ensemble": {
+        "composite_ic": -0.6161990950226245,
+        "composite_pvalue": 1.4813206038098637e-06,
+        "weights": {
+          "economic": 0.16485922911629744,
+          "technical": 0.7377608849995907,
+          "fundamental": 0.09737988588411184
+        },
+        "improvement_vs_best": -0.17647058823529405,
+        "ml_model_ics": {
+          "extra_trees": 0.7956050071191823,
+          "hist_gradient_boosting": 0.7773235893147618,
+          "catboost": 0.06287454090789822,
+          "ensemble": 0.7288423054571789
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.30203017347073285,
+            "p_e_ratio_inv": 0.259123527069232,
+            "roe": 0.007034169491633247,
+            "roa": 0.01084836802379071,
+            "profit_margin": 0.011745684627001355,
+            "operating_margin": 0.060348252247376506,
+            "gross_margin": 0.09988254258880726,
+            "debt_to_equity": 0.008223089424627433,
+            "current_ratio": 0.01580585874680621,
+            "quick_ratio": 0.011406551622415812,
+            "revenue_growth": 0.1325517625359007,
+            "earnings_growth": 0.08100002015167614
+          },
+          "catboost": {
+            "p_b_ratio_inv": 22.5638221012452,
+            "p_e_ratio_inv": 30.860927215979668,
+            "roe": 2.9830984636736755,
+            "roa": 0.1892842187128765,
+            "profit_margin": 0.5713749894190483,
+            "operating_margin": 5.3089826352507306,
+            "gross_margin": 3.175650077213342,
+            "debt_to_equity": 4.367163777275174,
+            "current_ratio": 0.4516882459181964,
+            "quick_ratio": 0.7951144715670172,
+            "revenue_growth": 5.155756114233417,
+            "earnings_growth": 23.57713768951164
+          }
+        }
+      },
+      "winner": "category",
+      "winner_ic": 0.622262443438914
+    },
+    "PLTR": {
+      "ticker": "PLTR",
+      "category": "high_vol_tech",
+      "n_observations": 32,
+      "individual_ics": {
+        "economic": -0.1757294338944421,
+        "technical": -0.21737536656891493,
+        "fundamental_original": -0.3603372434017595,
+        "fundamental_category": 0.3603372434017595,
+        "fundamental_ml": -0.3481949945138966
+      },
+      "original": {
+        "composite_ic": -0.008064516129032258,
+        "composite_pvalue": 0.9650595289248431,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": -0.35227272727272724
+      },
+      "category_specific": {
+        "composite_ic": 0.2412023460410557,
+        "composite_pvalue": 0.18355279693280874,
+        "weights": {
+          "economic": 0.14848281396160887,
+          "technical": 0.22719973697792628,
+          "fundamental": 0.6243174490604649
+        },
+        "improvement_vs_best": -0.11913489736070379
+      },
+      "ml_ensemble": {
+        "composite_ic": -0.26099706744868034,
+        "composite_pvalue": 0.1490691457623214,
+        "weights": {
+          "economic": 0.154890030177357,
+          "technical": 0.23700368532817148,
+          "fundamental": 0.6081062844944716
+        },
+        "improvement_vs_best": -0.08719792706521629,
+        "ml_model_ics": {
+          "extra_trees": 0.6088569026871588,
+          "hist_gradient_boosting": -0.0975477517990221,
+          "catboost": 0.670119438757435,
+          "ensemble": 0.5398708287318662
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.23067959075417266,
+            "p_e_ratio_inv": 0.17169068499364118,
+            "roe": 0.01544236057360871,
+            "roa": 0.013323482359280475,
+            "profit_margin": 0.014431419836758339,
+            "operating_margin": 0.01585593623579016,
+            "gross_margin": 0.031463225709762656,
+            "debt_to_equity": 0.03415049161612893,
+            "current_ratio": 0.03238181674181836,
+            "quick_ratio": 0.020559119231229668,
+            "revenue_growth": 0.046383199710519935,
+            "earnings_growth": 0.017304006867573052,
+            "fcf": 0.02864607452530804,
+            "fcf_yield": 0.32768859084440777
+          },
+          "catboost": {
+            "p_b_ratio_inv": 16.547533517207892,
+            "p_e_ratio_inv": 14.468059602259196,
+            "roe": 2.8074988933524656,
+            "roa": 2.1470440548902,
+            "profit_margin": 2.143035521777285,
+            "operating_margin": 1.0623914173532885,
+            "gross_margin": 2.4193760639886377,
+            "debt_to_equity": 0.8116775829526874,
+            "current_ratio": 2.9970233337610717,
+            "quick_ratio": 1.2522025916607114,
+            "revenue_growth": 1.2424890281643644,
+            "earnings_growth": 3.180043853741294,
+            "fcf": 2.849137035541934,
+            "fcf_yield": 46.07248750334897
+          }
+        }
+      },
+      "winner": "ml",
+      "winner_ic": 0.26099706744868034
+    },
+    "AAPL": {
+      "ticker": "AAPL",
+      "category": "med_vol_large_cap",
+      "n_observations": 32,
+      "individual_ics": {
+        "economic": 0.851081768077004,
+        "technical": -0.48753665689149556,
+        "fundamental_original": -0.6116762925515771,
+        "fundamental_category": 0.6116762925515771,
+        "fundamental_ml": 0.61996889250181
+      },
+      "original": {
+        "composite_ic": 0.9259530791788856,
+        "composite_pvalue": 3.1858979239518735e-14,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": 0.07487131110188161
+      },
+      "category_specific": {
+        "composite_ic": 0.8577712609970674,
+        "composite_pvalue": 3.559024262773838e-10,
+        "weights": {
+          "economic": 0.542097731095521,
+          "technical": 0.17788919314302176,
+          "fundamental": 0.2800130757614573
+        },
+        "improvement_vs_best": 0.006689492920063378
+      },
+      "ml_ensemble": {
+        "composite_ic": 0.7932551319648092,
+        "composite_pvalue": 6.149242626720503e-08,
+        "weights": {
+          "economic": 0.5379854586418706,
+          "technical": 0.17653975228244892,
+          "fundamental": 0.28547478907568047
+        },
+        "improvement_vs_best": -0.05782663611219474,
+        "ml_model_ics": {
+          "extra_trees": 0.22153249393404487,
+          "hist_gradient_boosting": 0.26909469215915033,
+          "catboost": 0.41366962557837833,
+          "ensemble": 0.33522095792272266
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.14407010413440802,
+            "p_e_ratio_inv": 0.1208683252943304,
+            "roe": 0.09301982393545392,
+            "roa": 0.07183336561074845,
+            "profit_margin": 0.04868772212435189,
+            "operating_margin": 0.12804707376522456,
+            "gross_margin": 0.006618580979312209,
+            "debt_to_equity": 0.013120068537860394,
+            "current_ratio": 0.011217677391127084,
+            "quick_ratio": 0.008730960042895527,
+            "revenue_growth": 0.06414110411192842,
+            "earnings_growth": 0.009955779999400786,
+            "fcf": 0.008065179127891668,
+            "fcf_yield": 0.27162423494506677
+          },
+          "catboost": {
+            "p_b_ratio_inv": 17.34648732115985,
+            "p_e_ratio_inv": 15.994074233688723,
+            "roe": 3.0102590785310483,
+            "roa": 3.8890674238047778,
+            "profit_margin": 6.757721362455019,
+            "operating_margin": 3.458676818705105,
+            "gross_margin": 1.1899058904682236,
+            "debt_to_equity": 3.9840864406930043,
+            "current_ratio": 4.3916906052166444,
+            "quick_ratio": 2.647033410956219,
+            "revenue_growth": 1.3718746246373408,
+            "earnings_growth": 2.5861717325559024,
+            "fcf": 4.193474901234606,
+            "fcf_yield": 29.17947615589354
+          }
+        }
+      },
+      "winner": "original",
+      "winner_ic": 0.9259530791788856
+    },
+    "MSFT": {
+      "ticker": "MSFT",
+      "category": "med_vol_large_cap",
+      "n_observations": 32,
+      "individual_ics": {
+        "economic": -0.18951213459204544,
+        "technical": -0.22177419354838707,
+        "fundamental_original": -0.35923753665689145,
+        "fundamental_category": 0.35923753665689145,
+        "fundamental_ml": 0.35173304424390683
+      },
+      "original": {
+        "composite_ic": 0.02639296187683284,
+        "composite_pvalue": 0.8859854893957696,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": -0.33284457478005863
+      },
+      "category_specific": {
+        "composite_ic": 0.26759530791788855,
+        "composite_pvalue": 0.13869246028698637,
+        "weights": {
+          "economic": 0.16770864935710092,
+          "technical": 0.22966955660445718,
+          "fundamental": 0.6026217940384418
+        },
+        "improvement_vs_best": -0.0916422287390029
+      },
+      "ml_ensemble": {
+        "composite_ic": 0.12353372434017595,
+        "composite_pvalue": 0.5005677488995122,
+        "weights": {
+          "economic": 0.17199381078539377,
+          "technical": 0.23553789511286022,
+          "fundamental": 0.5924682941017461
+        },
+        "improvement_vs_best": -0.22819931990373088,
+        "ml_model_ics": {
+          "extra_trees": 0.9085691846483634,
+          "hist_gradient_boosting": 0.24563204796449958,
+          "catboost": 0.8817372979608232,
+          "ensemble": 0.9086501426198111
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.16172161182844783,
+            "p_e_ratio_inv": 0.15544682779913763,
+            "roe": 0.006265642463190077,
+            "roa": 0.012537870983236441,
+            "profit_margin": 0.022957443292449864,
+            "operating_margin": 0.004021714437509975,
+            "gross_margin": 0.010306446290468521,
+            "debt_to_equity": 0.1070541935534165,
+            "current_ratio": 0.12970993386752633,
+            "quick_ratio": 0.09347929731492459,
+            "revenue_growth": 0.21140480743440118,
+            "earnings_growth": 0.01791795723961153,
+            "fcf": 0.007691236558652049,
+            "fcf_yield": 0.05948501693702753
+          },
+          "catboost": {
+            "p_b_ratio_inv": 8.581851518288977,
+            "p_e_ratio_inv": 11.396711446898648,
+            "roe": 1.052404379001389,
+            "roa": 2.985140000512329,
+            "profit_margin": 0.7896385490724385,
+            "operating_margin": 1.2882441033062655,
+            "gross_margin": 0.6182132524489973,
+            "debt_to_equity": 14.8392240778315,
+            "current_ratio": 18.34251507082076,
+            "quick_ratio": 12.189043137910566,
+            "revenue_growth": 6.149979314451119,
+            "earnings_growth": 3.8508067216590454,
+            "fcf": 2.803772602672893,
+            "fcf_yield": 15.112455825125053
+          }
+        }
+      },
+      "winner": "category",
+      "winner_ic": 0.26759530791788855
+    },
+    "GOOGL": {
+      "ticker": "GOOGL",
+      "category": "med_vol_large_cap",
+      "n_observations": 51,
+      "individual_ics": {
+        "economic": 0.01928635690722943,
+        "technical": -0.7547511312217194,
+        "fundamental_original": -0.5578280542986425,
+        "fundamental_category": 0.5578280542986425,
+        "fundamental_ml": -0.22917665017634709
+      },
+      "original": {
+        "composite_ic": 0.434841628959276,
+        "composite_pvalue": 0.0014292113804667919,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": -0.3199095022624434
+      },
+      "category_specific": {
+        "composite_ic": -0.6099547511312218,
+        "composite_pvalue": 2.0193028384518555e-06,
+        "weights": {
+          "economic": 0.00990512979047413,
+          "technical": 0.6403191553328187,
+          "fundamental": 0.3497757148767071
+        },
+        "improvement_vs_best": -0.14479638009049767
+      },
+      "ml_ensemble": {
+        "composite_ic": -0.7448868778280543,
+        "composite_pvalue": 3.6660293754849394e-10,
+        "weights": {
+          "economic": 0.009906850740720528,
+          "technical": 0.906512280512716,
+          "fundamental": 0.0835808687465633
+        },
+        "improvement_vs_best": -0.009864253393665146,
+        "ml_model_ics": {
+          "extra_trees": -0.21229161147863476,
+          "hist_gradient_boosting": -0.13243186730769005,
+          "catboost": -0.2725608208564214,
+          "ensemble": -0.15647720942118098
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.057120563370344844,
+            "p_e_ratio_inv": 0.09595927240386194,
+            "roe": 0.004791349955430781,
+            "roa": 0.005677223550021169,
+            "profit_margin": 0.011858299700639988,
+            "operating_margin": 0.03648124317224456,
+            "gross_margin": 0.026464629016185744,
+            "debt_to_equity": 0.03704191786182797,
+            "current_ratio": 0.045729391901546505,
+            "quick_ratio": 0.03418116205035341,
+            "revenue_growth": 0.08567433021405105,
+            "earnings_growth": 0.23858743790814088,
+            "fcf": 0.14397199690431584,
+            "fcf_yield": 0.1764611819910354
+          },
+          "catboost": {
+            "p_b_ratio_inv": 0.0,
+            "p_e_ratio_inv": 0.0,
+            "roe": 0.0,
+            "roa": 0.0,
+            "profit_margin": 0.0,
+            "operating_margin": 0.0,
+            "gross_margin": 0.0,
+            "debt_to_equity": 0.0,
+            "current_ratio": 0.0,
+            "quick_ratio": 0.0,
+            "revenue_growth": 0.0,
+            "earnings_growth": 59.90399084968284,
+            "fcf": 25.0131686356066,
+            "fcf_yield": 15.082840514710561
+          }
+        }
+      },
+      "winner": "ml",
+      "winner_ic": 0.7448868778280543
+    },
+    "AMZN": {
+      "ticker": "AMZN",
+      "category": "med_vol_large_cap",
+      "n_observations": 32,
+      "individual_ics": {
+        "economic": 0.3411218422656817,
+        "technical": -0.3896627565982404,
+        "fundamental_original": -0.14626099706744866,
+        "fundamental_category": 0.14626099706744866,
+        "fundamental_ml": -0.15297004302698194
+      },
+      "original": {
+        "composite_ic": 0.5901759530791789,
+        "composite_pvalue": 0.00037741441024824777,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": 0.20051319648093852
+      },
+      "category_specific": {
+        "composite_ic": 0.15872434017595305,
+        "composite_pvalue": 0.38557124935485076,
+        "weights": {
+          "economic": 0.4018188584626147,
+          "technical": 0.5243111042933498,
+          "fundamental": 0.07387003724403554
+        },
+        "improvement_vs_best": -0.23093841642228735
+      },
+      "ml_ensemble": {
+        "composite_ic": 0.1066715542521994,
+        "composite_pvalue": 0.5611867932289296,
+        "weights": {
+          "economic": 0.39905249842697216,
+          "technical": 0.5207014347753232,
+          "fundamental": 0.08024606679770474
+        },
+        "improvement_vs_best": -0.282991202346041,
+        "ml_model_ics": {
+          "extra_trees": -0.44499516354365637,
+          "hist_gradient_boosting": 0.07750812293066742,
+          "catboost": NaN,
+          "ensemble": -0.3838512457350413
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.14324919595538274,
+            "p_e_ratio_inv": 0.1366409037286578,
+            "roe": 0.041901516188300944,
+            "roa": 0.06636544535917446,
+            "profit_margin": 0.016315370557866183,
+            "operating_margin": 0.029760502217767083,
+            "gross_margin": 0.08083488261357072,
+            "debt_to_equity": 0.011801987390205508,
+            "current_ratio": 0.011519429816203356,
+            "quick_ratio": 0.10980396131917182,
+            "revenue_growth": 0.0508958211866985,
+            "earnings_growth": 0.03020942713555764,
+            "fcf": 0.11940759012035078,
+            "fcf_yield": 0.15129396641109255
+          },
+          "catboost": {
+            "p_b_ratio_inv": 0.0,
+            "p_e_ratio_inv": 0.0,
+            "roe": 0.0,
+            "roa": 0.0,
+            "profit_margin": 0.0,
+            "operating_margin": 0.0,
+            "gross_margin": 0.0,
+            "debt_to_equity": 0.0,
+            "current_ratio": 37.60637804784087,
+            "quick_ratio": 40.17716448950214,
+            "revenue_growth": 0.0,
+            "earnings_growth": 0.0,
+            "fcf": 0.0,
+            "fcf_yield": 22.216457462656994
+          }
+        }
+      },
+      "winner": "original",
+      "winner_ic": 0.5901759530791789
+    },
+    "META": {
+      "ticker": "META",
+      "category": "med_vol_large_cap",
+      "n_observations": 32,
+      "individual_ics": {
+        "economic": -0.8028423156353923,
+        "technical": 0.40579178885630496,
+        "fundamental_original": -0.9182551319648092,
+        "fundamental_category": 0.9182551319648092,
+        "fundamental_ml": 0.9171490146493531
+      },
+      "original": {
+        "composite_ic": -0.4508797653958944,
+        "composite_pvalue": 0.00960076883985279,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": -0.4673753665689148
+      },
+      "category_specific": {
+        "composite_ic": -0.2034457478005865,
+        "composite_pvalue": 0.2640779721039491,
+        "weights": {
+          "economic": 0.3900688915346766,
+          "technical": 0.0996522975664901,
+          "fundamental": 0.5102788108988333
+        },
+        "improvement_vs_best": -0.7148093841642227
+      },
+      "ml_ensemble": {
+        "composite_ic": 0.13379765395894427,
+        "composite_pvalue": 0.46535764363360654,
+        "weights": {
+          "economic": 0.39054872322589773,
+          "technical": 0.09977488188816537,
+          "fundamental": 0.5096763948859369
+        },
+        "improvement_vs_best": -0.7833513606904088,
+        "ml_model_ics": {
+          "extra_trees": 0.8249669340946125,
+          "hist_gradient_boosting": 0.787359685097572,
+          "catboost": 0.7662094016264902,
+          "ensemble": 0.8737671653326667
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.2512366490392192,
+            "p_e_ratio_inv": 0.10025919603939819,
+            "roe": 0.042080300336253144,
+            "roa": 0.04601300220889596,
+            "profit_margin": 0.019694661230071693,
+            "operating_margin": 0.03288724446565996,
+            "gross_margin": 0.08296191878705336,
+            "debt_to_equity": 0.002025093737029959,
+            "current_ratio": 0.13192957384829876,
+            "quick_ratio": 0.09400664375676478,
+            "revenue_growth": 0.03096638136733626,
+            "earnings_growth": 0.05848914883683419,
+            "fcf": 0.007121649212020628,
+            "fcf_yield": 0.1003285371351641
+          },
+          "catboost": {
+            "p_b_ratio_inv": 19.748746193849172,
+            "p_e_ratio_inv": 11.392673647258162,
+            "roe": 2.4323227814046766,
+            "roa": 9.183169500523626,
+            "profit_margin": 3.376770116193453,
+            "operating_margin": 2.9831229273368534,
+            "gross_margin": 4.607252466060454,
+            "debt_to_equity": 8.675813236411093,
+            "current_ratio": 8.055150188583793,
+            "quick_ratio": 4.614142449905923,
+            "revenue_growth": 1.486490016613137,
+            "earnings_growth": 1.8454943677792568,
+            "fcf": 4.925827472064935,
+            "fcf_yield": 16.67302463601545
+          }
+        }
+      },
+      "winner": "original",
+      "winner_ic": 0.4508797653958944
+    },
+    "JNJ": {
+      "ticker": "JNJ",
+      "category": "low_vol_dividend",
+      "n_observations": 112,
+      "individual_ics": {
+        "economic": 0.6278147271128479,
+        "technical": 0.046468719035090714,
+        "fundamental_original": 0.08195681560482608,
+        "fundamental_category": -0.16449022040693456,
+        "fundamental_ml": 0.09487285265045393
+      },
+      "original": {
+        "composite_ic": 0.6689872552704411,
+        "composite_pvalue": 7.525762848930355e-16,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": 0.0411725281575932
+      },
+      "category_specific": {
+        "composite_ic": 0.6287969385314518,
+        "composite_pvalue": 1.1410908374561247e-13,
+        "weights": {
+          "economic": 0.926451298564688,
+          "technical": 0.009951242824862223,
+          "fundamental": 0.06359745861044971
+        },
+        "improvement_vs_best": 0.0009822114186038844
+      },
+      "ml_ensemble": {
+        "composite_ic": 0.5879232582772407,
+        "composite_pvalue": 9.40363757723708e-12,
+        "weights": {
+          "economic": 0.9679425259847458,
+          "technical": 0.009953493398939939,
+          "fundamental": 0.02210398061631416
+        },
+        "improvement_vs_best": -0.039891468835607236,
+        "ml_model_ics": {
+          "extra_trees": 0.06211293345131318,
+          "hist_gradient_boosting": -0.06581245262409874,
+          "catboost": -0.33527132186637704,
+          "ensemble": 0.09487285265045393
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.4295886690629082,
+            "p_e_ratio_inv": 0.08930005120831204,
+            "roe": 0.022122515605646147,
+            "roa": 0.01744271232610323,
+            "profit_margin": 0.016167900940507324,
+            "operating_margin": 0.056868528558717164,
+            "gross_margin": 0.017906125413366992,
+            "debt_to_equity": 0.011922128766241474,
+            "current_ratio": 0.03319165871068905,
+            "quick_ratio": 0.04755617951454016,
+            "revenue_growth": 0.03379224236597424,
+            "earnings_growth": 0.046464475456729416,
+            "fcf": 0.07049703860827747,
+            "fcf_yield": 0.10717977346198711
+          },
+          "catboost": {
+            "p_b_ratio_inv": 4.069316037687443,
+            "p_e_ratio_inv": 49.46904017137176,
+            "roe": 0.0,
+            "roa": 0.0,
+            "profit_margin": 0.0,
+            "operating_margin": 0.0,
+            "gross_margin": 1.5939869290738753,
+            "debt_to_equity": 1.9062077748070418,
+            "current_ratio": 0.0,
+            "quick_ratio": 0.0,
+            "revenue_growth": 0.0,
+            "earnings_growth": 3.668906103430633,
+            "fcf": 5.674798812578526,
+            "fcf_yield": 33.617744171050745
+          }
+        }
+      },
+      "winner": "original",
+      "winner_ic": 0.6689872552704411
+    },
+    "PG": {
+      "ticker": "PG",
+      "category": "low_vol_dividend",
+      "n_observations": 112,
+      "individual_ics": {
+        "economic": -0.11319588817865697,
+        "technical": -0.494763727064612,
+        "fundamental_original": -0.5603507370744684,
+        "fundamental_category": 0.3552387399612176,
+        "fundamental_ml": 0.3348401740015103
+      },
+      "original": {
+        "composite_ic": 0.13746711313082996,
+        "composite_pvalue": 0.14835514900768637,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": -0.42288362394363843
+      },
+      "category_specific": {
+        "composite_ic": -0.3146632726278744,
+        "composite_pvalue": 0.0007275450597190884,
+        "weights": {
+          "economic": 0.0333854661685995,
+          "technical": 0.6378107674056943,
+          "fundamental": 0.3288037664257062
+        },
+        "improvement_vs_best": -0.1801004544367376
+      },
+      "ml_ensemble": {
+        "composite_ic": -0.37376567465063043,
+        "composite_pvalue": 4.921451328916264e-05,
+        "weights": {
+          "economic": 0.034656567224230994,
+          "technical": 0.6620944462870463,
+          "fundamental": 0.30324898648872284
+        },
+        "improvement_vs_best": -0.1209980524139816,
+        "ml_model_ics": {
+          "extra_trees": 0.33549039069483516,
+          "hist_gradient_boosting": 0.21316852026067343,
+          "catboost": 0.1967153434308039,
+          "ensemble": 0.3348401740015103
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.38736349725193087,
+            "p_e_ratio_inv": 0.15616689840313586,
+            "roe": 0.007427141248385688,
+            "roa": 0.008542641437777262,
+            "profit_margin": 0.00792887137742964,
+            "operating_margin": 0.009770333433005903,
+            "gross_margin": 0.006793112144130245,
+            "debt_to_equity": 0.05048697812045278,
+            "current_ratio": 0.00950415277245858,
+            "quick_ratio": 0.020703157866084124,
+            "revenue_growth": 0.013689601565775483,
+            "earnings_growth": 0.011465315698075693,
+            "fcf": 0.09494627172882336,
+            "fcf_yield": 0.21521202695253444
+          },
+          "catboost": {
+            "p_b_ratio_inv": 11.649728425680255,
+            "p_e_ratio_inv": 17.08686278751638,
+            "roe": 0.0,
+            "roa": 16.67371748823197,
+            "profit_margin": 0.0,
+            "operating_margin": 12.584294680720017,
+            "gross_margin": 0.0,
+            "debt_to_equity": 0.0,
+            "current_ratio": 8.178857003583746,
+            "quick_ratio": 8.12416927495705,
+            "revenue_growth": 0.0,
+            "earnings_growth": 3.5866818362343458,
+            "fcf": 0.0,
+            "fcf_yield": 22.115688503076253
+          }
+        }
+      },
+      "winner": "ml",
+      "winner_ic": 0.37376567465063043
+    },
+    "KO": {
+      "ticker": "KO",
+      "category": "low_vol_dividend",
+      "n_observations": 112,
+      "individual_ics": {
+        "economic": 0.12424805715238346,
+        "technical": -0.5875144948131047,
+        "fundamental_original": -0.24050911345623444,
+        "fundamental_category": 0.24050911345623444,
+        "fundamental_ml": 0.23604867136929547
+      },
+      "original": {
+        "composite_ic": 0.3143301329142037,
+        "composite_pvalue": 0.0007375867542556081,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": -0.273184361898901
+      },
+      "category_specific": {
+        "composite_ic": -0.6175983189257526,
+        "composite_pvalue": 4.0733092723640155e-13,
+        "weights": {
+          "economic": 0.036891807830089954,
+          "technical": 0.8248745344695532,
+          "fundamental": 0.13823365770035687
+        },
+        "improvement_vs_best": 0.030083824112647872
+      },
+      "ml_ensemble": {
+        "composite_ic": -0.6172480951242013,
+        "composite_pvalue": 4.2352304832669035e-13,
+        "weights": {
+          "economic": 0.03708016661278219,
+          "technical": 0.8290861026285898,
+          "fundamental": 0.13383373075862806
+        },
+        "improvement_vs_best": 0.02973360031109662,
+        "ml_model_ics": {
+          "extra_trees": 0.23861668252848206,
+          "hist_gradient_boosting": 0.137574697453392,
+          "catboost": 0.19940627050270932,
+          "ensemble": 0.23604867136929547
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.16705674604928525,
+            "p_e_ratio_inv": 0.12064741038887425,
+            "roe": 0.033045712510457674,
+            "roa": 0.02744240577180141,
+            "profit_margin": 0.030599314905797047,
+            "operating_margin": 0.010313119621792863,
+            "gross_margin": 0.007853197920947075,
+            "debt_to_equity": 0.00773548620690685,
+            "current_ratio": 0.009459755573336108,
+            "quick_ratio": 0.013966805194111897,
+            "revenue_growth": 0.010720218015655323,
+            "earnings_growth": 0.204759644316646,
+            "fcf": 0.0826736372707204,
+            "fcf_yield": 0.2737265462536678
+          },
+          "catboost": {
+            "p_b_ratio_inv": 9.13491779731709,
+            "p_e_ratio_inv": 9.263760687603277,
+            "roe": 4.263876383848213,
+            "roa": 4.013885979843564,
+            "profit_margin": 3.387813005483378,
+            "operating_margin": 0.6889879241243664,
+            "gross_margin": 2.2532932805111523,
+            "debt_to_equity": 0.8718539898974602,
+            "current_ratio": 3.77023065828327,
+            "quick_ratio": 4.446555618211217,
+            "revenue_growth": 0.45061698760336844,
+            "earnings_growth": 9.331442169184774,
+            "fcf": 0.0,
+            "fcf_yield": 48.12276551808886
+          }
+        }
+      },
+      "winner": "category",
+      "winner_ic": 0.6175983189257526
+    },
+    "WMT": {
+      "ticker": "WMT",
+      "category": "low_vol_dividend",
+      "n_observations": 125,
+      "individual_ics": {
+        "economic": -0.09037717626098611,
+        "technical": -0.3501510755012971,
+        "fundamental_original": -0.6851450472171917,
+        "fundamental_category": 0.6341154694155499,
+        "fundamental_ml": 0.2458077660041338
+      },
+      "original": {
+        "composite_ic": 0.12651920122887864,
+        "composite_pvalue": 0.1597319892646348,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": -0.5586258459883131
+      },
+      "category_specific": {
+        "composite_ic": 0.43319815668202755,
+        "composite_pvalue": 4.5116952243828634e-07,
+        "weights": {
+          "economic": 0.015328200814994185,
+          "technical": 0.23008302281453916,
+          "fundamental": 0.7545887763704666
+        },
+        "improvement_vs_best": -0.2009173127335223
+      },
+      "ml_ensemble": {
+        "composite_ic": -0.2940649678420794,
+        "composite_pvalue": 0.0008727405076389452,
+        "weights": {
+          "economic": 0.0427209004494298,
+          "technical": 0.6412594688313744,
+          "fundamental": 0.3160196307191958
+        },
+        "improvement_vs_best": -0.05608610765921768,
+        "ml_model_ics": {
+          "extra_trees": 0.11795762094777151,
+          "hist_gradient_boosting": 0.2101120945587481,
+          "catboost": -0.2967052809431211,
+          "ensemble": 0.2458077660041338
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.2602264231201448,
+            "p_e_ratio_inv": 0.17773599460588765,
+            "roe": 0.0670340672319132,
+            "roa": 0.08361439756252073,
+            "profit_margin": 0.047888046031171846,
+            "operating_margin": 0.004155796394093557,
+            "gross_margin": 0.016712515441328325,
+            "debt_to_equity": 0.020100732072642152,
+            "current_ratio": 0.014138635759646176,
+            "quick_ratio": 0.03362225555044136,
+            "revenue_growth": 0.059403940847146675,
+            "earnings_growth": 0.07123128556030203,
+            "fcf": 0.010120182626936718,
+            "fcf_yield": 0.1340157271958247
+          },
+          "catboost": {
+            "p_b_ratio_inv": 29.85527367867717,
+            "p_e_ratio_inv": 4.428534149090176,
+            "roe": 0.0,
+            "roa": 8.115490333377917,
+            "profit_margin": 0.0,
+            "operating_margin": 0.0,
+            "gross_margin": 0.0,
+            "debt_to_equity": 0.0,
+            "current_ratio": 2.4432632829242125,
+            "quick_ratio": 17.48361001794274,
+            "revenue_growth": 0.0,
+            "earnings_growth": 17.41513513011657,
+            "fcf": 6.469664167148842,
+            "fcf_yield": 13.789029240722384
+          }
+        }
+      },
+      "winner": "category",
+      "winner_ic": 0.43319815668202755
+    },
+    "PEP": {
+      "ticker": "PEP",
+      "category": "low_vol_dividend",
+      "n_observations": 112,
+      "individual_ics": {
+        "economic": 0.5820957065832686,
+        "technical": 0.01503399733488229,
+        "fundamental_original": -0.3852580146552441,
+        "fundamental_category": 0.3680798175538119,
+        "fundamental_ml": 0.4301054112157929
+      },
+      "original": {
+        "composite_ic": 0.7669388731335635,
+        "composite_pvalue": 6.321886820841188e-23,
+        "weights": {
+          "economic": 0.6562137049941928,
+          "technical": 0.00929152148664344,
+          "fundamental": 0.3344947735191638
+        },
+        "improvement_vs_best": 0.18484316655029487
+      },
+      "category_specific": {
+        "composite_ic": 0.7660334164758943,
+        "composite_pvalue": 7.615890230501061e-23,
+        "weights": {
+          "economic": 0.7072868982102664,
+          "technical": 0.009905661362717543,
+          "fundamental": 0.2828074404270161
+        },
+        "improvement_vs_best": 0.1839377098926257
+      },
+      "ml_ensemble": {
+        "composite_ic": 0.4308521543034818,
+        "composite_pvalue": 2.1154270669815386e-06,
+        "weights": {
+          "economic": 0.6404400000246904,
+          "technical": 0.009905219873570419,
+          "fundamental": 0.3496547801017393
+        },
+        "improvement_vs_best": -0.1512435522797868,
+        "ml_model_ics": {
+          "extra_trees": 0.43024347844847993,
+          "hist_gradient_boosting": 0.3463580369903195,
+          "catboost": -0.008763030167155161,
+          "ensemble": 0.4301054112157929
+        },
+        "feature_importances": {
+          "extra_trees": {
+            "p_b_ratio_inv": 0.0989065201713276,
+            "p_e_ratio_inv": 0.11520693477058869,
+            "roe": 0.006254621941318472,
+            "roa": 0.005008816207580296,
+            "profit_margin": 0.005637304445771426,
+            "operating_margin": 0.009474464552574901,
+            "gross_margin": 0.003509915597237799,
+            "debt_to_equity": 0.039030367632029425,
+            "current_ratio": 0.1381547552997899,
+            "quick_ratio": 0.07406742634312387,
+            "revenue_growth": 0.09136117350977446,
+            "earnings_growth": 0.22248530329751953,
+            "fcf": 0.07682798265828095,
+            "fcf_yield": 0.11407441357308276
+          },
+          "catboost": {
+            "p_b_ratio_inv": 0.0,
+            "p_e_ratio_inv": 0.0,
+            "roe": 0.0,
+            "roa": 0.0,
+            "profit_margin": 0.0,
+            "operating_margin": 0.0,
+            "gross_margin": 0.0,
+            "debt_to_equity": 0.0,
+            "current_ratio": 14.789167123436984,
+            "quick_ratio": 68.79018783709914,
+            "revenue_growth": 0.0,
+            "earnings_growth": 0.0,
+            "fcf": 0.0,
+            "fcf_yield": 16.420645039463867
+          }
+        }
+      },
+      "winner": "original",
+      "winner_ic": 0.7669388731335635
+    }
+  },
+  "aggregate_statistics": {
+    "n_stocks_tested": 15,
+    "original": {
+      "avg_ic": 0.3735939685625263,
+      "median_ic": 0.3253393665158371,
+      "max_ic": 0.9259530791788856,
+      "avg_improvement": -0.2583416945287763,
+      "n_improved": 4
+    },
+    "category_specific": {
+      "avg_ic": 0.5012491310750269,
+      "median_ic": 0.5560180995475112,
+      "max_ic": 0.8577712609970674,
+      "avg_improvement": -0.11884397640825659,
+      "n_improved": 5
+    },
+    "ml_ensemble": {
+      "avg_ic": 0.41302108124193104,
+      "median_ic": 0.4308521543034818,
+      "max_ic": 0.7932551319648092,
+      "avg_improvement": -0.18308079554467002,
+      "n_improved": 3
+    },
+    "winner_counts": {
+      "original": 5,
+      "category": 6,
+      "ml": 4
+    },
+    "winner_percentages": {
+      "original": 33.33333333333333,
+      "category": 40.0,
+      "ml": 26.666666666666668
+    }
+  }
+}

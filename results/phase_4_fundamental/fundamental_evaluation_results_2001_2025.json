@@ -1,0 +1,2492 @@
+{
+  "evaluation_date": "2025-10-22T14:15:17.745131",
+  "methodology": "Fundamental metrics evaluation (Phase 4B) - Extended 2001-2025 dataset",
+  "period": "max (2001-2025)",
+  "horizon_days": 20,
+  "categories": [
+    "high_vol_tech",
+    "med_vol_large_cap",
+    "low_vol_dividend"
+  ],
+  "results_by_category": {
+    "high_vol_tech": {
+      "NVDA": {
+        "ticker": "NVDA",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "NVDA",
+          "company_name": "NVIDIA Corporation",
+          "sector": "Technology",
+          "industry": "Semiconductors",
+          "market_cap": 4424709177344,
+          "pe_ratio": 51.612537,
+          "forward_pe": 43.970875,
+          "peg_ratio": null,
+          "price_to_book": 44.04571,
+          "price_to_sales": 26.781036,
+          "ev_to_revenue": 26.583,
+          "ev_to_ebitda": 44.688,
+          "profit_margin": 0.52414,
+          "operating_margin": 0.60842997,
+          "roe": 1.09417,
+          "roa": 0.53094,
+          "revenue_growth": 0.556,
+          "earnings_growth": 0.612,
+          "debt_to_equity": 10.584,
+          "current_ratio": 4.214,
+          "quick_ratio": 3.488,
+          "total_cash": 56790999040,
+          "total_debt": 10597999616,
+          "free_cash_flow": 52436750336,
+          "dividend_yield": 0.02,
+          "payout_ratio": 0.0114,
+          "five_year_avg_dividend_yield": 0.06,
+          "last_updated": "2025-10-21T17:00:18.754101",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.24468661209103446,
+            "pvalue": 2.688023031607604e-05,
+            "significant": true,
+            "directional_accuracy": 0.5034722222222222,
+            "sharpe": -3.401002730741345,
+            "n_observations": 288
+          },
+          "pe_ratio": {
+            "ic": 0.05090694814511171,
+            "pvalue": 0.3893919325609623,
+            "significant": false,
+            "directional_accuracy": 0.4340277777777778,
+            "sharpe": -0.31265089472846586,
+            "n_observations": 288
+          },
+          "roe": {
+            "ic": -0.36481076347228103,
+            "pvalue": 1.7080151877556835e-10,
+            "significant": true,
+            "directional_accuracy": 0.375,
+            "sharpe": -5.934880927542589,
+            "n_observations": 288
+          },
+          "roa": {
+            "ic": -0.4926189461417041,
+            "pvalue": 5.173418042526561e-19,
+            "significant": true,
+            "directional_accuracy": 0.3888888888888889,
+            "sharpe": -6.136314309770575,
+            "n_observations": 288
+          },
+          "profit_margin": {
+            "ic": -0.3014582601570947,
+            "pvalue": 1.833235815829716e-07,
+            "significant": true,
+            "directional_accuracy": 0.3888888888888889,
+            "sharpe": -5.71851826110976,
+            "n_observations": 288
+          },
+          "operating_margin": {
+            "ic": -0.36481076347228103,
+            "pvalue": 1.7080151877556835e-10,
+            "significant": true,
+            "directional_accuracy": 0.3888888888888889,
+            "sharpe": -5.770923808139958,
+            "n_observations": 288
+          },
+          "gross_margin": {
+            "ic": -0.207525491062962,
+            "pvalue": 0.00039234495968987627,
+            "significant": true,
+            "directional_accuracy": 0.3888888888888889,
+            "sharpe": -5.429931029534387,
+            "n_observations": 288
+          },
+          "debt_to_equity": {
+            "ic": -0.09673949956592519,
+            "pvalue": 0.10133225615356341,
+            "significant": false,
+            "directional_accuracy": 0.4479166666666667,
+            "sharpe": -0.8233553297575599,
+            "n_observations": 288
+          },
+          "current_ratio": {
+            "ic": -0.26806099224863655,
+            "pvalue": 3.948365860653779e-06,
+            "significant": true,
+            "directional_accuracy": 0.3888888888888889,
+            "sharpe": -4.838771271158402,
+            "n_observations": 288
+          },
+          "quick_ratio": {
+            "ic": -0.3076705587457136,
+            "pvalue": 9.905895127915095e-08,
+            "significant": true,
+            "directional_accuracy": 0.3888888888888889,
+            "sharpe": -4.77020497973327,
+            "n_observations": 288
+          },
+          "revenue_growth": {
+            "ic": 0.1975503412247153,
+            "pvalue": 0.00011773734570419253,
+            "significant": true,
+            "directional_accuracy": 0.6453333333333333,
+            "sharpe": 3.1488194560683582,
+            "n_observations": 375
+          },
+          "earnings_growth": {
+            "ic": -0.21931372884657846,
+            "pvalue": 1.8266184926452526e-05,
+            "significant": true,
+            "directional_accuracy": 0.42133333333333334,
+            "sharpe": -2.454608647494989,
+            "n_observations": 375
+          },
+          "fcf": {
+            "ic": 0.17365007748767156,
+            "pvalue": 0.0031103328449315513,
+            "significant": true,
+            "directional_accuracy": 0.6111111111111112,
+            "sharpe": 4.60235146872971,
+            "n_observations": 288
+          },
+          "fcf_yield": {
+            "ic": 0.4267684835770751,
+            "pvalue": 3.5514645625330186e-14,
+            "significant": true,
+            "directional_accuracy": 0.6284722222222222,
+            "sharpe": 6.052475926737803,
+            "n_observations": 288
+          }
+        },
+        "best_metric": {
+          "name": "roa",
+          "ic": -0.4926189461417041,
+          "pvalue": 5.173418042526561e-19,
+          "significant": true,
+          "directional_accuracy": 0.3888888888888889,
+          "sharpe": -6.136314309770575,
+          "n_observations": 288
+        },
+        "n_observations": 6709,
+        "horizon_days": 20
+      },
+      "TSLA": {
+        "ticker": "TSLA",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "TSLA",
+          "company_name": "Tesla, Inc.",
+          "sector": "Consumer Cyclical",
+          "industry": "Auto Manufacturers",
+          "market_cap": 1471711805440,
+          "pe_ratio": 260.35294,
+          "forward_pe": 136.60493,
+          "peg_ratio": null,
+          "price_to_book": 18.456278,
+          "price_to_sales": 15.872647,
+          "ev_to_revenue": 15.318,
+          "ev_to_ebitda": 124.15,
+          "profit_margin": 0.063439995,
+          "operating_margin": 0.04103,
+          "roe": 0.08177,
+          "roa": 0.0296,
+          "revenue_growth": -0.118,
+          "earnings_growth": -0.175,
+          "debt_to_equity": 16.823,
+          "current_ratio": 2.037,
+          "quick_ratio": 1.359,
+          "total_cash": 36781998080,
+          "total_debt": 13134000128,
+          "free_cash_flow": 1398375040,
+          "dividend_yield": null,
+          "payout_ratio": 0.0,
+          "five_year_avg_dividend_yield": null,
+          "last_updated": "2025-10-21T17:00:19.904364",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.40682062820505155,
+            "pvalue": 8.720156861372321e-14,
+            "significant": true,
+            "directional_accuracy": 0.6483870967741936,
+            "sharpe": -6.809805387272336,
+            "n_observations": 310
+          },
+          "pe_ratio": {
+            "ic": -0.08331952868357863,
+            "pvalue": 0.1433001594484404,
+            "significant": false,
+            "directional_accuracy": 0.5290322580645161,
+            "sharpe": 0.07379689361160821,
+            "n_observations": 310
+          },
+          "roe": {
+            "ic": -0.2688063039381283,
+            "pvalue": 1.567895019639753e-06,
+            "significant": true,
+            "directional_accuracy": 0.4129032258064516,
+            "sharpe": -1.9112476165935581,
+            "n_observations": 310
+          },
+          "roa": {
+            "ic": -0.2688063039381283,
+            "pvalue": 1.567895019639753e-06,
+            "significant": true,
+            "directional_accuracy": 0.4129032258064516,
+            "sharpe": -2.096185998913996,
+            "n_observations": 310
+          },
+          "profit_margin": {
+            "ic": -0.2688063039381283,
+            "pvalue": 1.567895019639753e-06,
+            "significant": true,
+            "directional_accuracy": 0.3903225806451613,
+            "sharpe": -1.7058171490084246,
+            "n_observations": 310
+          },
+          "operating_margin": {
+            "ic": 0.05964334961654831,
+            "pvalue": 0.2951828577033565,
+            "significant": false,
+            "directional_accuracy": 0.5161290322580645,
+            "sharpe": 1.6125401130188945,
+            "n_observations": 310
+          },
+          "gross_margin": {
+            "ic": 0.40247096744970595,
+            "pvalue": 1.684819062373439e-13,
+            "significant": true,
+            "directional_accuracy": 0.5161290322580645,
+            "sharpe": 4.980626949106158,
+            "n_observations": 310
+          },
+          "debt_to_equity": {
+            "ic": -0.3532971949043476,
+            "pvalue": 1.523801208617489e-10,
+            "significant": true,
+            "directional_accuracy": 0.4129032258064516,
+            "sharpe": -5.9860971152569125,
+            "n_observations": 310
+          },
+          "current_ratio": {
+            "ic": -0.14917507954017506,
+            "pvalue": 0.008522853465046968,
+            "significant": true,
+            "directional_accuracy": 0.4838709677419355,
+            "sharpe": -3.839123651340973,
+            "n_observations": 310
+          },
+          "quick_ratio": {
+            "ic": -0.3464987842527131,
+            "pvalue": 3.5772523583044434e-10,
+            "significant": true,
+            "directional_accuracy": 0.4838709677419355,
+            "sharpe": -4.823170476228829,
+            "n_observations": 310
+          },
+          "revenue_growth": {
+            "ic": -0.41464047136743015,
+            "pvalue": 2.1499669196637997e-14,
+            "significant": true,
+            "directional_accuracy": 0.30128205128205127,
+            "sharpe": -8.304378306730127,
+            "n_observations": 312
+          },
+          "earnings_growth": {
+            "ic": -0.18328680501941771,
+            "pvalue": 0.0011456037315762282,
+            "significant": true,
+            "directional_accuracy": 0.30128205128205127,
+            "sharpe": -8.100717988254763,
+            "n_observations": 312
+          },
+          "fcf": {
+            "ic": -0.09783260741889922,
+            "pvalue": 0.08548884772674988,
+            "significant": false,
+            "directional_accuracy": 0.3903225806451613,
+            "sharpe": -0.11732174980418764,
+            "n_observations": 310
+          },
+          "fcf_yield": {
+            "ic": 0.10736489561318328,
+            "pvalue": 0.05900196109466934,
+            "significant": false,
+            "directional_accuracy": 0.42258064516129035,
+            "sharpe": 1.82453119912418,
+            "n_observations": 310
+          }
+        },
+        "best_metric": {
+          "name": "revenue_growth",
+          "ic": -0.41464047136743015,
+          "pvalue": 2.1499669196637997e-14,
+          "significant": true,
+          "directional_accuracy": 0.30128205128205127,
+          "sharpe": -8.304378306730127,
+          "n_observations": 312
+        },
+        "n_observations": 3834,
+        "horizon_days": 20
+      },
+      "AMD": {
+        "ticker": "AMD",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "AMD",
+          "company_name": "Advanced Micro Devices, Inc.",
+          "sector": "Technology",
+          "industry": "Semiconductors",
+          "market_cap": 386285469696,
+          "pe_ratio": 143.39157,
+          "forward_pe": 46.67255,
+          "peg_ratio": null,
+          "price_to_book": 6.4708443,
+          "price_to_sales": 13.050185,
+          "ev_to_revenue": 13.122,
+          "ev_to_ebitda": 70.492,
+          "profit_margin": 0.095740005,
+          "operating_margin": -0.01275,
+          "roe": 0.04699,
+          "roa": 0.0219,
+          "revenue_growth": 0.317,
+          "earnings_growth": 2.336,
+          "debt_to_equity": 6.513,
+          "current_ratio": 2.491,
+          "quick_ratio": 1.174,
+          "total_cash": 5866999808,
+          "total_debt": 3886000128,
+          "free_cash_flow": 2332999936,
+          "dividend_yield": null,
+          "payout_ratio": 0.0,
+          "five_year_avg_dividend_yield": null,
+          "last_updated": "2025-10-21T17:00:20.985949",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.27790784641681665,
+            "pvalue": 6.640907324555333e-07,
+            "significant": true,
+            "directional_accuracy": 0.5516129032258065,
+            "sharpe": -3.807596526569376,
+            "n_observations": 310
+          },
+          "pe_ratio": {
+            "ic": -0.44066062135338896,
+            "pvalue": 3.6990167993439527e-16,
+            "significant": true,
+            "directional_accuracy": 0.432258064516129,
+            "sharpe": -3.3906812483679505,
+            "n_observations": 310
+          },
+          "roe": {
+            "ic": 0.10295896097569837,
+            "pvalue": 0.07025391817845898,
+            "significant": false,
+            "directional_accuracy": 0.5709677419354838,
+            "sharpe": 3.5090105051932636,
+            "n_observations": 310
+          },
+          "roa": {
+            "ic": 0.10295896097569837,
+            "pvalue": 0.07025391817845898,
+            "significant": false,
+            "directional_accuracy": 0.5709677419354838,
+            "sharpe": 3.2724964498084317,
+            "n_observations": 310
+          },
+          "profit_margin": {
+            "ic": 0.10295896097569837,
+            "pvalue": 0.07025391817845898,
+            "significant": false,
+            "directional_accuracy": 0.5709677419354838,
+            "sharpe": 3.142809498418145,
+            "n_observations": 310
+          },
+          "operating_margin": {
+            "ic": -0.19169104716943705,
+            "pvalue": 0.0006914352571193291,
+            "significant": true,
+            "directional_accuracy": 0.4,
+            "sharpe": -4.039942715862319,
+            "n_observations": 310
+          },
+          "gross_margin": {
+            "ic": -0.19169104716943705,
+            "pvalue": 0.0006914352571193291,
+            "significant": true,
+            "directional_accuracy": 0.4483870967741935,
+            "sharpe": -3.568257869623419,
+            "n_observations": 310
+          },
+          "debt_to_equity": {
+            "ic": 0.6715430655633471,
+            "pvalue": 5.3251750604689986e-42,
+            "significant": true,
+            "directional_accuracy": 0.7322580645161291,
+            "sharpe": 10.949475125318884,
+            "n_observations": 310
+          },
+          "current_ratio": {
+            "ic": 0.1368971564813693,
+            "pvalue": 0.01586737028944536,
+            "significant": true,
+            "directional_accuracy": 0.7516129032258064,
+            "sharpe": 3.461859320663655,
+            "n_observations": 310
+          },
+          "quick_ratio": {
+            "ic": 0.31566748214897744,
+            "pvalue": 1.3362314821133709e-08,
+            "significant": true,
+            "directional_accuracy": 0.7516129032258064,
+            "sharpe": 5.091635592495827,
+            "n_observations": 310
+          },
+          "revenue_growth": {
+            "ic": -0.11120395449098412,
+            "pvalue": 0.049708943874447485,
+            "significant": true,
+            "directional_accuracy": 0.5801282051282052,
+            "sharpe": 0.5816814645100018,
+            "n_observations": 312
+          },
+          "earnings_growth": {
+            "ic": -0.1560137987629654,
+            "pvalue": 0.005751499796484476,
+            "significant": true,
+            "directional_accuracy": 0.3814102564102564,
+            "sharpe": -4.37344935197847,
+            "n_observations": 312
+          },
+          "fcf": {
+            "ic": 0.13183987240869416,
+            "pvalue": 0.02023036384660918,
+            "significant": true,
+            "directional_accuracy": 0.4096774193548387,
+            "sharpe": 2.9310964663670758,
+            "n_observations": 310
+          },
+          "fcf_yield": {
+            "ic": 0.22804795902451205,
+            "pvalue": 5.067248329147734e-05,
+            "significant": true,
+            "directional_accuracy": 0.4870967741935484,
+            "sharpe": 3.83655266084988,
+            "n_observations": 310
+          }
+        },
+        "best_metric": {
+          "name": "debt_to_equity",
+          "ic": 0.6715430655633471,
+          "pvalue": 5.3251750604689986e-42,
+          "significant": true,
+          "directional_accuracy": 0.7322580645161291,
+          "sharpe": 10.949475125318884,
+          "n_observations": 310
+        },
+        "n_observations": 11475,
+        "horizon_days": 20
+      },
+      "COIN": {
+        "ticker": "COIN",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "COIN",
+          "company_name": "Coinbase Global, Inc.",
+          "sector": "Financial Services",
+          "industry": "Financial Data & Stock Exchanges",
+          "market_cap": 85040480256,
+          "pe_ratio": 32.62235,
+          "forward_pe": 94.85154,
+          "peg_ratio": null,
+          "price_to_book": 7.179324,
+          "price_to_sales": 12.681173,
+          "ev_to_revenue": 12.748,
+          "ev_to_ebitda": 42.32,
+          "profit_margin": 0.42666,
+          "operating_margin": 0.14428,
+          "roe": 0.27961,
+          "roa": 0.0076099997,
+          "revenue_growth": 0.029,
+          "earnings_growth": 36.934,
+          "debt_to_equity": 38.83,
+          "current_ratio": 2.125,
+          "quick_ratio": 0.948,
+          "total_cash": 7539387904,
+          "total_debt": 4696446976,
+          "free_cash_flow": 388593504,
+          "dividend_yield": null,
+          "payout_ratio": 0.0,
+          "five_year_avg_dividend_yield": null,
+          "last_updated": "2025-10-21T17:00:22.055844",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.4704215310219401,
+            "pvalue": 1.7837815310975662e-18,
+            "significant": true,
+            "directional_accuracy": 0.7032258064516129,
+            "sharpe": -8.698293334601889,
+            "n_observations": 310
+          },
+          "pe_ratio": {
+            "ic": 0.03402640220820666,
+            "pvalue": 0.5506080083194702,
+            "significant": false,
+            "directional_accuracy": 0.43548387096774194,
+            "sharpe": 2.1270670413534223,
+            "n_observations": 310
+          },
+          "roe": {
+            "ic": -0.251423817100253,
+            "pvalue": 7.426697747083736e-06,
+            "significant": true,
+            "directional_accuracy": 0.36774193548387096,
+            "sharpe": -7.977949565325145,
+            "n_observations": 310
+          },
+          "roa": {
+            "ic": -0.08804858609042819,
+            "pvalue": 0.12186358645981725,
+            "significant": false,
+            "directional_accuracy": 0.36774193548387096,
+            "sharpe": -7.641457503586699,
+            "n_observations": 310
+          },
+          "profit_margin": {
+            "ic": -0.17836269237291197,
+            "pvalue": 0.0016158329498329454,
+            "significant": true,
+            "directional_accuracy": 0.36774193548387096,
+            "sharpe": -6.894525600464137,
+            "n_observations": 310
+          },
+          "operating_margin": {
+            "ic": -0.06021440624421644,
+            "pvalue": 0.29057530771036133,
+            "significant": false,
+            "directional_accuracy": 0.4645161290322581,
+            "sharpe": -0.1403872281461506,
+            "n_observations": 310
+          },
+          "gross_margin": {
+            "ic": -0.1484362827367772,
+            "pvalue": 0.00885899766060052,
+            "significant": true,
+            "directional_accuracy": 0.4645161290322581,
+            "sharpe": -0.7172171931689224,
+            "n_observations": 310
+          },
+          "debt_to_equity": {
+            "ic": -0.1549436148481748,
+            "pvalue": 0.006265170127636482,
+            "significant": true,
+            "directional_accuracy": 0.4645161290322581,
+            "sharpe": -0.011368638359695633,
+            "n_observations": 310
+          },
+          "current_ratio": {
+            "ic": 0.25342806552349434,
+            "pvalue": 6.2424502427873515e-06,
+            "significant": true,
+            "directional_accuracy": 0.535483870967742,
+            "sharpe": 1.1962314762332553,
+            "n_observations": 310
+          },
+          "quick_ratio": {
+            "ic": 0.25342806552349434,
+            "pvalue": 6.2424502427873515e-06,
+            "significant": true,
+            "directional_accuracy": 0.535483870967742,
+            "sharpe": 1.1962314762332553,
+            "n_observations": 310
+          },
+          "revenue_growth": {
+            "ic": 0.11715905519983207,
+            "pvalue": 0.03861529251451784,
+            "significant": true,
+            "directional_accuracy": 0.46794871794871795,
+            "sharpe": -0.43727537686968887,
+            "n_observations": 312
+          },
+          "earnings_growth": {
+            "ic": -0.5690623584321375,
+            "pvalue": 3.6004579462610456e-28,
+            "significant": true,
+            "directional_accuracy": 0.3814102564102564,
+            "sharpe": -8.73141165376004,
+            "n_observations": 312
+          }
+        },
+        "best_metric": {
+          "name": "earnings_growth",
+          "ic": -0.5690623584321375,
+          "pvalue": 3.6004579462610456e-28,
+          "significant": true,
+          "directional_accuracy": 0.3814102564102564,
+          "sharpe": -8.73141165376004,
+          "n_observations": 312
+        },
+        "n_observations": 1118,
+        "horizon_days": 20
+      },
+      "PLTR": {
+        "ticker": "PLTR",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "PLTR",
+          "company_name": "Palantir Technologies Inc.",
+          "sector": "Technology",
+          "industry": "Software - Infrastructure",
+          "market_cap": 422446596096,
+          "pe_ratio": 585.5161,
+          "forward_pe": 386.19147,
+          "peg_ratio": null,
+          "price_to_book": 72.604,
+          "price_to_sales": 122.783295,
+          "ev_to_revenue": 123.563,
+          "ev_to_ebitda": 711.162,
+          "profit_margin": 0.22185,
+          "operating_margin": 0.26833,
+          "roe": 0.15203,
+          "roa": 0.05669,
+          "revenue_growth": 0.48,
+          "earnings_growth": 1.167,
+          "debt_to_equity": 3.947,
+          "current_ratio": 6.324,
+          "quick_ratio": 6.193,
+          "total_cash": 6000421888,
+          "total_debt": 237812000,
+          "free_cash_flow": 1269297536,
+          "dividend_yield": null,
+          "payout_ratio": 0.0,
+          "five_year_avg_dividend_yield": null,
+          "last_updated": "2025-10-21T17:00:22.897253",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.4116483943418601,
+            "pvalue": 4.15093638385644e-14,
+            "significant": true,
+            "directional_accuracy": 0.6290322580645161,
+            "sharpe": -6.462010785167988,
+            "n_observations": 310
+          },
+          "pe_ratio": {
+            "ic": -0.4178150207442578,
+            "pvalue": 1.5803212993832914e-14,
+            "significant": true,
+            "directional_accuracy": 0.6838709677419355,
+            "sharpe": -4.253592784258037,
+            "n_observations": 310
+          },
+          "roe": {
+            "ic": -0.04369631577759548,
+            "pvalue": 0.4433126757115917,
+            "significant": false,
+            "directional_accuracy": 0.44193548387096776,
+            "sharpe": -0.8340646075212742,
+            "n_observations": 310
+          },
+          "roa": {
+            "ic": -0.04369631577759548,
+            "pvalue": 0.4433126757115917,
+            "significant": false,
+            "directional_accuracy": 0.44193548387096776,
+            "sharpe": -0.8927509212363235,
+            "n_observations": 310
+          },
+          "profit_margin": {
+            "ic": -0.014476223842204983,
+            "pvalue": 0.7996007273819067,
+            "significant": false,
+            "directional_accuracy": 0.44193548387096776,
+            "sharpe": -0.6754851831517337,
+            "n_observations": 310
+          },
+          "operating_margin": {
+            "ic": -0.014476223842204983,
+            "pvalue": 0.7996007273819067,
+            "significant": false,
+            "directional_accuracy": 0.44193548387096776,
+            "sharpe": -0.22917168536261792,
+            "n_observations": 310
+          },
+          "gross_margin": {
+            "ic": 0.033266823674870306,
+            "pvalue": 0.5595444892206372,
+            "significant": false,
+            "directional_accuracy": 0.6193548387096774,
+            "sharpe": -0.3358116146605065,
+            "n_observations": 310
+          },
+          "debt_to_equity": {
+            "ic": 0.1784471791525994,
+            "pvalue": 0.0016074506088713874,
+            "significant": true,
+            "directional_accuracy": 0.4806451612903226,
+            "sharpe": 2.090647388481027,
+            "n_observations": 310
+          },
+          "current_ratio": {
+            "ic": -0.1391643211849517,
+            "pvalue": 0.01419515849454313,
+            "significant": true,
+            "directional_accuracy": 0.44193548387096776,
+            "sharpe": -1.3011085554530728,
+            "n_observations": 310
+          },
+          "quick_ratio": {
+            "ic": -0.1391643211849517,
+            "pvalue": 0.01419515849454313,
+            "significant": true,
+            "directional_accuracy": 0.44193548387096776,
+            "sharpe": -1.3011085554530728,
+            "n_observations": 310
+          },
+          "revenue_growth": {
+            "ic": -0.2171231167538858,
+            "pvalue": 0.0005602640190208053,
+            "significant": true,
+            "directional_accuracy": 0.46184738955823296,
+            "sharpe": -2.093066297503669,
+            "n_observations": 249
+          },
+          "earnings_growth": {
+            "ic": 0.2214664461491755,
+            "pvalue": 0.00043005324300371845,
+            "significant": true,
+            "directional_accuracy": 0.30522088353413657,
+            "sharpe": 1.7953746149458605,
+            "n_observations": 249
+          },
+          "fcf": {
+            "ic": -0.2088566640497206,
+            "pvalue": 0.0002127549563658876,
+            "significant": true,
+            "directional_accuracy": 0.4612903225806452,
+            "sharpe": -1.45413143235588,
+            "n_observations": 310
+          },
+          "fcf_yield": {
+            "ic": 0.32092136463749976,
+            "pvalue": 7.416642528036591e-09,
+            "significant": true,
+            "directional_accuracy": 0.49032258064516127,
+            "sharpe": 3.9424722280388185,
+            "n_observations": 310
+          }
+        },
+        "best_metric": {
+          "name": "pe_ratio",
+          "ic": -0.4178150207442578,
+          "pvalue": 1.5803212993832914e-14,
+          "significant": true,
+          "directional_accuracy": 0.6838709677419355,
+          "sharpe": -4.253592784258037,
+          "n_observations": 310
+        },
+        "n_observations": 1252,
+        "horizon_days": 20
+      }
+    },
+    "med_vol_large_cap": {
+      "AAPL": {
+        "ticker": "AAPL",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "AAPL",
+          "company_name": "Apple Inc.",
+          "sector": "Technology",
+          "industry": "Consumer Electronics",
+          "market_cap": 3899609055232,
+          "pe_ratio": 39.93465,
+          "forward_pe": 31.620935,
+          "peg_ratio": null,
+          "price_to_book": 59.302635,
+          "price_to_sales": 9.543246,
+          "ev_to_revenue": 9.637,
+          "ev_to_ebitda": 27.792,
+          "profit_margin": 0.24295999,
+          "operating_margin": 0.29990998,
+          "roe": 1.49814,
+          "roa": 0.24545999,
+          "revenue_growth": 0.096,
+          "earnings_growth": 0.121,
+          "debt_to_equity": 154.486,
+          "current_ratio": 0.868,
+          "quick_ratio": 0.724,
+          "total_cash": 55372001280,
+          "total_debt": 101698002944,
+          "free_cash_flow": 94873747456,
+          "dividend_yield": 0.4,
+          "payout_ratio": 0.1533,
+          "five_year_avg_dividend_yield": 0.54,
+          "last_updated": "2025-10-21T17:00:23.778503",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.22001566739568781,
+            "pvalue": 9.6296570469986e-05,
+            "significant": true,
+            "directional_accuracy": 0.6181229773462783,
+            "sharpe": -3.3766431199725018,
+            "n_observations": 309
+          },
+          "pe_ratio": {
+            "ic": 0.07772545370167269,
+            "pvalue": 0.1729411736291491,
+            "significant": false,
+            "directional_accuracy": 0.5339805825242718,
+            "sharpe": 1.1947105605253492,
+            "n_observations": 309
+          },
+          "roe": {
+            "ic": -0.17107204736320675,
+            "pvalue": 0.0025507303278630676,
+            "significant": true,
+            "directional_accuracy": 0.36893203883495146,
+            "sharpe": -4.452408792347286,
+            "n_observations": 309
+          },
+          "roa": {
+            "ic": -0.17107204736320675,
+            "pvalue": 0.0025507303278630676,
+            "significant": true,
+            "directional_accuracy": 0.36893203883495146,
+            "sharpe": -3.7467728675159133,
+            "n_observations": 309
+          },
+          "profit_margin": {
+            "ic": -0.2979891645414424,
+            "pvalue": 9.360730293190218e-08,
+            "significant": true,
+            "directional_accuracy": 0.6181229773462783,
+            "sharpe": -2.144856773069728,
+            "n_observations": 309
+          },
+          "operating_margin": {
+            "ic": -0.3133052016244775,
+            "pvalue": 1.829534698163813e-08,
+            "significant": true,
+            "directional_accuracy": 0.2977346278317152,
+            "sharpe": -6.1360279757668525,
+            "n_observations": 309
+          },
+          "gross_margin": {
+            "ic": -0.04940059193434038,
+            "pvalue": 0.38682354786345796,
+            "significant": false,
+            "directional_accuracy": 0.36893203883495146,
+            "sharpe": -2.6429001113623793,
+            "n_observations": 309
+          },
+          "debt_to_equity": {
+            "ic": 0.2979891645414424,
+            "pvalue": 9.360730293190218e-08,
+            "significant": true,
+            "directional_accuracy": 0.3818770226537217,
+            "sharpe": 1.327155268765894,
+            "n_observations": 309
+          },
+          "current_ratio": {
+            "ic": -0.14894237888634457,
+            "pvalue": 0.008736444478085564,
+            "significant": true,
+            "directional_accuracy": 0.39158576051779936,
+            "sharpe": -4.718357116551171,
+            "n_observations": 309
+          },
+          "quick_ratio": {
+            "ic": -0.27347993503677204,
+            "pvalue": 1.0542969610122717e-06,
+            "significant": true,
+            "directional_accuracy": 0.39158576051779936,
+            "sharpe": -4.540387081410842,
+            "n_observations": 309
+          },
+          "revenue_growth": {
+            "ic": -0.23360609195068674,
+            "pvalue": 0.00019978722521358667,
+            "significant": true,
+            "directional_accuracy": 0.43373493975903615,
+            "sharpe": -4.43864535133246,
+            "n_observations": 249
+          },
+          "earnings_growth": {
+            "ic": -0.26986125131517624,
+            "pvalue": 1.579647653202179e-05,
+            "significant": true,
+            "directional_accuracy": 0.46184738955823296,
+            "sharpe": -2.939127892009871,
+            "n_observations": 249
+          },
+          "fcf": {
+            "ic": -0.24699839317286976,
+            "pvalue": 1.1206274315992235e-05,
+            "significant": true,
+            "directional_accuracy": 0.39158576051779936,
+            "sharpe": -4.314147403265279,
+            "n_observations": 309
+          },
+          "fcf_yield": {
+            "ic": 0.07281088615555169,
+            "pvalue": 0.20181199957616025,
+            "significant": false,
+            "directional_accuracy": 0.48220064724919093,
+            "sharpe": 0.8218606776216306,
+            "n_observations": 309
+          }
+        },
+        "best_metric": {
+          "name": "operating_margin",
+          "ic": -0.3133052016244775,
+          "pvalue": 1.829534698163813e-08,
+          "significant": true,
+          "directional_accuracy": 0.2977346278317152,
+          "sharpe": -6.1360279757668525,
+          "n_observations": 309
+        },
+        "n_observations": 11286,
+        "horizon_days": 20
+      },
+      "MSFT": {
+        "ticker": "MSFT",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "MSFT",
+          "company_name": "Microsoft Corporation",
+          "sector": "Technology",
+          "industry": "Software - Infrastructure",
+          "market_cap": 3847852654592,
+          "pe_ratio": 37.95161,
+          "forward_pe": 34.626087,
+          "peg_ratio": null,
+          "price_to_book": 11.203792,
+          "price_to_sales": 13.658236,
+          "ev_to_revenue": 13.698,
+          "ev_to_ebitda": 24.654,
+          "profit_margin": 0.36146,
+          "operating_margin": 0.44901,
+          "roe": 0.33280998,
+          "roa": 0.14203,
+          "revenue_growth": 0.181,
+          "earnings_growth": 0.237,
+          "debt_to_equity": 32.661,
+          "current_ratio": 1.353,
+          "quick_ratio": 1.223,
+          "total_cash": 94564999168,
+          "total_debt": 112184000512,
+          "free_cash_flow": 61070376960,
+          "dividend_yield": 0.7,
+          "payout_ratio": 0.2375,
+          "five_year_avg_dividend_yield": 0.81,
+          "last_updated": "2025-10-21T17:00:24.691686",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.34249821001124847,
+            "pvalue": 5.854951008404058e-10,
+            "significant": true,
+            "directional_accuracy": 0.5129032258064516,
+            "sharpe": -4.7012068809810375,
+            "n_observations": 310
+          },
+          "pe_ratio": {
+            "ic": -0.319475983939949,
+            "pvalue": 8.730470869954107e-09,
+            "significant": true,
+            "directional_accuracy": 0.4870967741935484,
+            "sharpe": -4.833283921399338,
+            "n_observations": 310
+          },
+          "roe": {
+            "ic": 0.06494258244759829,
+            "pvalue": 0.25427930788684455,
+            "significant": false,
+            "directional_accuracy": 0.44193548387096776,
+            "sharpe": -1.26495333712717,
+            "n_observations": 310
+          },
+          "roa": {
+            "ic": 0.29226752207073886,
+            "pvalue": 1.6060574407016149e-07,
+            "significant": true,
+            "directional_accuracy": 0.5096774193548387,
+            "sharpe": 5.364226451560437,
+            "n_observations": 310
+          },
+          "profit_margin": {
+            "ic": 0.42713884591507806,
+            "pvalue": 3.5324718860716384e-15,
+            "significant": true,
+            "directional_accuracy": 0.6709677419354839,
+            "sharpe": 8.738108499855093,
+            "n_observations": 310
+          },
+          "operating_margin": {
+            "ic": 0.29226752207073886,
+            "pvalue": 1.6060574407016149e-07,
+            "significant": true,
+            "directional_accuracy": 0.5096774193548387,
+            "sharpe": 4.590874616612701,
+            "n_observations": 310
+          },
+          "gross_margin": {
+            "ic": 0.0027656572601321436,
+            "pvalue": 0.9613195179164244,
+            "significant": false,
+            "directional_accuracy": 0.44193548387096776,
+            "sharpe": -3.84503104292686,
+            "n_observations": 310
+          },
+          "debt_to_equity": {
+            "ic": -0.30447185323872195,
+            "pvalue": 4.512347244295302e-08,
+            "significant": true,
+            "directional_accuracy": 0.44193548387096776,
+            "sharpe": -6.407672240726152,
+            "n_observations": 310
+          },
+          "current_ratio": {
+            "ic": 0.4774629542734064,
+            "pvalue": 4.670227034806088e-19,
+            "significant": true,
+            "directional_accuracy": 0.5580645161290323,
+            "sharpe": 5.3830753949387695,
+            "n_observations": 310
+          },
+          "quick_ratio": {
+            "ic": 0.4774629542734064,
+            "pvalue": 4.670227034806088e-19,
+            "significant": true,
+            "directional_accuracy": 0.5580645161290323,
+            "sharpe": 5.32857722213971,
+            "n_observations": 310
+          },
+          "revenue_growth": {
+            "ic": -0.7448805898754212,
+            "pvalue": 2.6458480876389632e-45,
+            "significant": true,
+            "directional_accuracy": 0.24899598393574296,
+            "sharpe": -10.729636105158379,
+            "n_observations": 249
+          },
+          "earnings_growth": {
+            "ic": 0.36219633980803445,
+            "pvalue": 3.915468823195995e-09,
+            "significant": true,
+            "directional_accuracy": 0.5020080321285141,
+            "sharpe": 3.975733650899388,
+            "n_observations": 249
+          },
+          "fcf": {
+            "ic": 0.2157393559171016,
+            "pvalue": 0.00012902270377652446,
+            "significant": true,
+            "directional_accuracy": 0.7032258064516129,
+            "sharpe": 6.4313233083258305,
+            "n_observations": 310
+          },
+          "fcf_yield": {
+            "ic": 0.3116908671803171,
+            "pvalue": 2.0707778472035885e-08,
+            "significant": true,
+            "directional_accuracy": 0.6709677419354839,
+            "sharpe": 7.4178427459138225,
+            "n_observations": 310
+          }
+        },
+        "best_metric": {
+          "name": "revenue_growth",
+          "ic": -0.7448805898754212,
+          "pvalue": 2.6458480876389632e-45,
+          "significant": true,
+          "directional_accuracy": 0.24899598393574296,
+          "sharpe": -10.729636105158379,
+          "n_observations": 249
+        },
+        "n_observations": 9961,
+        "horizon_days": 20
+      },
+      "GOOGL": {
+        "ticker": "GOOGL",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "GOOGL",
+          "company_name": "Alphabet Inc.",
+          "sector": "Communication Services",
+          "industry": "Internet Content & Information",
+          "market_cap": 2993288380416,
+          "pe_ratio": 26.673056,
+          "forward_pe": 27.953125,
+          "peg_ratio": null,
+          "price_to_book": 8.3534,
+          "price_to_sales": 8.059495,
+          "ev_to_revenue": 8.21,
+          "ev_to_ebitda": 21.65,
+          "profit_margin": 0.31118,
+          "operating_margin": 0.32429,
+          "roe": 0.34829,
+          "roa": 0.16792,
+          "revenue_growth": 0.138,
+          "earnings_growth": 0.223,
+          "debt_to_equity": 11.481,
+          "current_ratio": 1.904,
+          "quick_ratio": 1.72,
+          "total_cash": 95147999232,
+          "total_debt": 41668001792,
+          "free_cash_flow": 49786499072,
+          "dividend_yield": 0.33,
+          "payout_ratio": 0.0864,
+          "five_year_avg_dividend_yield": null,
+          "last_updated": "2025-10-21T17:00:25.431374",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.38202502681459005,
+            "pvalue": 3.283531254647608e-12,
+            "significant": true,
+            "directional_accuracy": 0.6838709677419355,
+            "sharpe": -6.576362066907702,
+            "n_observations": 310
+          },
+          "pe_ratio": {
+            "ic": -0.34561096224467913,
+            "pvalue": 3.9929829512331837e-10,
+            "significant": true,
+            "directional_accuracy": 0.632258064516129,
+            "sharpe": -5.033793469769751,
+            "n_observations": 310
+          },
+          "roe": {
+            "ic": 0.038039812817356425,
+            "pvalue": 0.5045831366187059,
+            "significant": false,
+            "directional_accuracy": 0.5516129032258065,
+            "sharpe": 2.547254013807579,
+            "n_observations": 310
+          },
+          "roa": {
+            "ic": 0.038039812817356425,
+            "pvalue": 0.5045831366187059,
+            "significant": false,
+            "directional_accuracy": 0.5516129032258065,
+            "sharpe": 2.6687388750225276,
+            "n_observations": 310
+          },
+          "profit_margin": {
+            "ic": 0.583664480851998,
+            "pvalue": 1.0737441467859424e-29,
+            "significant": true,
+            "directional_accuracy": 0.5516129032258065,
+            "sharpe": 6.193891296526257,
+            "n_observations": 310
+          },
+          "operating_margin": {
+            "ic": 0.50051633354738,
+            "pvalue": 4.646750715011901e-21,
+            "significant": true,
+            "directional_accuracy": 0.5516129032258065,
+            "sharpe": 5.274470644661285,
+            "n_observations": 310
+          },
+          "gross_margin": {
+            "ic": 0.6507922079907813,
+            "pvalue": 1.0035501720979114e-38,
+            "significant": true,
+            "directional_accuracy": 0.7096774193548387,
+            "sharpe": 12.351958793487276,
+            "n_observations": 310
+          },
+          "debt_to_equity": {
+            "ic": 0.17577464235767018,
+            "pvalue": 0.001892832944330191,
+            "significant": true,
+            "directional_accuracy": 0.6161290322580645,
+            "sharpe": 2.288156847279977,
+            "n_observations": 310
+          },
+          "current_ratio": {
+            "ic": -0.10066363401222017,
+            "pvalue": 0.07677647192096915,
+            "significant": false,
+            "directional_accuracy": 0.45806451612903226,
+            "sharpe": -2.5342485882747696,
+            "n_observations": 310
+          },
+          "quick_ratio": {
+            "ic": -0.10066363401222017,
+            "pvalue": 0.07677647192096915,
+            "significant": false,
+            "directional_accuracy": 0.45806451612903226,
+            "sharpe": -2.5342485882747696,
+            "n_observations": 310
+          },
+          "revenue_growth": {
+            "ic": -0.4575863977497727,
+            "pvalue": 1.495840828759689e-17,
+            "significant": true,
+            "directional_accuracy": 0.391025641025641,
+            "sharpe": -8.282565043379673,
+            "n_observations": 312
+          },
+          "earnings_growth": {
+            "ic": 0.6235202562633273,
+            "pvalue": 5.24556427531515e-35,
+            "significant": true,
+            "directional_accuracy": 0.8397435897435898,
+            "sharpe": 10.474765240765215,
+            "n_observations": 312
+          },
+          "fcf": {
+            "ic": -0.3918733240433693,
+            "pvalue": 8.057473002962115e-13,
+            "significant": true,
+            "directional_accuracy": 0.5129032258064516,
+            "sharpe": -6.5916633951251375,
+            "n_observations": 310
+          },
+          "fcf_yield": {
+            "ic": -0.30790427894462613,
+            "pvalue": 3.123938893928447e-08,
+            "significant": true,
+            "directional_accuracy": 0.5129032258064516,
+            "sharpe": -5.445796141482497,
+            "n_observations": 310
+          }
+        },
+        "best_metric": {
+          "name": "gross_margin",
+          "ic": 0.6507922079907813,
+          "pvalue": 1.0035501720979114e-38,
+          "significant": true,
+          "directional_accuracy": 0.7096774193548387,
+          "sharpe": 12.351958793487276,
+          "n_observations": 310
+        },
+        "n_observations": 5309,
+        "horizon_days": 20
+      },
+      "AMZN": {
+        "ticker": "AMZN",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "AMZN",
+          "company_name": "Amazon.com, Inc.",
+          "sector": "Consumer Cyclical",
+          "industry": "Internet Retail",
+          "market_cap": 2367930499072,
+          "pe_ratio": 33.846035,
+          "forward_pe": 36.10244,
+          "peg_ratio": null,
+          "price_to_book": 7.091118,
+          "price_to_sales": 3.534024,
+          "ev_to_revenue": 3.545,
+          "ev_to_ebitda": 17.747,
+          "profit_margin": 0.105399996,
+          "operating_margin": 0.11432,
+          "roe": 0.2477,
+          "roa": 0.07699,
+          "revenue_growth": 0.133,
+          "earnings_growth": 0.333,
+          "debt_to_equity": 47.808,
+          "current_ratio": 1.024,
+          "quick_ratio": 0.768,
+          "total_cash": 93180002304,
+          "total_debt": 159570001920,
+          "free_cash_flow": 31024001024,
+          "dividend_yield": null,
+          "payout_ratio": 0.0,
+          "five_year_avg_dividend_yield": null,
+          "last_updated": "2025-10-21T17:00:26.294940",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.3082189049435785,
+            "pvalue": 3.0196812529102944e-08,
+            "significant": true,
+            "directional_accuracy": 0.5806451612903226,
+            "sharpe": -5.320654991345222,
+            "n_observations": 310
+          },
+          "pe_ratio": {
+            "ic": -0.0567547895174221,
+            "pvalue": 0.319231961565918,
+            "significant": false,
+            "directional_accuracy": 0.5516129032258065,
+            "sharpe": -0.7359535549707432,
+            "n_observations": 310
+          },
+          "roe": {
+            "ic": -0.16047883508331512,
+            "pvalue": 0.0046187373458123565,
+            "significant": true,
+            "directional_accuracy": 0.29354838709677417,
+            "sharpe": -6.24185955366644,
+            "n_observations": 310
+          },
+          "roa": {
+            "ic": -0.35739223416992605,
+            "pvalue": 9.023578073713207e-11,
+            "significant": true,
+            "directional_accuracy": 0.29354838709677417,
+            "sharpe": -5.722167365679972,
+            "n_observations": 310
+          },
+          "profit_margin": {
+            "ic": 0.11219967680851539,
+            "pvalue": 0.04841187526435763,
+            "significant": true,
+            "directional_accuracy": 0.432258064516129,
+            "sharpe": -0.5548875224350206,
+            "n_observations": 310
+          },
+          "operating_margin": {
+            "ic": 0.11219967680851539,
+            "pvalue": 0.04841187526435763,
+            "significant": true,
+            "directional_accuracy": 0.432258064516129,
+            "sharpe": 2.138497161043289,
+            "n_observations": 310
+          },
+          "gross_margin": {
+            "ic": 0.16047883508331512,
+            "pvalue": 0.0046187373458123565,
+            "significant": true,
+            "directional_accuracy": 0.5516129032258065,
+            "sharpe": 4.1690796790988225,
+            "n_observations": 310
+          },
+          "debt_to_equity": {
+            "ic": 0.047322052566224196,
+            "pvalue": 0.40637479326332004,
+            "significant": false,
+            "directional_accuracy": 0.567741935483871,
+            "sharpe": 1.0105675647231602,
+            "n_observations": 310
+          },
+          "current_ratio": {
+            "ic": 0.047322052566224196,
+            "pvalue": 0.40637479326332004,
+            "significant": false,
+            "directional_accuracy": 0.567741935483871,
+            "sharpe": 1.12428447821945,
+            "n_observations": 310
+          },
+          "quick_ratio": {
+            "ic": -0.18490435366243074,
+            "pvalue": 0.0010729199381031298,
+            "significant": true,
+            "directional_accuracy": 0.45161290322580644,
+            "sharpe": -1.9411803164936656,
+            "n_observations": 310
+          },
+          "revenue_growth": {
+            "ic": -0.5974831637529983,
+            "pvalue": 1.7416108975341347e-25,
+            "significant": true,
+            "directional_accuracy": 0.21686746987951808,
+            "sharpe": -9.956081670631598,
+            "n_observations": 249
+          },
+          "earnings_growth": {
+            "ic": -0.3974290906725422,
+            "pvalue": 7.521041767388822e-11,
+            "significant": true,
+            "directional_accuracy": 0.44176706827309237,
+            "sharpe": -8.685066680251674,
+            "n_observations": 249
+          },
+          "fcf": {
+            "ic": -0.4505932804376407,
+            "pvalue": 6.605322840733758e-17,
+            "significant": true,
+            "directional_accuracy": 0.2967741935483871,
+            "sharpe": -8.474721850835596,
+            "n_observations": 310
+          },
+          "fcf_yield": {
+            "ic": -0.38476578785502985,
+            "pvalue": 2.231427915170337e-12,
+            "significant": true,
+            "directional_accuracy": 0.2967741935483871,
+            "sharpe": -8.208632592839049,
+            "n_observations": 310
+          }
+        },
+        "best_metric": {
+          "name": "revenue_growth",
+          "ic": -0.5974831637529983,
+          "pvalue": 1.7416108975341347e-25,
+          "significant": true,
+          "directional_accuracy": 0.21686746987951808,
+          "sharpe": -9.956081670631598,
+          "n_observations": 249
+        },
+        "n_observations": 7135,
+        "horizon_days": 20
+      },
+      "META": {
+        "ticker": "META",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "META",
+          "company_name": "Meta Platforms, Inc.",
+          "sector": "Communication Services",
+          "industry": "Internet Content & Information",
+          "market_cap": 1803697651712,
+          "pe_ratio": 26.635307,
+          "forward_pe": 28.983006,
+          "peg_ratio": null,
+          "price_to_book": 9.4576435,
+          "price_to_sales": 10.087569,
+          "ev_to_revenue": 10.301,
+          "ev_to_ebitda": 19.535,
+          "profit_margin": 0.39992002,
+          "operating_margin": 0.43019,
+          "roe": 0.40647998,
+          "roa": 0.18465,
+          "revenue_growth": 0.216,
+          "earnings_growth": 0.384,
+          "debt_to_equity": 25.406,
+          "current_ratio": 1.973,
+          "quick_ratio": 1.706,
+          "total_cash": 47070998528,
+          "total_debt": 49559998464,
+          "free_cash_flow": 31991250944,
+          "dividend_yield": 0.29,
+          "payout_ratio": 0.0744,
+          "five_year_avg_dividend_yield": null,
+          "last_updated": "2025-10-21T17:00:27.061071",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.5262138996204424,
+            "pvalue": 1.7742459020537274e-23,
+            "significant": true,
+            "directional_accuracy": 0.6419354838709678,
+            "sharpe": -6.468536085670846,
+            "n_observations": 310
+          },
+          "pe_ratio": {
+            "ic": -0.152119367249174,
+            "pvalue": 0.007293215401160632,
+            "significant": true,
+            "directional_accuracy": 0.4935483870967742,
+            "sharpe": -1.2321477860301862,
+            "n_observations": 310
+          },
+          "roe": {
+            "ic": -0.38915700212904,
+            "pvalue": 1.192684596968568e-12,
+            "significant": true,
+            "directional_accuracy": 0.3096774193548387,
+            "sharpe": -5.340905553085339,
+            "n_observations": 310
+          },
+          "roa": {
+            "ic": -0.42446795363167555,
+            "pvalue": 5.451645349773086e-15,
+            "significant": true,
+            "directional_accuracy": 0.3096774193548387,
+            "sharpe": -5.2446021226834345,
+            "n_observations": 310
+          },
+          "profit_margin": {
+            "ic": -0.12589989677402952,
+            "pvalue": 0.026652596776437873,
+            "significant": true,
+            "directional_accuracy": 0.4774193548387097,
+            "sharpe": -3.878124317559277,
+            "n_observations": 310
+          },
+          "operating_margin": {
+            "ic": -0.42446795363167555,
+            "pvalue": 5.451645349773086e-15,
+            "significant": true,
+            "directional_accuracy": 0.33225806451612905,
+            "sharpe": -5.251354840737573,
+            "n_observations": 310
+          },
+          "gross_margin": {
+            "ic": 0.02020015177504128,
+            "pvalue": 0.7231442349461599,
+            "significant": false,
+            "directional_accuracy": 0.5903225806451613,
+            "sharpe": 0.6679678301601804,
+            "n_observations": 310
+          },
+          "debt_to_equity": {
+            "ic": -0.15742189371900525,
+            "pvalue": 0.005472120387257544,
+            "significant": true,
+            "directional_accuracy": 0.5096774193548387,
+            "sharpe": -1.2975907769977393,
+            "n_observations": 310
+          },
+          "current_ratio": {
+            "ic": -0.15786920085428455,
+            "pvalue": 0.005338995246666406,
+            "significant": true,
+            "directional_accuracy": 0.6096774193548387,
+            "sharpe": -0.20604284094378947,
+            "n_observations": 310
+          },
+          "quick_ratio": {
+            "ic": -0.15786920085428455,
+            "pvalue": 0.005338995246666406,
+            "significant": true,
+            "directional_accuracy": 0.6096774193548387,
+            "sharpe": -0.20604284094378947,
+            "n_observations": 310
+          },
+          "revenue_growth": {
+            "ic": -0.2026909798085206,
+            "pvalue": 0.0013009912977849348,
+            "significant": true,
+            "directional_accuracy": 0.3815261044176707,
+            "sharpe": -5.330022411699275,
+            "n_observations": 249
+          },
+          "earnings_growth": {
+            "ic": -0.10624739072778898,
+            "pvalue": 0.0943552845723997,
+            "significant": false,
+            "directional_accuracy": 0.2570281124497992,
+            "sharpe": -4.851362381935289,
+            "n_observations": 249
+          },
+          "fcf": {
+            "ic": -0.12892579798327175,
+            "pvalue": 0.023190261889264124,
+            "significant": true,
+            "directional_accuracy": 0.3419354838709677,
+            "sharpe": -2.6890582633518245,
+            "n_observations": 310
+          },
+          "fcf_yield": {
+            "ic": 0.15810190863694487,
+            "pvalue": 0.005270895334729876,
+            "significant": true,
+            "directional_accuracy": 0.5419354838709678,
+            "sharpe": 2.7883286648607015,
+            "n_observations": 310
+          }
+        },
+        "best_metric": {
+          "name": "price_to_book",
+          "ic": -0.5262138996204424,
+          "pvalue": 1.7742459020537274e-23,
+          "significant": true,
+          "directional_accuracy": 0.6419354838709678,
+          "sharpe": -6.468536085670846,
+          "n_observations": 310
+        },
+        "n_observations": 3357,
+        "horizon_days": 20
+      }
+    },
+    "low_vol_dividend": {
+      "JNJ": {
+        "ticker": "JNJ",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "JNJ",
+          "company_name": "Johnson & Johnson",
+          "sector": "Healthcare",
+          "industry": "Drug Manufacturers - General",
+          "market_cap": 462112096256,
+          "pe_ratio": 18.55706,
+          "forward_pe": 18.101887,
+          "peg_ratio": null,
+          "price_to_book": 5.8849874,
+          "price_to_sales": 5.014836,
+          "ev_to_revenue": 5.451,
+          "ev_to_ebitda": 15.466,
+          "profit_margin": 0.27259,
+          "operating_margin": 0.29674998,
+          "roe": 0.338,
+          "roa": null,
+          "revenue_growth": 0.068,
+          "earnings_growth": 0.911,
+          "debt_to_equity": 64.686,
+          "current_ratio": null,
+          "quick_ratio": null,
+          "total_cash": 18880000000,
+          "total_debt": 50760998912,
+          "free_cash_flow": null,
+          "dividend_yield": 2.68,
+          "payout_ratio": 0.49080002,
+          "five_year_avg_dividend_yield": 2.8,
+          "last_updated": "2025-10-21T17:00:27.913897",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.4122601036472213,
+            "pvalue": 3.775084345729405e-14,
+            "significant": true,
+            "directional_accuracy": 0.6516129032258065,
+            "sharpe": -6.585889955065252,
+            "n_observations": 310
+          },
+          "pe_ratio": {
+            "ic": -0.464740681632057,
+            "pvalue": 5.142840110054331e-18,
+            "significant": true,
+            "directional_accuracy": 0.7032258064516129,
+            "sharpe": -6.910129292779845,
+            "n_observations": 310
+          },
+          "roe": {
+            "ic": 0.34735002453175334,
+            "pvalue": 3.2183124088627807e-10,
+            "significant": true,
+            "directional_accuracy": 0.45806451612903226,
+            "sharpe": 2.341861279541772,
+            "n_observations": 310
+          },
+          "roa": {
+            "ic": 0.34735002453175334,
+            "pvalue": 3.2183124088627807e-10,
+            "significant": true,
+            "directional_accuracy": 0.45806451612903226,
+            "sharpe": 2.414123155605362,
+            "n_observations": 310
+          },
+          "profit_margin": {
+            "ic": 0.34735002453175334,
+            "pvalue": 3.2183124088627807e-10,
+            "significant": true,
+            "directional_accuracy": 0.45806451612903226,
+            "sharpe": 2.1379435363421653,
+            "n_observations": 310
+          },
+          "operating_margin": {
+            "ic": 0.13343402076994917,
+            "pvalue": 0.018754396757336343,
+            "significant": true,
+            "directional_accuracy": 0.7032258064516129,
+            "sharpe": 2.117406807004008,
+            "n_observations": 310
+          },
+          "gross_margin": {
+            "ic": -0.19062972054285296,
+            "pvalue": 0.0007413439753783144,
+            "significant": true,
+            "directional_accuracy": 0.3709677419354839,
+            "sharpe": -2.5971608670372683,
+            "n_observations": 310
+          },
+          "debt_to_equity": {
+            "ic": 0.34735002453175334,
+            "pvalue": 3.2183124088627807e-10,
+            "significant": true,
+            "directional_accuracy": 0.6290322580645161,
+            "sharpe": 4.96863134630088,
+            "n_observations": 310
+          },
+          "current_ratio": {
+            "ic": -0.07876922423673224,
+            "pvalue": 0.16653519269789752,
+            "significant": false,
+            "directional_accuracy": 0.49032258064516127,
+            "sharpe": -0.5416147115499599,
+            "n_observations": 310
+          },
+          "quick_ratio": {
+            "ic": -0.07876922423673224,
+            "pvalue": 0.16653519269789752,
+            "significant": false,
+            "directional_accuracy": 0.49032258064516127,
+            "sharpe": -0.5670114434518133,
+            "n_observations": 310
+          },
+          "revenue_growth": {
+            "ic": 0.14236187052455346,
+            "pvalue": 0.01182402269140847,
+            "significant": true,
+            "directional_accuracy": 0.46153846153846156,
+            "sharpe": -0.16994602763516461,
+            "n_observations": 312
+          },
+          "earnings_growth": {
+            "ic": 0.15099993222859104,
+            "pvalue": 0.0075440728799432135,
+            "significant": true,
+            "directional_accuracy": 0.6121794871794872,
+            "sharpe": 1.6765714677185195,
+            "n_observations": 312
+          },
+          "fcf": {
+            "ic": -0.46175581355342005,
+            "pvalue": 8.900575558309317e-18,
+            "significant": true,
+            "directional_accuracy": 0.3709677419354839,
+            "sharpe": -6.995629629202345,
+            "n_observations": 310
+          },
+          "fcf_yield": {
+            "ic": -0.2758446786609109,
+            "pvalue": 8.090730380501973e-07,
+            "significant": true,
+            "directional_accuracy": 0.3709677419354839,
+            "sharpe": -5.344216408823016,
+            "n_observations": 310
+          }
+        },
+        "best_metric": {
+          "name": "pe_ratio",
+          "ic": -0.464740681632057,
+          "pvalue": 5.142840110054331e-18,
+          "significant": true,
+          "directional_accuracy": 0.7032258064516129,
+          "sharpe": -6.910129292779845,
+          "n_observations": 310
+        },
+        "n_observations": 16040,
+        "horizon_days": 20
+      },
+      "PG": {
+        "ticker": "PG",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "PG",
+          "company_name": "The Procter & Gamble Company",
+          "sector": "Consumer Defensive",
+          "industry": "Household & Personal Products",
+          "market_cap": 354864365568,
+          "pe_ratio": 23.326153,
+          "forward_pe": 20.433962,
+          "peg_ratio": null,
+          "price_to_book": 6.930566,
+          "price_to_sales": 4.210341,
+          "ev_to_revenue": 4.556,
+          "ev_to_ebitda": 15.701,
+          "profit_margin": 0.18952999,
+          "operating_margin": 0.25147,
+          "roe": 0.31242,
+          "roa": 0.10909,
+          "revenue_growth": 0.017,
+          "earnings_growth": 0.165,
+          "debt_to_equity": 69.861,
+          "current_ratio": 0.704,
+          "quick_ratio": 0.437,
+          "total_cash": 9555999744,
+          "total_debt": 36525998080,
+          "free_cash_flow": 11380124672,
+          "dividend_yield": 2.78,
+          "payout_ratio": 0.62619996,
+          "five_year_avg_dividend_yield": 2.41,
+          "last_updated": "2025-10-21T17:00:28.859749",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.22310994967387754,
+            "pvalue": 7.418556763232538e-05,
+            "significant": true,
+            "directional_accuracy": 0.5516129032258065,
+            "sharpe": -4.231081131973651,
+            "n_observations": 310
+          },
+          "pe_ratio": {
+            "ic": -0.26485401891702687,
+            "pvalue": 2.2549671350717855e-06,
+            "significant": true,
+            "directional_accuracy": 0.5580645161290323,
+            "sharpe": -1.3097809737573949,
+            "n_observations": 310
+          },
+          "roe": {
+            "ic": -0.031051461084380925,
+            "pvalue": 0.5860010437966797,
+            "significant": false,
+            "directional_accuracy": 0.5129032258064516,
+            "sharpe": 0.5861866502280009,
+            "n_observations": 310
+          },
+          "roa": {
+            "ic": -0.031051461084380925,
+            "pvalue": 0.5860010437966797,
+            "significant": false,
+            "directional_accuracy": 0.5129032258064516,
+            "sharpe": 0.4470501831250261,
+            "n_observations": 310
+          },
+          "profit_margin": {
+            "ic": -0.039296219623802656,
+            "pvalue": 0.49060139078815035,
+            "significant": false,
+            "directional_accuracy": 0.43548387096774194,
+            "sharpe": -0.41090107823003097,
+            "n_observations": 310
+          },
+          "operating_margin": {
+            "ic": -0.10975942726674127,
+            "pvalue": 0.05353949865803345,
+            "significant": false,
+            "directional_accuracy": 0.5129032258064516,
+            "sharpe": -0.8456796251074704,
+            "n_observations": 310
+          },
+          "gross_margin": {
+            "ic": 0.053248255416852235,
+            "pvalue": 0.3500934975615819,
+            "significant": false,
+            "directional_accuracy": 0.43548387096774194,
+            "sharpe": 0.22345701340656945,
+            "n_observations": 310
+          },
+          "debt_to_equity": {
+            "ic": -0.06924154114249524,
+            "pvalue": 0.2241153482506746,
+            "significant": false,
+            "directional_accuracy": 0.4645161290322581,
+            "sharpe": -0.6129548882229235,
+            "n_observations": 310
+          },
+          "current_ratio": {
+            "ic": 0.1518235653540254,
+            "pvalue": 0.007409160281413538,
+            "significant": true,
+            "directional_accuracy": 0.5806451612903226,
+            "sharpe": 2.221429563495317,
+            "n_observations": 310
+          },
+          "quick_ratio": {
+            "ic": 0.07311559917166503,
+            "pvalue": 0.19919394572672963,
+            "significant": false,
+            "directional_accuracy": 0.5806451612903226,
+            "sharpe": 1.9365706332020733,
+            "n_observations": 310
+          },
+          "revenue_growth": {
+            "ic": 0.11370362888278979,
+            "pvalue": 0.04476479074656494,
+            "significant": true,
+            "directional_accuracy": 0.5961538461538461,
+            "sharpe": 1.6031766677139365,
+            "n_observations": 312
+          },
+          "earnings_growth": {
+            "ic": -0.029012716722895748,
+            "pvalue": 0.6096891049071411,
+            "significant": false,
+            "directional_accuracy": 0.5192307692307693,
+            "sharpe": 0.525866626252086,
+            "n_observations": 312
+          },
+          "fcf": {
+            "ic": 0.20198198917603252,
+            "pvalue": 0.000345110975356016,
+            "significant": true,
+            "directional_accuracy": 0.5967741935483871,
+            "sharpe": 3.8966439352108866,
+            "n_observations": 310
+          },
+          "fcf_yield": {
+            "ic": 0.3437432686570982,
+            "pvalue": 5.026379071275693e-10,
+            "significant": true,
+            "directional_accuracy": 0.6483870967741936,
+            "sharpe": 5.002392627000585,
+            "n_observations": 310
+          }
+        },
+        "best_metric": {
+          "name": "fcf_yield",
+          "ic": 0.3437432686570982,
+          "pvalue": 5.026379071275693e-10,
+          "significant": true,
+          "directional_accuracy": 0.6483870967741936,
+          "sharpe": 5.002392627000585,
+          "n_observations": 310
+        },
+        "n_observations": 16040,
+        "horizon_days": 20
+      },
+      "KO": {
+        "ticker": "KO",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "KO",
+          "company_name": "The Coca-Cola Company",
+          "sector": "Consumer Defensive",
+          "industry": "Beverages - Non-Alcoholic",
+          "market_cap": 306507186176,
+          "pe_ratio": 25.25532,
+          "forward_pe": 23.979797,
+          "peg_ratio": null,
+          "price_to_book": 12.326065,
+          "price_to_sales": 6.5128384,
+          "ev_to_revenue": 7.056,
+          "ev_to_ebitda": 21.028,
+          "profit_margin": 0.25887,
+          "operating_margin": 0.34662998,
+          "roe": 0.42369998,
+          "roa": 0.08941,
+          "revenue_growth": 0.014,
+          "earnings_growth": 0.573,
+          "debt_to_equity": 166.367,
+          "current_ratio": 1.213,
+          "quick_ratio": 0.841,
+          "total_cash": 14296999936,
+          "total_debt": 50212999168,
+          "free_cash_flow": 1707124992,
+          "dividend_yield": 2.98,
+          "payout_ratio": 0.7057,
+          "five_year_avg_dividend_yield": 2.95,
+          "last_updated": "2025-10-21T17:00:30.085968",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.1108012263582667,
+            "pvalue": 0.05129769891007562,
+            "significant": false,
+            "directional_accuracy": 0.5419354838709678,
+            "sharpe": -3.5884976518768914,
+            "n_observations": 310
+          },
+          "pe_ratio": {
+            "ic": 0.25735555574606545,
+            "pvalue": 4.422711722466955e-06,
+            "significant": true,
+            "directional_accuracy": 0.3096774193548387,
+            "sharpe": 6.774588444063342,
+            "n_observations": 310
+          },
+          "roe": {
+            "ic": -0.4418570185156579,
+            "pvalue": 3.01477689563728e-16,
+            "significant": true,
+            "directional_accuracy": 0.41935483870967744,
+            "sharpe": -7.232014609498735,
+            "n_observations": 310
+          },
+          "roa": {
+            "ic": -0.4418570185156579,
+            "pvalue": 3.01477689563728e-16,
+            "significant": true,
+            "directional_accuracy": 0.41935483870967744,
+            "sharpe": -6.674321575103671,
+            "n_observations": 310
+          },
+          "profit_margin": {
+            "ic": -0.4418570185156579,
+            "pvalue": 3.01477689563728e-16,
+            "significant": true,
+            "directional_accuracy": 0.41935483870967744,
+            "sharpe": -7.404337456581818,
+            "n_observations": 310
+          },
+          "operating_margin": {
+            "ic": -0.2526572007453246,
+            "pvalue": 6.6749093538803965e-06,
+            "significant": true,
+            "directional_accuracy": 0.4935483870967742,
+            "sharpe": -4.375214115487324,
+            "n_observations": 310
+          },
+          "gross_margin": {
+            "ic": -0.22926114638196204,
+            "pvalue": 4.608293700556543e-05,
+            "significant": true,
+            "directional_accuracy": 0.41935483870967744,
+            "sharpe": -4.48659117269035,
+            "n_observations": 310
+          },
+          "debt_to_equity": {
+            "ic": -0.043146843363716096,
+            "pvalue": 0.4490724879442587,
+            "significant": false,
+            "directional_accuracy": 0.5838709677419355,
+            "sharpe": -0.37972212625640334,
+            "n_observations": 310
+          },
+          "current_ratio": {
+            "ic": -0.2526572007453246,
+            "pvalue": 6.6749093538803965e-06,
+            "significant": true,
+            "directional_accuracy": 0.41935483870967744,
+            "sharpe": -4.5218592338244,
+            "n_observations": 310
+          },
+          "quick_ratio": {
+            "ic": -0.22659210417402717,
+            "pvalue": 5.674917791950385e-05,
+            "significant": true,
+            "directional_accuracy": 0.5645161290322581,
+            "sharpe": -4.512210366428651,
+            "n_observations": 310
+          },
+          "revenue_growth": {
+            "ic": 0.2714272960689633,
+            "pvalue": 1.1342757590912093e-06,
+            "significant": true,
+            "directional_accuracy": 0.6282051282051282,
+            "sharpe": 4.600382522986552,
+            "n_observations": 312
+          },
+          "earnings_growth": {
+            "ic": -0.45248098873141995,
+            "pvalue": 3.7502211806080133e-17,
+            "significant": true,
+            "directional_accuracy": 0.42628205128205127,
+            "sharpe": -7.52199846253838,
+            "n_observations": 312
+          },
+          "fcf": {
+            "ic": 0.1394120257336702,
+            "pvalue": 0.014022186163602932,
+            "significant": true,
+            "directional_accuracy": 0.6935483870967742,
+            "sharpe": 7.329050570716541,
+            "n_observations": 310
+          },
+          "fcf_yield": {
+            "ic": 0.42448788873199716,
+            "pvalue": 5.434094774452988e-15,
+            "significant": true,
+            "directional_accuracy": 0.6935483870967742,
+            "sharpe": 7.528179757448419,
+            "n_observations": 310
+          }
+        },
+        "best_metric": {
+          "name": "earnings_growth",
+          "ic": -0.45248098873141995,
+          "pvalue": 3.7502211806080133e-17,
+          "significant": true,
+          "directional_accuracy": 0.42628205128205127,
+          "sharpe": -7.52199846253838,
+          "n_observations": 312
+        },
+        "n_observations": 16040,
+        "horizon_days": 20
+      },
+      "WMT": {
+        "ticker": "WMT",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "WMT",
+          "company_name": "Walmart Inc.",
+          "sector": "Consumer Defensive",
+          "industry": "Discount Stores",
+          "market_cap": 852255768576,
+          "pe_ratio": 40.08302,
+          "forward_pe": 39.05147,
+          "peg_ratio": null,
+          "price_to_book": 9.400832,
+          "price_to_sales": 1.2295349,
+          "ev_to_revenue": 1.323,
+          "ev_to_ebitda": 21.394,
+          "profit_margin": 0.03079,
+          "operating_margin": 0.04389,
+          "roe": 0.23375,
+          "roa": 0.06994,
+          "revenue_growth": 0.048,
+          "earnings_growth": 0.573,
+          "debt_to_equity": 68.719,
+          "current_ratio": 0.792,
+          "quick_ratio": 0.193,
+          "total_cash": 9431000064,
+          "total_debt": 66559000576,
+          "free_cash_flow": 8344999936,
+          "dividend_yield": 0.88,
+          "payout_ratio": 0.33400002,
+          "five_year_avg_dividend_yield": 1.36,
+          "last_updated": "2025-10-21T17:00:31.220298",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.5917079482805154,
+            "pvalue": 1.0951930606861062e-28,
+            "significant": true,
+            "directional_accuracy": 0.6885813148788927,
+            "sharpe": -7.513572750263155,
+            "n_observations": 289
+          },
+          "pe_ratio": {
+            "ic": -0.3581994127835009,
+            "pvalue": 3.556366185036439e-10,
+            "significant": true,
+            "directional_accuracy": 0.6885813148788927,
+            "sharpe": -5.455393108172955,
+            "n_observations": 289
+          },
+          "roe": {
+            "ic": -0.25798572151393656,
+            "pvalue": 8.905445265043976e-06,
+            "significant": true,
+            "directional_accuracy": 0.39100346020761245,
+            "sharpe": -2.7291544957731877,
+            "n_observations": 289
+          },
+          "roa": {
+            "ic": 0.03154041957253568,
+            "pvalue": 0.593344138751437,
+            "significant": false,
+            "directional_accuracy": 0.39100346020761245,
+            "sharpe": -2.8776986233761517,
+            "n_observations": 289
+          },
+          "profit_margin": {
+            "ic": -0.29443230434885503,
+            "pvalue": 3.449194805644988e-07,
+            "significant": true,
+            "directional_accuracy": 0.39100346020761245,
+            "sharpe": -2.657728159637188,
+            "n_observations": 289
+          },
+          "operating_margin": {
+            "ic": 0.07389736896447824,
+            "pvalue": 0.21037899792626763,
+            "significant": false,
+            "directional_accuracy": 0.5605536332179931,
+            "sharpe": 0.515471023356625,
+            "n_observations": 289
+          },
+          "gross_margin": {
+            "ic": 0.08833177492485286,
+            "pvalue": 0.1341171664684484,
+            "significant": false,
+            "directional_accuracy": 0.5951557093425606,
+            "sharpe": 2.884829485608158,
+            "n_observations": 289
+          },
+          "debt_to_equity": {
+            "ic": -0.03492096629113625,
+            "pvalue": 0.5543435760981306,
+            "significant": false,
+            "directional_accuracy": 0.5363321799307958,
+            "sharpe": -0.07019920075610529,
+            "n_observations": 289
+          },
+          "current_ratio": {
+            "ic": 0.19377362906224996,
+            "pvalue": 0.0009285853597032886,
+            "significant": true,
+            "directional_accuracy": 0.40484429065743943,
+            "sharpe": 2.0753934320941685,
+            "n_observations": 289
+          },
+          "quick_ratio": {
+            "ic": -0.17983675094876495,
+            "pvalue": 0.0021475166745965613,
+            "significant": true,
+            "directional_accuracy": 0.46366782006920415,
+            "sharpe": -2.5444417543435205,
+            "n_observations": 289
+          },
+          "revenue_growth": {
+            "ic": 0.008767828519770666,
+            "pvalue": 0.8656199091160383,
+            "significant": false,
+            "directional_accuracy": 0.6373333333333333,
+            "sharpe": -1.7065284205410625,
+            "n_observations": 375
+          },
+          "earnings_growth": {
+            "ic": 0.008767828519770666,
+            "pvalue": 0.8656199091160383,
+            "significant": false,
+            "directional_accuracy": 0.6373333333333333,
+            "sharpe": -0.16387754262678023,
+            "n_observations": 375
+          },
+          "fcf": {
+            "ic": -0.09040370652012264,
+            "pvalue": 0.12519117787051603,
+            "significant": false,
+            "directional_accuracy": 0.5951557093425606,
+            "sharpe": -0.5625736594670677,
+            "n_observations": 289
+          },
+          "fcf_yield": {
+            "ic": 0.32131983171755074,
+            "pvalue": 2.3018496732902286e-08,
+            "significant": true,
+            "directional_accuracy": 0.5951557093425606,
+            "sharpe": 0.9849929923122627,
+            "n_observations": 289
+          }
+        },
+        "best_metric": {
+          "name": "price_to_book",
+          "ic": -0.5917079482805154,
+          "pvalue": 1.0951930606861062e-28,
+          "significant": true,
+          "directional_accuracy": 0.6885813148788927,
+          "sharpe": -7.513572750263155,
+          "n_observations": 289
+        },
+        "n_observations": 13381,
+        "horizon_days": 20
+      },
+      "PEP": {
+        "ticker": "PEP",
+        "status": "success",
+        "fundamentals": {
+          "ticker": "PEP",
+          "company_name": "PepsiCo, Inc.",
+          "sector": "Consumer Defensive",
+          "industry": "Beverages - Non-Alcoholic",
+          "market_cap": 209544577024,
+          "pe_ratio": 29.177141,
+          "forward_pe": 17.74971,
+          "peg_ratio": null,
+          "price_to_book": 11.649554,
+          "price_to_sales": 2.2839143,
+          "ev_to_revenue": 2.751,
+          "ev_to_ebitda": 14.824,
+          "profit_margin": 0.08229,
+          "operating_margin": 0.16903,
+          "roe": 0.39859,
+          "roa": 0.08514,
+          "revenue_growth": 0.027,
+          "earnings_growth": -0.108,
+          "debt_to_equity": 260.19,
+          "current_ratio": 0.775,
+          "quick_ratio": 0.559,
+          "total_cash": 8661000192,
+          "total_debt": 50849001472,
+          "free_cash_flow": 7594375168,
+          "dividend_yield": 3.7,
+          "payout_ratio": 1.0561,
+          "five_year_avg_dividend_yield": 2.92,
+          "last_updated": "2025-10-21T17:00:32.343904",
+          "has_quarterly_data": true
+        },
+        "metric_results": {
+          "price_to_book": {
+            "ic": -0.3407839563692882,
+            "pvalue": 7.215822554632085e-10,
+            "significant": true,
+            "directional_accuracy": 0.6451612903225806,
+            "sharpe": -6.126583272532472,
+            "n_observations": 310
+          },
+          "pe_ratio": {
+            "ic": 0.048465789432098005,
+            "pvalue": 0.3951133599486646,
+            "significant": false,
+            "directional_accuracy": 0.46774193548387094,
+            "sharpe": 2.543855617436852,
+            "n_observations": 310
+          },
+          "roe": {
+            "ic": -0.12210498086208514,
+            "pvalue": 0.031615107953587025,
+            "significant": true,
+            "directional_accuracy": 0.432258064516129,
+            "sharpe": -3.245133680393298,
+            "n_observations": 310
+          },
+          "roa": {
+            "ic": -0.12210498086208514,
+            "pvalue": 0.031615107953587025,
+            "significant": true,
+            "directional_accuracy": 0.432258064516129,
+            "sharpe": -3.17218172517352,
+            "n_observations": 310
+          },
+          "profit_margin": {
+            "ic": -0.05022543766672267,
+            "pvalue": 0.37815869794355794,
+            "significant": false,
+            "directional_accuracy": 0.43870967741935485,
+            "sharpe": -2.7464370587428397,
+            "n_observations": 310
+          },
+          "operating_margin": {
+            "ic": 0.018837879539059736,
+            "pvalue": 0.7411245421151613,
+            "significant": false,
+            "directional_accuracy": 0.4806451612903226,
+            "sharpe": 0.8593624078312775,
+            "n_observations": 310
+          },
+          "gross_margin": {
+            "ic": 0.06878375024623284,
+            "pvalue": 0.2272006962477116,
+            "significant": false,
+            "directional_accuracy": 0.43870967741935485,
+            "sharpe": -0.10753383731615082,
+            "n_observations": 310
+          },
+          "debt_to_equity": {
+            "ic": 0.12723174554676595,
+            "pvalue": 0.025077415502329028,
+            "significant": true,
+            "directional_accuracy": 0.6129032258064516,
+            "sharpe": 3.8561445719381715,
+            "n_observations": 310
+          },
+          "current_ratio": {
+            "ic": -0.3720501765358382,
+            "pvalue": 1.2995948227458783e-11,
+            "significant": true,
+            "directional_accuracy": 0.3709677419354839,
+            "sharpe": -6.92022111975032,
+            "n_observations": 310
+          },
+          "quick_ratio": {
+            "ic": -0.4386960617972804,
+            "pvalue": 5.16649130963137e-16,
+            "significant": true,
+            "directional_accuracy": 0.3258064516129032,
+            "sharpe": -7.319328898382358,
+            "n_observations": 310
+          },
+          "revenue_growth": {
+            "ic": 0.12017027867060932,
+            "pvalue": 0.03385409521141019,
+            "significant": true,
+            "directional_accuracy": 0.5384615384615384,
+            "sharpe": 1.2375367184719466,
+            "n_observations": 312
+          },
+          "earnings_growth": {
+            "ic": -0.23878594819700455,
+            "pvalue": 2.0197716081544118e-05,
+            "significant": true,
+            "directional_accuracy": 0.3974358974358974,
+            "sharpe": -4.962510127476937,
+            "n_observations": 312
+          },
+          "fcf": {
+            "ic": -0.20139715976432773,
+            "pvalue": 0.0003593480913298935,
+            "significant": true,
+            "directional_accuracy": 0.3193548387096774,
+            "sharpe": -3.072830214082279,
+            "n_observations": 310
+          },
+          "fcf_yield": {
+            "ic": -0.09965699655631091,
+            "pvalue": 0.07978794361091707,
+            "significant": false,
+            "directional_accuracy": 0.3193548387096774,
+            "sharpe": -2.7633342832092276,
+            "n_observations": 310
+          }
+        },
+        "best_metric": {
+          "name": "quick_ratio",
+          "ic": -0.4386960617972804,
+          "pvalue": 5.16649130963137e-16,
+          "significant": true,
+          "directional_accuracy": 0.3258064516129032,
+          "sharpe": -7.319328898382358,
+          "n_observations": 310
+        },
+        "n_observations": 13441,
+        "horizon_days": 20
+      }
+    }
+  },
+  "aggregate_statistics": {
+    "n_stocks_evaluated": 15,
+    "avg_ic": 0.23250453999128376,
+    "median_ic": 0.2051082354357413,
+    "max_ic": 0.7448805898754212,
+    "avg_sharpe": -1.3710123479877614,
+    "metric_summary": {
+      "price_to_book": {
+        "avg_ic": 0.35127466034609456,
+        "median_ic": 0.34249821001124847,
+        "n_stocks": 15
+      },
+      "pe_ratio": {
+        "avg_ic": 0.22480203575321264,
+        "median_ic": 0.25735555574606545,
+        "n_stocks": 15
+      },
+      "roe": {
+        "avg_ic": 0.20371570984081916,
+        "median_ic": 0.17107204736320675,
+        "n_stocks": 15
+      },
+      "roa": {
+        "avg_ic": 0.21688483916952475,
+        "median_ic": 0.17107204736320675,
+        "n_stocks": 15
+      },
+      "profit_margin": {
+        "avg_ic": 0.23907436739092622,
+        "median_ic": 0.2688063039381283,
+        "n_stocks": 15
+      },
+      "operating_margin": {
+        "avg_ic": 0.19481189168753518,
+        "median_ic": 0.13343402076994917,
+        "n_stocks": 15
+      },
+      "gross_margin": {
+        "avg_ic": 0.16648551357667438,
+        "median_ic": 0.1484362827367772,
+        "n_stocks": 15
+      },
+      "debt_to_equity": {
+        "avg_ic": 0.20398941875555493,
+        "median_ic": 0.15742189371900525,
+        "n_stocks": 15
+      },
+      "current_ratio": {
+        "avg_ic": 0.19520397543368515,
+        "median_ic": 0.1518235653540254,
+        "n_stocks": 15
+      },
+      "quick_ratio": {
+        "avg_ic": 0.2369212686682289,
+        "median_ic": 0.22659210417402717,
+        "n_stocks": 15
+      },
+      "revenue_growth": {
+        "avg_ic": 0.2633570043227289,
+        "median_ic": 0.2026909798085206,
+        "n_stocks": 15
+      },
+      "earnings_growth": {
+        "avg_ic": 0.26589632535978835,
+        "median_ic": 0.2214664461491755,
+        "n_stocks": 15
+      },
+      "fcf": {
+        "avg_ic": 0.224375719119058,
+        "median_ic": 0.20168957447018013,
+        "n_stocks": 14
+      },
+      "fcf_yield": {
+        "avg_ic": 0.2702449354249005,
+        "median_ic": 0.3097975730624716,
+        "n_stocks": 14
+      }
+    },
+    "vs_economic": {
+      "economic_ic": 0.565,
+      "fundamental_ic": 0.23250453999128376,
+      "ratio": 0.41151246016156423
+    },
+    "vs_technical": {
+      "technical_ic": 0.008,
+      "fundamental_ic": 0.23250453999128376,
+      "ratio": 29.06306749891047
+    }
+  }
+}

@@ -1,0 +1,369 @@
+2025-10-24 10:30:45.746735: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-24 10:30:47.456733: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\nairs\Documents\GithubProjects\AirmanStockPredictor\.venv\Lib\site-packages\fs\__init__.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)  # type: ignore
+[WARNING] Phase 4E results not found, using test subset
+
+[TEST MODE] Using 9-stock subset
+
+================================================================================
+PHASE 5: FULL PRESIDENTIAL TERM BACKTEST (CORRECTED)
+================================================================================
+
+Configuration:
+  Stocks: 9
+  Modes: 5 (A, B3, B6, B4.5, D)
+  Terms: 3
+  Total Combinations: 9 × 5 × 3
+  Parallel Processing: No
+
+================================================================================
+MODE A
+================================================================================
+
+[A] Obama_2nd (2013-01-21 to 2017-01-20)
+  Testing 9 stocks...
+[ProductionPredictor] Initializing in mode A...
+[ProductionPredictor] Mode A initialized successfully
+  [PREDICT] BAC on 2013-01-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2013-02-28 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2013-03-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2013-04-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2013-05-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2013-06-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2013-07-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2013-08-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2013-09-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2013-10-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2013-11-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2013-12-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2014-01-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2014-02-28 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2014-03-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2014-04-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2014-05-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2014-06-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2014-07-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2014-08-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2014-09-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2014-10-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2014-11-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2014-12-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2015-01-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2015-02-28 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2015-03-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2015-04-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2015-05-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2015-06-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2015-07-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2015-08-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2015-09-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2015-10-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2015-11-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2015-12-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2016-01-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2016-02-29 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2016-03-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2016-04-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2016-05-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2016-06-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2016-07-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2016-08-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2016-09-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2016-10-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2016-11-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] BAC on 2016-12-31 00:00:00 using mode A
+    Fundamental approach: category
+[ProductionPredictor] Initializing in mode A...
+[ProductionPredictor] Mode A initialized successfully
+  [PREDICT] KO on 2013-01-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2013-02-28 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2013-03-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2013-04-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2013-05-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2013-06-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2013-07-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2013-08-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2013-09-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2013-10-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2013-11-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2013-12-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2014-01-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2014-02-28 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2014-03-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2014-04-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2014-05-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2014-06-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2014-07-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2014-08-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2014-09-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2014-10-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2014-11-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2014-12-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2015-01-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2015-02-28 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2015-03-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2015-04-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2015-05-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2015-06-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2015-07-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2015-08-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2015-09-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2015-10-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2015-11-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2015-12-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2016-01-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2016-02-29 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2016-03-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2016-04-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2016-05-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2016-06-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2016-07-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2016-08-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2016-09-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2016-10-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2016-11-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] KO on 2016-12-31 00:00:00 using mode A
+    Fundamental approach: category
+[ProductionPredictor] Initializing in mode A...
+[ProductionPredictor] Mode A initialized successfully
+  [PREDICT] NVDA on 2013-01-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2013-02-28 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2013-03-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2013-04-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2013-05-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2013-06-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2013-07-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2013-08-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2013-09-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2013-10-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2013-11-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2013-12-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2014-01-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2014-02-28 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2014-03-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2014-04-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2014-05-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2014-06-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2014-07-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2014-08-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2014-09-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2014-10-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2014-11-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2014-12-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2015-01-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2015-02-28 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2015-03-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2015-04-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2015-05-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2015-06-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2015-07-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2015-08-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2015-09-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2015-10-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2015-11-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2015-12-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2016-01-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2016-02-29 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2016-03-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2016-04-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2016-05-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2016-06-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2016-07-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2016-08-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2016-09-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2016-10-31 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2016-11-30 00:00:00 using mode A
+    Fundamental approach: category
+  [PREDICT] NVDA on 2016-12-31 00:00:00 using mode A
+    Fundamental approach: category
+[ProductionPredictor] Initializing in mode A...
+[ProductionPredictor] Mode A initialized successfully
+  [PREDICT] HTGC on 2013-01-31 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 1925 observations (up to 2013-01-31 00:00:00)
+  [ML] Generated 1925 predictions for HTGC
+  [PREDICT] HTGC on 2013-02-28 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 1944 observations (up to 2013-02-28 00:00:00)
+  [ML] Generated 1944 predictions for HTGC
+  [PREDICT] HTGC on 2013-03-31 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 1964 observations (up to 2013-03-31 00:00:00)
+  [ML] Generated 1964 predictions for HTGC
+  [PREDICT] HTGC on 2013-04-30 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 1986 observations (up to 2013-04-30 00:00:00)
+  [ML] Generated 1986 predictions for HTGC
+  [PREDICT] HTGC on 2013-05-31 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2008 observations (up to 2013-05-31 00:00:00)
+  [ML] Generated 2008 predictions for HTGC
+  [PREDICT] HTGC on 2013-06-30 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2028 observations (up to 2013-06-30 00:00:00)
+  [ML] Generated 2028 predictions for HTGC
+  [PREDICT] HTGC on 2013-07-31 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2050 observations (up to 2013-07-31 00:00:00)
+  [ML] Generated 2050 predictions for HTGC
+  [PREDICT] HTGC on 2013-08-31 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2072 observations (up to 2013-08-31 00:00:00)
+  [ML] Generated 2072 predictions for HTGC
+  [PREDICT] HTGC on 2013-09-30 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2092 observations (up to 2013-09-30 00:00:00)
+  [ML] Generated 2092 predictions for HTGC
+  [PREDICT] HTGC on 2013-10-31 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2115 observations (up to 2013-10-31 00:00:00)
+  [ML] Generated 2115 predictions for HTGC
+  [PREDICT] HTGC on 2013-11-30 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2135 observations (up to 2013-11-30 00:00:00)
+  [ML] Generated 2135 predictions for HTGC
+  [PREDICT] HTGC on 2013-12-31 00:00:00 using mode A
+    Fundamental approach: ml
+  [ML] Training models for HTGC on 2156 observations (up to 2013-12-31 00:00:00)
+  [ML] Generated 2156 predictions for HTGC

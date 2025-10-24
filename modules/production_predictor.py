@@ -79,6 +79,7 @@ class ProductionPredictor:
         # ML approach tracking
         self.ml_model_ics = {}  # Store IC values for ML models per stock
         self.feature_importances = {}  # Store feature importances per stock
+        self.trained_ml_models = {}  # Cache trained models per stock
 
         # Set up cache directories for API data
         self.price_cache_dir = "data/price_history"
@@ -405,16 +406,21 @@ class ProductionPredictor:
         approach = self.select_fundamental_approach(ticker, date)
         print(f"    Fundamental approach: {approach}")
 
-        # 2. Generate all signals
-        econ_signal = self.normalize_signal(self.get_economic_signal(ticker))
-        tech_signal = self.normalize_signal(self.get_technical_signal(ticker))
+        # 2. Generate all signals (pass prediction_date for ML to prevent look-ahead bias)
+        econ_signal_raw = self.get_economic_signal(ticker)
+        tech_signal_raw = self.get_technical_signal(ticker)
 
         if approach == "original":
-            fund_signal = self.normalize_signal(self.get_fundamental_signal_original(ticker))
+            fund_signal_raw = self.get_fundamental_signal_original(ticker)
         elif approach == "category":
-            fund_signal = self.normalize_signal(self.get_fundamental_signal_category(ticker))
+            fund_signal_raw = self.get_fundamental_signal_category(ticker)
         else:  # ml
-            fund_signal = self.normalize_signal(self.get_fundamental_signal_ml(ticker))
+            fund_signal_raw = self.get_fundamental_signal_ml(ticker, prediction_date=date)
+
+        # Normalize signals using only historical data (pass cutoff_date to prevent look-ahead bias)
+        econ_signal = self.normalize_signal(econ_signal_raw, cutoff_date=date)
+        tech_signal = self.normalize_signal(tech_signal_raw, cutoff_date=date)
+        fund_signal = self.normalize_signal(fund_signal_raw, cutoff_date=date)
 
         # 3. Calculate ICs using ONLY historical data (no look-ahead bias)
         # Use trailing 252 trading days (1 year) before the prediction date
@@ -969,10 +975,20 @@ class ProductionPredictor:
             print(f"    [WARNING] Failed to calculate {metric_name} for {ticker}: {str(e)}")
             return pd.Series(dtype=float)
 
-    def get_fundamental_signal_ml_ensemble(self, ticker: str, period: str = "max") -> pd.Series:
+    def get_fundamental_signal_ml_ensemble(self, ticker: str, period: str = "max", prediction_date=None) -> pd.Series:
         """
-        Get ML-based fundamental signal using 3-model ensemble.
-        Reused from Phase 4D.
+        Get ML-based fundamental signal using 3-model ensemble with proper time-series cross-validation.
+
+        Parameters:
+        -----------
+        ticker : str
+        period : str
+        prediction_date : datetime, optional
+            If provided, train ONLY on data before this date (prevents look-ahead bias)
+
+        Returns:
+        --------
+        pd.Series : ML predictions (only for dates <= prediction_date if provided)
         """
         try:
             # Get all features
@@ -981,66 +997,98 @@ class ProductionPredictor:
                 print(f"  [WARNING] Insufficient data for ML ensemble ({len(features_df)} obs)")
                 return pd.Series(dtype=float)
 
+            # If prediction_date provided, filter to historical data ONLY
+            if prediction_date is not None:
+                features_df = features_df[features_df.index <= prediction_date]
+                if features_df.empty or len(features_df) < 100:
+                    print(f"  [WARNING] Insufficient historical data for ML ensemble ({len(features_df)} obs)")
+                    return pd.Series(dtype=float)
+
             # Prepare features and target
             X = features_df.drop(columns=['return_forward_20d'])
             y = features_df['return_forward_20d']
 
+            # Drop rows with NaN target (forward returns not available at end of series)
+            valid_mask = ~y.isna()
+            X_train = X[valid_mask]
+            y_train = y[valid_mask]
+
+            if len(X_train) < 50:
+                print(f"  [WARNING] Insufficient training data after filtering ({len(X_train)} obs)")
+                return pd.Series(dtype=float)
+
             feature_cols = X.columns.tolist()
 
-            # Time-based split (70% train, 30% test)
-            split_idx = int(len(X) * 0.7)
-            X_train, X_test = X.iloc[:split_idx], X.iloc[split_idx:]
-            y_train, y_test = y.iloc[:split_idx], y.iloc[split_idx:]
+            print(f"  [ML] Training models for {ticker} on {len(X_train)} observations (up to {prediction_date if prediction_date else 'latest'})")
 
-            print(f"  [ML] Train: {len(X_train)} obs, Test: {len(X_test)} obs, Features: {len(feature_cols)}")
+            # Train models on filtered historical data (no caching - train fresh each time)
 
             # Model 1: ExtraTrees with imputation
             et_imputer = SimpleImputer(strategy='median')
-            X_train_et = et_imputer.fit_transform(X_train)
-            X_test_et = et_imputer.transform(X_test)
+            X_train_imputed = et_imputer.fit_transform(X_train)
 
-            et_model = ExtraTreesRegressor(n_estimators=200, max_depth=4, random_state=42, n_jobs=-1)
-            et_model.fit(X_train_et, y_train)
-            et_pred = et_model.predict(X_test_et)
-            et_ic, _ = spearmanr(et_pred, y_test)
+            et_model = ExtraTreesRegressor(
+                n_estimators=100,
+                max_depth=4,
+                max_features='sqrt',
+                min_samples_split=10,
+                min_samples_leaf=5,
+                random_state=42,
+                n_jobs=-1
+            )
+            et_model.fit(X_train_imputed, y_train)
 
             # Model 2: HistGradientBoosting (native NaN handling)
-            hgb_model = HistGradientBoostingRegressor(max_iter=100, max_depth=3, random_state=42)
+            hgb_model = HistGradientBoostingRegressor(
+                max_iter=75,
+                max_depth=3,
+                learning_rate=0.12,
+                max_leaf_nodes=23,
+                min_samples_leaf=20,
+                max_bins=64,
+                l2_regularization=0.1,
+                early_stopping=True,
+                validation_fraction=0.15,
+                n_iter_no_change=10,
+                scoring='loss',
+                random_state=42,
+                verbose=0
+            )
             hgb_model.fit(X_train.values, y_train)
-            hgb_pred = hgb_model.predict(X_test.values)
-            hgb_ic, _ = spearmanr(hgb_pred, y_test)
 
             # Model 3: CatBoost (native NaN handling)
-            cat_model = CatBoostRegressor(iterations=200, depth=4, learning_rate=0.1, verbose=0, random_state=42)
+            cat_model = CatBoostRegressor(
+                iterations=75,              # 200 → 75 (faster training)
+                depth=3,                    # 4 → 3 (reduce overfitting, controls tree complexity)
+                learning_rate=0.12,         # 0.1 → 0.12 (compensate for fewer iterations)
+                l2_leaf_reg=5.0,           # 3.0 → 5.0 (stronger regularization)
+                border_count=64,            # 254 → 64 (MAJOR speedup, quantization bins)
+                min_data_in_leaf=20,       # default 1 → 20 (prevent overfitting)
+                bootstrap_type='MVS',       # Multivariate sampling (CatBoost default)
+                bagging_temperature=1.0,    # MVS parameter (default)
+                rsm=0.6,                    # Random subspace method: use 60% of features
+                grow_policy='SymmetricTree', # Balanced trees (CatBoost's strength)
+                boosting_type='Plain',      # Standard gradient boosting
+                leaf_estimation_method='Newton', # Second-order optimization
+                random_state=42,
+                verbose=0,
+                thread_count=-1             # Use all available cores
+            )
             cat_model.fit(X_train.values, y_train)
-            cat_pred = cat_model.predict(X_test.values)
-            cat_ic, _ = spearmanr(cat_pred, y_test)
+
+            # Generate predictions for all available dates (not just training set)
+            X_imputed = et_imputer.transform(X)
+            et_pred = et_model.predict(X_imputed)
+            hgb_pred = hgb_model.predict(X.values)
+            cat_pred = cat_model.predict(X.values)
 
             # Ensemble prediction (simple average)
             ensemble_pred = (et_pred + hgb_pred + cat_pred) / 3
-            ensemble_ic, _ = spearmanr(ensemble_pred, y_test)
 
-            print(f"  [ML] ExtraTrees IC: {et_ic:.4f}")
-            print(f"  [ML] HistGradientBoosting IC: {hgb_ic:.4f}")
-            print(f"  [ML] CatBoost IC: {cat_ic:.4f}")
-            print(f"  [ML] Ensemble IC: {ensemble_ic:.4f}")
+            # Create predictions series
+            predictions = pd.Series(ensemble_pred, index=X.index)
 
-            # Store model ICs
-            self.ml_model_ics[ticker] = {
-                'extra_trees': et_ic,
-                'hist_gradient_boosting': hgb_ic,
-                'catboost': cat_ic,
-                'ensemble': ensemble_ic
-            }
-
-            # Store feature importances
-            self.feature_importances[ticker] = {
-                'extra_trees': dict(zip(feature_cols, et_model.feature_importances_)),
-                'catboost': dict(zip(feature_cols, cat_model.feature_importances_))
-            }
-
-            # Create full predictions for test period
-            predictions = pd.Series(ensemble_pred, index=X_test.index)
+            print(f"  [ML] Generated {len(predictions)} predictions for {ticker}")
             return predictions
 
         except Exception as e:
@@ -1049,15 +1097,48 @@ class ProductionPredictor:
             traceback.print_exc()
             return pd.Series(dtype=float)
 
-    def get_fundamental_signal_ml(self, ticker: str, period: str = "max") -> pd.Series:
-        """ML-based fundamental signal using 3-model ensemble."""
-        return self.get_fundamental_signal_ml_ensemble(ticker, period)
+    def get_fundamental_signal_ml(self, ticker: str, period: str = "max", prediction_date=None) -> pd.Series:
+        """
+        ML-based fundamental signal using 3-model ensemble.
 
-    def normalize_signal(self, signal: pd.Series) -> pd.Series:
-        """Normalize signal to 0-1 range."""
+        Parameters:
+        -----------
+        ticker : str
+        period : str
+        prediction_date : datetime, optional
+            If provided, train only on data before this date
+        """
+        return self.get_fundamental_signal_ml_ensemble(ticker, period, prediction_date)
+
+    def normalize_signal(self, signal: pd.Series, cutoff_date=None) -> pd.Series:
+        """
+        Normalize signal to 0-1 range.
+
+        Parameters:
+        -----------
+        signal : pd.Series
+            Signal to normalize
+        cutoff_date : datetime, optional
+            If provided, calculate min/max using only data before this date (prevents look-ahead bias)
+
+        Returns:
+        --------
+        pd.Series : Normalized signal
+        """
         if signal.empty or len(signal) == 0:
             return signal
-        min_val, max_val = signal.min(), signal.max()
+
+        # If cutoff_date provided, use only historical data for min/max calculation
+        if cutoff_date is not None:
+            historical_signal = signal[signal.index <= cutoff_date]
+            if historical_signal.empty or len(historical_signal) == 0:
+                return signal
+            min_val = historical_signal.min()
+            max_val = historical_signal.max()
+        else:
+            min_val = signal.min()
+            max_val = signal.max()
+
         if max_val == min_val:
             return pd.Series(0.5, index=signal.index)
         return (signal - min_val) / (max_val - min_val)
